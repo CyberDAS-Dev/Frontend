@@ -1,0 +1,124 @@
+.jumbotron {
+  padding: 0px;
+  width: 100%;
+  margin-bottom: 7vh;
+}
+.jumbotron-imgblock {
+  min-height: 70vh;
+  width: 100%;
+  height: auto;
+  background: rgba(36, 44, 64, 0.8);
+  position: relative;
+  background-image: url("./images/jumbotron.png");
+  background-size: cover;
+  background-position: center;
+}
+.jumbotron-imgblock-layer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(36, 44, 64, 0.8);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      margin-bottom: 30vh;
+    }
+
+    button {
+      margin-top: 30vh;
+    }
+  }
+}
+.jumbotron-image-case {
+  min-height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.jumbotron-image {
+  width: 200%;
+  display: flex;
+}
+.jumbotron-element {
+  padding: 5vh 0;
+}
+
+.jumbotron-imgblock-center button {
+  position: absolute;
+  right: 0;
+  bottom: 25%;
+}
+
+.landing-big-font {
+  font-family: Quantico, Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 144px;
+  line-height: 6rem;
+  color: $main-blue;
+  margin-right: 20px;
+}
+
+.landing-heading {
+  font-size: 48px;
+}
+
+.landing-normal-font {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 48px;
+}
+
+.landing-block {
+  margin: 4vh auto;
+}
+
+.landing-card {
+  padding: 25px 35px 35px;
+  width: 100%;
+  color: $main-text;
+  margin: 30px 0;
+}
+
+.flex-lc {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-cc {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.card-primary {
+  background: $main-blue;
+  color: $main-white;
+}
+
+.card-h3 {
+  padding: 0 0 25px 0;
+}
+
+.landing-card-img {
+  max-height: 100px;
+  width: auto;
+}
+.card-h1 {
+  padding: 0 0 90px 0;
+}
+
+.comingsoon {
+  margin-top: 9px;
+}
