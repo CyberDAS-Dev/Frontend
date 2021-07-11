@@ -1,0 +1,83 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: var(--main-text);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+label {
+  font-family: Roboto;
+}
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.3rem;
+  line-height: 3rem;
+}
+
+h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 26px;
+}
+h3 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 21px;
+  margin: 0;
+  text-decoration: none;
+}
+h5 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 18px;
+  margin: 0;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0;
+}
+.text-big {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-decoration: none;
+}
+.text-large {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+.text-light {
+  color: var(--main-white);
+}
+.text-primary {
+  color: var(--main-blue);
+}
+.text-subheader {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 20px;
+}

@@ -1,0 +1,27 @@
+nav {
+  background: $header-color;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+}
+.header-right {
+  margin-left: auto;
+  margin-right: -0;
+}
+
+.header-button {
+  height: 100%;
+  padding: 0 25px;
+}
+
+.header-button h3,
+.header-button p {
+  line-height: 40px;
+  color: var(--main-white);
+}
+.header-button:hover {
+  background-color: #67677446;
+}
