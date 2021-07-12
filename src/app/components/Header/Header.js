@@ -6,8 +6,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { LinkContainer } from "react-router-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "./../../store/auth/slice";
 
 export default function Header() {
+    const dispatch = useDispatch();
     const { isAuth, name } = useSelector((state) => state.auth);
 
     return (
@@ -26,16 +29,16 @@ export default function Header() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <div className="header-left">
-                            <a href="/">
+                            <Link href="/">
                                 <div className="header-button">
                                     <p>Каталог</p>
                                 </div>
-                            </a>
-                            <a href="/">
-                                <div className="header-button">
+                            </Link>
+                            <div className="header-button">
+                                <Link href="/">
                                     <p>Информация</p>
-                                </div>
-                            </a>
+                                </Link>
+                            </div>
                         </div>
                     </Nav>
                     <Nav>
@@ -46,7 +49,9 @@ export default function Header() {
                                     <NavDropdown.Item>Профиль</NavDropdown.Item>
                                 </LinkContainer>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/logout">Выход</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => dispatch(logout())}>
+                                    Выход
+                                </NavDropdown.Item>
                             </NavDropdown>
                         ) : (
                             <Link to="/login">
