@@ -28,7 +28,7 @@ jobs:
       - name: Run linter
         working-directory: test
         run: |
-          ./node_modules/.bin/eslint --max-warnings 0 src 
+          npx eslint --max-warnings 0 src 
       - name: Wipe files
         run: |
           rm -rf test

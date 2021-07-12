@@ -1,9 +1,8 @@
 name: deploy-prod
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches: [ main ]
 
 jobs:
     build:
@@ -12,14 +11,12 @@ jobs:
             run:
                 working-directory: /usr/share/cyberdas_front
         steps:
-            - name: Cleanup
-              run: |
-                  rm -rf cyberdas-prod
-            - name: Clone repo
-              run: |
-                  git clone https://github.com/$GITHUB_REPOSITORY.git --branch ${GITHUB_REF##*/} --single-branch cyberdas-prod
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                path: prod
             - name: Install dependencies
-              working-directory: /usr/share/cyberdas_front/cyberdas-prod
+              working-directory: prod
               run: |
                   npm ci
 
@@ -28,11 +25,11 @@ jobs:
         runs-on: [self-hosted, linux, X64]
         steps:
             - name: Build
-              working-directory: /usr/share/cyberdas_front/cyberdas-prod
+              working-directory: prod
               run: |
                   npm run build
             - name: Transfer new version to web-server
-              working-directory: /usr/share/cyberdas_front/cyberdas-prod
+              working-directory: prod
               run: |
                   rm -rf /var/www/html/*  
                   cp -r build/. /var/www/html/
