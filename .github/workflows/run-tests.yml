@@ -1,11 +1,8 @@
 name: run-tests
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
-    # Все пуши, попадающие в эти ветки, должны быть уже протестированы
 
 jobs:
 
