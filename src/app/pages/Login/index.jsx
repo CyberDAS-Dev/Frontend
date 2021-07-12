@@ -21,7 +21,12 @@ export default function Login(props) {
                 >
                     <h2 className="header">ВХОД В ЛИЧНЫЙ КАБИНЕТ</h2>
 
-                    <div className="logo-wrapper" onClick={() => props.history.push('/')} />
+                    <button
+                        type="button"
+                        label="Переход на главную"
+                        className="logo-wrapper"
+                        onClick={() => props.history.push('/')}
+                    />
                     <input
                         required
                         className="cred-input"
