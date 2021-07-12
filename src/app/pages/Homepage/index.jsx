@@ -1,13 +1,13 @@
-import React from "react";
-import jumbotronLogo from "./images/jumbotron-logo.png";
-import { Container, Row } from "react-bootstrap";
-import whiteRem from "./images/icons/white/rem.png";
-import blueQueen from "./images/icons/blue/queue.png";
-import whiteSport from "./images/icons/white/sport.png";
-import blueMusic from "./images/icons/blue/music.png";
-import whiteForms from "./images/icons/white/forms.png";
-import blueInfo from "./images/icons/blue/info.png";
-import blueComingSoon from "./images/icons/blue/comingsoon.png";
+import React from 'react'
+import { Container, Row } from 'react-bootstrap'
+import jumbotronLogo from './images/jumbotron-logo.png'
+import whiteRem from './images/icons/white/rem.png'
+import blueQueen from './images/icons/blue/queue.png'
+import whiteSport from './images/icons/white/sport.png'
+import blueMusic from './images/icons/blue/music.png'
+import whiteForms from './images/icons/white/forms.png'
+import blueInfo from './images/icons/blue/info.png'
+import blueComingSoon from './images/icons/blue/comingsoon.png'
 
 export default function Homepage() {
     return (
@@ -17,7 +17,7 @@ export default function Homepage() {
                     <div className="jumbotron-imgblock-layer">
                         <div className="container">
                             <img src={jumbotronLogo} alt="Jumbotron" />
-                            <button className="button button-primary">
+                            <button type="button" className="button button-primary">
                                 <h3>Регистрация</h3>
                             </button>
                         </div>
@@ -27,9 +27,7 @@ export default function Homepage() {
             <Container>
                 <Row className="justify-content-md-center">
                     <div className="col-auto">
-                        <h1 className="landing-heading">
-                            Общежитее стало доступнее!
-                        </h1>
+                        <h1 className="landing-heading">Общежитее стало доступнее!</h1>
                     </div>
                 </Row>
             </Container>
@@ -37,15 +35,12 @@ export default function Homepage() {
                 <Row className="row">
                     <div className="col-12 col-lg-6 flex-lc landing-card">
                         <p className="landing-big-font">1</p>
-                        <p className="landing-normal-font">
-                            Зарегистрируйся на сайте
-                        </p>
+                        <p className="landing-normal-font">Зарегистрируйся на сайте</p>
                     </div>
                     <div className="col-12 col-lg-6 flex-lc landing-card">
                         <p className="landing-big-font">2</p>
                         <p className="landing-normal-font">
-                            Получи доступ к электронным услугам не выходя из
-                            комнаты
+                            Получи доступ к электронным услугам не выходя из комнаты
                         </p>
                     </div>
                 </Row>
@@ -62,16 +57,11 @@ export default function Homepage() {
                     <div className="col-12 col-lg-6 order-lg-0">
                         <div className="landing-card card-primary">
                             <div className="row flex-cc card-h3">
-                                <h3 className="text-light">
-                                    Вызов технических служб
-                                </h3>
+                                <h3 className="text-light">Вызов технических служб</h3>
                             </div>
                             <div className="row align-items-center">
                                 <div className="col-4">
-                                    <img
-                                        className="landing-card-img"
-                                        src={whiteRem}
-                                    />
+                                    <img className="landing-card-img" src={whiteRem} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <p className="text-large text-light text-right">
@@ -91,10 +81,7 @@ export default function Homepage() {
                             </div>
                             <div className="row align-items-center">
                                 <div className="col-4">
-                                    <img
-                                        className="landing-card-img"
-                                        src={blueQueen}
-                                    />
+                                    <img className="landing-card-img" src={blueQueen} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <p className="text-large text-right">
@@ -110,16 +97,11 @@ export default function Homepage() {
                     <div className="col-12 col-lg-6 order-lg-3">
                         <div className="landing-card card-primary">
                             <div className="row flex-cc card-h3">
-                                <h3 className="text-light">
-                                    Вызов технических служб
-                                </h3>
+                                <h3 className="text-light">Вызов технических служб</h3>
                             </div>
                             <div className="row align-items-center">
                                 <div className="col-4">
-                                    <img
-                                        className="landing-card-img"
-                                        src={whiteSport}
-                                    />
+                                    <img className="landing-card-img" src={whiteSport} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <p className="text-large text-light text-right">
@@ -139,10 +121,7 @@ export default function Homepage() {
                             </div>
                             <div className="row align-items-center">
                                 <div className="col-4">
-                                    <img
-                                        className="landing-card-img"
-                                        src={blueMusic}
-                                    />
+                                    <img className="landing-card-img" src={blueMusic} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <p className="text-large text-right">
@@ -158,16 +137,11 @@ export default function Homepage() {
                     <div className="col-12 col-lg-6 order-lg-4">
                         <div className="landing-card card-primary">
                             <div className="row flex-cc card-h3">
-                                <h3 className="text-light">
-                                    Вызов технических служб
-                                </h3>
+                                <h3 className="text-light">Вызов технических служб</h3>
                             </div>
                             <div className="row align-items-center">
                                 <div className="col-4">
-                                    <img
-                                        className="landing-card-img"
-                                        src={whiteForms}
-                                    />
+                                    <img className="landing-card-img" src={whiteForms} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <p className="text-large text-light text-right">
@@ -187,10 +161,7 @@ export default function Homepage() {
                             </div>
                             <div className="row align-items-center">
                                 <div className="col-4">
-                                    <img
-                                        className="landing-card-img"
-                                        src={blueInfo}
-                                    />
+                                    <img className="landing-card-img" src={blueInfo} alt="" />
                                 </div>
                                 <div className="col-8">
                                     <p className="text-large text-right">
@@ -211,19 +182,16 @@ export default function Homepage() {
                 </div>
                 <div className="row">
                     <div className="col-3 flex-cc">
-                        <img
-                            className="landing-card-img"
-                            src={blueComingSoon}
-                        />
+                        <img className="landing-card-img" src={blueComingSoon} alt="" />
                     </div>
                     <div className="col-9 flex-cc">
                         <p className="landing-normal-font">
-                            Команда разработчиков постоянно работает над
-                            улучшением сервиса и добавлением нового функционала.
+                            Команда разработчиков постоянно работает над улучшением сервиса и
+                            добавлением нового функционала.
                         </p>
                     </div>
                 </div>
             </Container>
         </div>
-    );
+    )
 }

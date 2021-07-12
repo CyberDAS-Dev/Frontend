@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export const ICONS = {
+const ICONS = {
     key: (
         <svg
             width="26"
@@ -29,4 +29,6 @@ export const ICONS = {
             />
         </svg>
     )
-};
+}
+
+export default ICONS

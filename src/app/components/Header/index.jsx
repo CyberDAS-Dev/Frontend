@@ -1,17 +1,17 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { LinkContainer } from "react-router-bootstrap";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "./../../store/auth/slice";
+import React from 'react'
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import { LinkContainer } from 'react-router-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+
+import { logout } from '../../store/auth/slice'
 
 export default function Header() {
-    const dispatch = useDispatch();
-    const { isAuth, name } = useSelector((state) => state.auth);
+    const dispatch = useDispatch()
+    const { isAuth, name } = useSelector((state) => state.auth)
 
     return (
         <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -42,7 +42,7 @@ export default function Header() {
                         </div>
                     </Nav>
                     <Nav>
-                        {" "}
+                        {' '}
                         {isAuth ? (
                             <NavDropdown title={name} id="collasible-nav-dropdown">
                                 <LinkContainer to="/profile">
@@ -64,5 +64,5 @@ export default function Header() {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    );
+    )
 }

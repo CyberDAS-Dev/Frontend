@@ -1,13 +1,13 @@
-import React from "react";
-import { Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
         <footer>
             <Container>
                 <Row>
-                    <div className="col-md-1 col-lg-2"></div>
+                    <div className="col-md-1 col-lg-2" />
                     <div className="col-6 col-md-5 col-lg-4">
                         <Row>
                             <div className="col-12 p-3">
@@ -54,9 +54,9 @@ export default function Footer() {
                             </div>
                         </Row>
                     </div>
-                    <div className="col-md-1 col-lg-2"></div>
+                    <div className="col-md-1 col-lg-2" />
                 </Row>
             </Container>
         </footer>
-    );
+    )
 }
