@@ -1,29 +1,23 @@
 name: run-tests
 
 on:
-  pull_request: 
   push:
-    branches-ignore: 
-      - main
-      - next
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
     # Все пуши, попадающие в эти ветки, должны быть уже протестированы
 
 jobs:
 
   build:
     runs-on: [self-hosted, linux, X64]
-    defaults:
-      run:
-        working-directory: /usr/share/cyberdas_front
     steps:
-      - name: Cleanup
-        run: |
-          rm -rf cyberdas-test
-      - name: Clone repo
-        run: 
-          git clone https://github.com/$GITHUB_REPOSITORY.git --branch ${GITHUB_REF##*/} --single-branch cyberdas-test
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: test
       - name: Install dependencies
-        working-directory: /usr/share/cyberdas_front/cyberdas-test
+        working-directory: test
         run: |
           npm ci
 
@@ -32,10 +26,9 @@ jobs:
     runs-on: [self-hosted, linux, X64]
     steps:
       - name: Run linter
-        working-directory: /usr/share/cyberdas_front/cyberdas-test
+        working-directory: test
         run: |
           ./node_modules/.bin/eslint --max-warnings 0 src 
       - name: Wipe files
-        working-directory: /usr/share/cyberdas_front
         run: |
-          rm -rf cyberdas-test
+          rm -rf test
