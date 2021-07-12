@@ -3,7 +3,7 @@
         "browser": true,
         "es2021": true
     },
-    "extends": ["plugin:react/recommended", "google", "prettier"],
+    "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -16,7 +16,7 @@
         "react/prop-types": 0,
         "require-jsdoc": 0,
         "indent": ["error", 4],
-        "max-len": ["error", {"code": 100, "ignorePattern": "d=\"([\\s\\S]*?)\""}]
+        "max-len": ["error", { "code": 100, "ignorePattern": "d=\"([\\s\\S]*?)\"" }]
     },
     "settings": {
         "react": {
