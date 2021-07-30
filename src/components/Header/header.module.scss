@@ -1,3 +1,5 @@
+@import "@styles/variables";
+
 nav {
   background: $header-color;
 
@@ -15,29 +17,28 @@ nav {
     }
   }
 
-  .header-left {
+  .headerLeft {
     display: flex;
     flex-direction: row;
     padding: 0px;
   }
-  .header-right {
+  .headerRight {
     margin-left: auto;
     margin-right: -0;
   }
   
-  .header-button {
+  .headerButton {
     height: 100%;
     padding: 0 25px;
     transition: all .3s;
   }
   
-  .header-button h3,
-  .header-button p {
+  .headerButton h3,
+  .headerButton p {
     line-height: 40px;
     color: $main-white;
-    
   }
-  .header-button:hover {
+  .headerButton:hover {
     background-color: #67677446;
   }
 }

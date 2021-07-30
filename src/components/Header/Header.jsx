@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import styles from './header.module.scss'
 
 import { logout } from '../../store/auth/slice'
 
@@ -28,14 +29,14 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <div className="header-left">
-                            <Link href="/">
-                                <div className="header-button">
+                        <div className={styles.headerLeft}>
+                            <Link to="/">
+                                <div className={styles.headerButton}>
                                     <p>Каталог</p>
                                 </div>
                             </Link>
-                            <div className="header-button">
-                                <Link href="/">
+                            <div className={styles.headerButton}>
+                                <Link to="/">
                                     <p>Информация</p>
                                 </Link>
                             </div>
@@ -55,7 +56,7 @@ export default function Header() {
                             </NavDropdown>
                         ) : (
                             <Link to="/login">
-                                <div className="header-button">
+                                <div className={styles.headerButton}>
                                     <p>Вход</p>
                                 </div>
                             </Link>

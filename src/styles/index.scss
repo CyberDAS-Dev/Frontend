@@ -25,9 +25,9 @@ body {
 @import "./fonts";
 
 //// ИМПОРТ СТИЛЕЙ app/components /////
-@import "./../app/components/Header/header";
-@import "./../app/components/Footer/footer";
+// @import "./../app/components/Header/header";
+@import "@components/Footer/footer";
 
 //// ИМПОРТ СТИЛЕЙ app/pages /////
-@import "./../app/pages/Homepage/homepage";
-@import "./../app/pages/Login/login";
+@import "@pages/Homepage/homepage";
+@import "@pages/Login/login";
