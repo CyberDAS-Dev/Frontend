@@ -28,7 +28,7 @@ const ICONS = {
                 fill="#3192C9"
             />
         </svg>
-    )
+    ),
 }
 
 export default ICONS

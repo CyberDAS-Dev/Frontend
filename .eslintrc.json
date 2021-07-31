@@ -8,7 +8,7 @@
         "plugin:jest/recommended",
         "airbnb",
         "airbnb/hooks",
-        "prettier"
+        "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -21,10 +21,6 @@
     "rules": {
         "react/prop-types": 0,
         "require-jsdoc": 0,
-        "semi": ["error", "never"],
-        "quotes": ["error", "single"],
-        "indent": ["error", 4],
-        "max-len": ["error", { "code": 100, "ignorePattern": "d=\"([\\s\\S]*?)\"" }],
         "no-param-reassign": ["error", { "props": false }]
     },
     "settings": {
@@ -39,7 +35,7 @@
                     "@pages": "./src/pages",
                     "@styles": "./src/styles",
                     "@store": "./src/store",
-                    "test-utils": "./src/test-utils"
+                    "@test-utils": "./src/test-utils"
                 },
                 "extensions": [".js", ".jsx"]
             }

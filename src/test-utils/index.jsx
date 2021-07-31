@@ -12,9 +12,9 @@ function render(
         initialState = {},
         store = configureStore({
             reducer: {
-                auth: authReducer
+                auth: authReducer,
             },
-            preloadedState: initialState
+            preloadedState: initialState,
         }),
         ...renderOptions
     } = {}
