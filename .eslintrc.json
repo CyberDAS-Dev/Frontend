@@ -21,6 +21,7 @@
     "rules": {
         "react/prop-types": 0,
         "require-jsdoc": 0,
+        "react/button-has-type": 0,
         "no-param-reassign": ["error", { "props": false }]
     },
     "settings": {

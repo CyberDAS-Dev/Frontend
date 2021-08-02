@@ -10,6 +10,6 @@ const resolvedAliases = Object.fromEntries(
 
 module.exports = {
     webpack: {
-        alias: resolvedAliases
-    }
+        alias: resolvedAliases,
+    },
 }

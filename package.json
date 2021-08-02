@@ -26,6 +26,9 @@
     "lint-staged": {
         "*.{js,jsx}": [
             "npx eslint --fix"
+        ],
+        "*.{css,scss}": [
+            "npx stylelint --fix"
         ]
     },
     "scripts": {
@@ -34,8 +37,10 @@
         "test": "craco test",
         "eject": "craco eject",
         "prepare": "husky install",
-        "lint": "eslint --ext js,jsx src",
-        "format": "eslint --ext js,jsx src --fix",
+        "lint:code": "eslint --ext js,jsx src",
+        "lint:style": "stylelint src/**/*.{css,scss}",
+        "format:code": "eslint --ext js,jsx src --fix",
+        "format:style": "stylelint src/**/*.{css,scss} --fix",
         "pre-commit": "lint-staged"
     },
     "jest": {
@@ -67,6 +72,10 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^3.4.0",
         "husky": "^7.0.0",
-        "sass": "^1.35.2"
+        "sass": "^1.35.2",
+        "stylelint": "^13.13.1",
+        "stylelint-config-prettier": "^8.0.2",
+        "stylelint-config-standard": "^22.0.0",
+        "stylelint-prettier": "^1.2.0"
     }
 }

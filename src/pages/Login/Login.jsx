@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Container from 'react-bootstrap/Container'
-import { login } from '../../store/auth/slice'
+import Button from '@components/Button/Button'
+import { login } from '@store/auth/slice'
 import Icon from '../../components/Icon'
+import s from './Login.module.scss'
 
 export default function Login(props) {
     const dispatch = useDispatch()
@@ -10,38 +12,38 @@ export default function Login(props) {
     const [lastName, changeLastName] = useState('')
 
     return (
-        <div className="login-page">
+        <div className={s.loginPage}>
             <Container>
                 <form
-                    className="form"
+                    className={s.form}
                     onSubmit={() => {
                         props.history.push('/')
                         dispatch(login({ name, lastName }))
                     }}
                 >
-                    <h2 className="header">ВХОД В ЛИЧНЫЙ КАБИНЕТ</h2>
+                    <h2 className={s.header}>ВХОД В ЛИЧНЫЙ КАБИНЕТ</h2>
 
                     <button
                         type="button"
                         label="Переход на главную"
-                        className="logo-wrapper"
+                        className={s.logoWrapper}
                         onClick={() => props.history.push('/')}
                     />
                     <input
                         required
-                        className="cred-input"
+                        className={s.credInput}
                         type="email"
                         placeholder="Введите почту"
                         onChange={(e) => changeName(e.target.value)}
                     />
                     <input
                         required
-                        className="cred-input"
+                        className={s.credInput}
                         type="password"
                         placeholder="Введите пароль"
                         onChange={(e) => changeLastName(e.target.value)}
                     />
-                    <div className="additional-buttons">
+                    <div className={s.additionalButtons}>
                         <a href="/">
                             <Icon name="textboxPassword" />
                             Забыли пароль?
@@ -51,9 +53,7 @@ export default function Login(props) {
                             Регистрация
                         </a>
                     </div>
-                    <button type="submit" className="submit-button">
-                        <p>Вход</p>
-                    </button>
+                    <Button type="submit">Вход</Button>
                 </form>
             </Container>
         </div>

@@ -1,14 +1,10 @@
 import React from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Nav, Container, Navbar, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import styles from './header.module.scss'
-
-import { logout } from '../../store/auth/slice'
+import { logout } from '@store/auth/slice'
+import s from './Header.module.scss'
 
 export default function Header() {
     const dispatch = useDispatch()
@@ -20,7 +16,7 @@ export default function Header() {
                 <LinkContainer to="/">
                     <Navbar.Brand>
                         <img
-                            src="/images/header-logo.png"
+                            src="./images/header-logo.png"
                             className="d-inline-block align-top"
                             alt="CyberDAS"
                         />
@@ -29,13 +25,13 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <div className={styles.headerLeft}>
+                        <div className={s.headerLeft}>
                             <Link to="/">
-                                <div className={styles.headerButton}>
+                                <div className={s.headerButton}>
                                     <p>Каталог</p>
                                 </div>
                             </Link>
-                            <div className={styles.headerButton}>
+                            <div className={s.headerButton}>
                                 <Link to="/">
                                     <p>Информация</p>
                                 </Link>
@@ -56,7 +52,7 @@ export default function Header() {
                             </NavDropdown>
                         ) : (
                             <Link to="/login">
-                                <div className={styles.headerButton}>
+                                <div className={s.headerButton}>
                                     <p>Вход</p>
                                 </div>
                             </Link>
