@@ -1,31 +1,34 @@
 name: run-tests
 
 on:
-  pull_request:
-    branches: [ main ]
+    pull_request:
+        branches: [main]
 
 jobs:
+    build:
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  path: test
+            - name: Install dependencies
+              working-directory: test
+              run: |
+                  npm ci
 
-  build:
-    runs-on: [self-hosted, linux, X64]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: test
-      - name: Install dependencies
-        working-directory: test
-        run: |
-          npm ci
-
-  test:
-    needs: build
-    runs-on: [self-hosted, linux, X64]
-    steps:
-      - name: Run linter
-        working-directory: test
-        run: |
-          npx eslint --max-warnings 0 src 
-      - name: Wipe files
-        run: |
-          rm -rf test
+    test:
+        needs: build
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Run code linter
+              working-directory: test
+              run: |
+                  npm run lint:code
+            - name: Run style linter
+              working-directory: test
+              run: |
+                  npm run lint:style
+            - name: Wipe files
+              run: |
+                  rm -rf test

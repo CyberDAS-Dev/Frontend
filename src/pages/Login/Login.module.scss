@@ -31,24 +31,7 @@
     }
 
     .credInput {
-        transition: all 0.1s;
-        outline: 0;
         margin-top: 35px;
-        width: 50%;
-        height: 55px;
-        border: 1px $element-bright solid;
-        border-radius: 5px;
-        padding-left: 15px;
-        padding-right: 15px;
-
-        &:hover {
-            border-color: $element-grey;
-        }
-
-        &:focus,
-        &:active {
-            border-color: black;
-        }
     }
 
     .additionalButtons {
