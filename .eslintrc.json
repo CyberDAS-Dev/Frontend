@@ -3,7 +3,13 @@
         "browser": true,
         "es2021": true
     },
-    "extends": ["plugin:react/recommended", "google", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:jest/recommended",
+        "airbnb",
+        "airbnb/hooks",
+        "plugin:prettier/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -11,16 +17,30 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": ["react", "jest", "testing-library"],
     "rules": {
         "react/prop-types": 0,
         "require-jsdoc": 0,
-        "indent": ["error", 4],
-        "max-len": ["error", {"code": 100, "ignorePattern": "d=\"([\\s\\S]*?)\""}]
+        "react/button-has-type": 0,
+        "no-param-reassign": ["error", { "props": false }]
     },
     "settings": {
         "react": {
             "version": "detect"
+        },
+        "jest": {
+            "version": 26
+        },
+        "import/resolver": {
+            "jsconfig": {
+                "config": "jsconfig.paths.json"
+            }
         }
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+            "extends": ["plugin:testing-library/react"]
+        }
+    ]
 }

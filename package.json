@@ -1,8 +1,9 @@
 {
-    "name": "CyberDAS",
+    "name": "cyberdas",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@babel/register": "^7.14.5",
         "@reduxjs/toolkit": "^1.5.1",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
@@ -10,7 +11,7 @@
         "axios": "^0.21.1",
         "babel-eslint": "^10.1.0",
         "bootstrap": "4.6.0",
-        "husky": "^7.0.1",
+        "is-ci": "^3.0.0",
         "lint-staged": "^11.0.0",
         "prettier": "^2.3.2",
         "react": "^17.0.2",
@@ -22,22 +23,24 @@
         "react-scripts": "4.0.3"
     },
     "lint-staged": {
-        "*.{ts,tsx,js,jsx}": [
-            "yarn run eslint --fix"
+        "*.{js,jsx}": [
+            "npx eslint --fix"
+        ],
+        "*.{css,scss}": [
+            "npx stylelint --fix"
         ]
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "lint": "yarn run eslint src",
-        "lint:fix": "yarn run eslint --fix src"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test",
+        "eject": "react-app-rewired eject",
+        "prepare": "is-ci || husky install",
+        "lint:code": "eslint --ext js,jsx src",
+        "lint:style": "stylelint src/**/*.{css,scss}",
+        "format:code": "eslint --ext js,jsx src --fix",
+        "format:style": "stylelint src/**/*.{css,scss} --fix",
+        "pre-commit": "lint-staged"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -55,8 +58,17 @@
         ]
     },
     "devDependencies": {
-        "eslint-config-google": "^0.14.0",
+        "eslint-config-airbnb": "18.2.1",
         "eslint-config-prettier": "^8.3.0",
-        "sass": "^1.35.2"
+        "eslint-import-resolver-jsconfig": "^1.1.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "husky": "^7.0.0",
+        "react-app-rewire-alias": "^1.0.3",
+        "react-app-rewired": "^2.1.8",
+        "sass": "^1.35.2",
+        "stylelint": "^13.13.1",
+        "stylelint-config-prettier": "^8.0.2",
+        "stylelint-config-standard": "^22.0.0",
+        "stylelint-prettier": "^1.2.0"
     }
 }
