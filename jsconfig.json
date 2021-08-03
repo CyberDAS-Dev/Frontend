@@ -1,13 +1,3 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "jsx": "react",
-        "paths": {
-            "@components/*": ["./src/components/*"],
-            "@pages/*": ["./src/pages/*"],
-            "@styles/*": ["./src/styles/*"],
-            "@store/*": ["./src/store/*"],
-            "@test-utils": ["./src/test-utils"]
-        }
-    }
+    "extends": "./jsconfig.paths.json"
 }

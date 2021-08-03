@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Header from '@components/Header/Header'
-import Home from '@pages/Home/Home'
-import NotFoundPage from '@pages/NotFound/NotFound'
-import Footer from '@components/Footer/Footer'
-import Login from '@pages/Login/Login'
+import Header from '@/components/Header/Header'
+import Home from '@/pages/Home/Home'
+import NotFoundPage from '@/pages/NotFound/NotFound'
+import Footer from '@/components/Footer/Footer'
+import Login from '@/pages/Login/Login'
 
 function App() {
     return (

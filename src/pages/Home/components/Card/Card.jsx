@@ -1,5 +1,5 @@
 import React from 'react'
-import s from '@pages/Home/Home.module.scss'
+import s from '@/pages/Home/Home.module.scss'
 
 export default function Card({ isPrimary, heading, order, children, image }) {
     return (

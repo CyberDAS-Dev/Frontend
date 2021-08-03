@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Container from 'react-bootstrap/Container'
-import Button from '@components/Button/Button'
-import { login } from '@store/auth/slice'
-import Icon from '../../components/Icon'
+import Button from '@/components/Button/Button'
+import { login } from '@/store/auth/slice'
+import Icon from '@/components/Icon'
 import s from './Login.module.scss'
 
 export default function Login(props) {

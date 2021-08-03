@@ -3,7 +3,7 @@ import { Nav, Container, Navbar, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { logout } from '@store/auth/slice'
+import { logout } from '@/store/auth/slice'
 import s from './Header.module.scss'
 
 export default function Header() {
