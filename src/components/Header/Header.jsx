@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '@/store/auth/slice'
 import s from './Header.module.scss'
+import logo from './images/header-logo.png'
 
 export default function Header() {
     const dispatch = useDispatch()
@@ -15,11 +16,7 @@ export default function Header() {
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <img
-                            src="./images/header-logo.png"
-                            className="d-inline-block align-top"
-                            alt="CyberDAS"
-                        />
+                        <img src={logo} className="d-inline-block align-top" alt="CyberDAS" />
                     </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -1,13 +1,17 @@
+@import '@/styles/variables';
+
 footer {
     background-color: #24252e;
     padding-top: 20px;
     padding-bottom: 20px;
     color: white;
     font-size: 18px;
-    margin-top: 150px;
+
+    * {
+        color: $main-white;
+    }
 
     a {
-        color: white;
         font-size: 14px;
 
         &:hover,
@@ -15,8 +19,8 @@ footer {
             color: grey;
         }
     }
-}
 
-footer p {
-    padding: 5px;
+    p {
+        padding: 5px;
+    }
 }
