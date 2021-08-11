@@ -1,10 +1,10 @@
 @import '@/styles/variables';
 
-footer {
-    background-color: #24252e;
+.footer {
+    background-color: $header-color;
+    color: $main-white;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: white;
     font-size: 18px;
 
     * {

@@ -41,6 +41,10 @@ h5 {
 
 a {
     text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 p {
@@ -74,5 +78,5 @@ p {
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
-    line-height: 20px;
+    line-height: 26px;
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import './Footer.module.scss'
+import s from './Footer.module.scss'
 
 export default function Footer() {
     return (
-        <footer>
+        <footer className={s.footer}>
             <Container>
                 <Row>
                     <div className="col-md-1 col-lg-2" />

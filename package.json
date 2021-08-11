@@ -4,6 +4,9 @@
     "private": true,
     "dependencies": {
         "@babel/register": "^7.14.5",
+        "@fontsource/open-sans": "^4.5.0",
+        "@fontsource/quantico": "^4.5.0",
+        "@fontsource/roboto": "^4.5.0",
         "@reduxjs/toolkit": "^1.5.1",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",

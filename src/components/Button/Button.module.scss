@@ -1,6 +1,6 @@
 @import '@/styles/variables';
 
-.button {
+.primary {
     transition: all 0.1s;
     display: flex;
     align-items: center;
@@ -12,6 +12,8 @@
     background-color: $main-blue;
     border: 0;
     border-radius: 2px;
+    padding-left: 30px;
+    padding-right: 30px;
 
     &:hover {
         background-color: $mail-blue-hover;

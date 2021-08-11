@@ -1,0 +1,86 @@
+@import '@/styles/variables';
+
+.background {
+    background-color: $main-background-dark;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    padding-top: 20px;
+    margin-bottom: 15px;
+    color: $main-white;
+}
+
+.form {
+    fieldset {
+        position: relative;
+        background-color: white;
+        padding-left: 55px;
+        padding-right: 55px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .info {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        position: relative;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+
+        &::before {
+            content: '';
+            height: 100%;
+            width: 1px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -20px;
+            background-color: rgba(49, 146, 201, 1);
+        }
+    }
+
+    .internalWrapper {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    h2 {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+
+        span {
+            display: block;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
+            flex-grow: 1;
+            margin-left: 14px;
+        }
+    }
+
+    .formEl + .formEl {
+        margin-top: 10px;
+    }
+
+    .disclaimer,
+    .agreement {
+        font-size: 14px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .disclaimer {
+        span {
+            color: $element-red;
+        }
+    }
+
+    .agreement {
+        margin-bottom: 35px;
+    }
+}
