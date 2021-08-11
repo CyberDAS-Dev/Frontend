@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import Container from 'react-bootstrap/Container'
 import Button from '@/components/Button/Button'
 import { login } from '@/store/auth/slice'
+import { Link } from 'react-router-dom'
 import Icon from '@/components/Icon'
 import Input from '@/components/Input/Input'
 import s from './Login.module.scss'
@@ -22,24 +23,15 @@ export default function Login(props) {
                         dispatch(login({ name, lastName }))
                     }}
                 >
-                    <h2 className={s.header}>ВХОД В ЛИЧНЫЙ КАБИНЕТ</h2>
-
-                    <button
-                        type="button"
-                        label="Переход на главную"
-                        className={s.logoWrapper}
-                        onClick={() => props.history.push('/')}
-                    />
+                    <Link className={s.logoWrapper} to="/" />
                     <Input
                         type="email"
-                        variant="credentials"
                         placeholder="Введите почту"
                         className={s.credInput}
                         onChange={(e) => changeName(e.target.value)}
                     />
                     <Input
                         type="password"
-                        variant="credentials"
                         placeholder="Введите пароль"
                         className={s.credInput}
                         onChange={(e) => changeLastName(e.target.value)}
@@ -49,10 +41,10 @@ export default function Login(props) {
                             <Icon name="textboxPassword" />
                             Забыли пароль?
                         </a>
-                        <a href="/">
+                        <Link to="/signup">
                             <Icon name="key" />
                             Регистрация
-                        </a>
+                        </Link>
                     </div>
                     <Button type="submit">Вход</Button>
                 </form>

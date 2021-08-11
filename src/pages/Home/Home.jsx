@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import Card from '@/pages/Home/components/Card/Card'
 import Button from '@/components/Button/Button'
+import { Link } from 'react-router-dom'
 import s from './Home.module.scss'
 import jumbotronLogo from './images/jumbotron-logo.png'
 import whiteRem from './images/icons/white/rem.png'
@@ -20,7 +21,9 @@ export default function Homepage() {
                     <div className={s.jumbotronImgblockLayer}>
                         <div className="container">
                             <img src={jumbotronLogo} alt="Jumbotron" />
-                            <Button>Регистрация</Button>
+                            <Link to="/signup">
+                                <Button>Регистрация</Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

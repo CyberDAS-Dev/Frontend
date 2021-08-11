@@ -1,5 +1,4 @@
 @import '~bootstrap/scss/bootstrap';
-@import './fonts';
 @import './variables';
 @import './buttons';
 @import './typography';
@@ -9,14 +8,15 @@ body {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: $main-text;
 }
 
-@media (min-width: 1600px) {
-    .container,
-    .container-sm,
-    .container-md,
-    .container-lg,
-    .container-xl {
-        max-width: 1420px;
-    }
-}
+//@media (min-width: 1600px) {
+//    .container,
+//    .container-sm,
+//    .container-md,
+//    .container-lg,
+//    .container-xl {
+//        max-width: 1420px;
+//    }
+//}

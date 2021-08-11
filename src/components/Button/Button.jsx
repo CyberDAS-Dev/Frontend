@@ -1,9 +1,13 @@
 import React from 'react'
 import s from './Button.module.scss'
 
-export default function Button({ children, type }) {
+export default function Button({ children, variant, type, className, ...rest }) {
     return (
-        <button type={type || 'button'} className={s.button}>
+        <button
+            type={type || 'button'}
+            className={`${s[variant || 'primary']} ${className || ''}`}
+            {...rest}
+        >
             {children}
         </button>
     )
