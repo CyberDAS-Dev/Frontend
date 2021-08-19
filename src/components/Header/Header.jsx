@@ -33,6 +33,11 @@ export default function Header() {
                                     <p>Информация</p>
                                 </Link>
                             </div>
+                            <div className={s.headerButton}>
+                                <Link to="/queue">
+                                    <p>Заселение</p>
+                                </Link>
+                            </div>
                         </div>
                     </Nav>
                     <Nav>

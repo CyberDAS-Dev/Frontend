@@ -14,6 +14,7 @@ import NotFoundPage from '@/pages/NotFound/NotFound'
 import Footer from '@/components/Footer/Footer'
 import Login from '@/pages/Login/Login'
 import Signup from '@/pages/Signup/Signup'
+import Queue from '@/pages/Queue/Queue'
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Header />
                 <Switch>
                     <Route exact path="/login" component={Login} />
+                    <Route exact path="/queue" component={Queue} />
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/" component={Home} />
                     <Route component={NotFoundPage} />
