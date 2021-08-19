@@ -1,0 +1,29 @@
+@import '@/styles/variables';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import '~bootstrap/scss/mixins';
+
+.wrapper {
+    :global {
+
+        .btn {
+            border-radius: 50px;
+            width: 150px;
+            margin: 0px 10px;
+        }
+
+        .btn-primary {
+            @include button-variant($main-blue, $main-blue, darken($main-blue, 7.5%), darken($main-blue, 10%), darken($main-blue, 10%), darken($main-blue,12.5%));
+        }
+
+        .btn-outline-primary {
+            @include button-outline-variant($main-blue, white, $main-blue, $main-blue);
+        }
+    }
+
+    h3 {
+        color: #3192C9;
+        font-size: 18px;
+        margin-right: 10px;
+    }
+}
