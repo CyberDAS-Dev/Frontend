@@ -1,19 +1,17 @@
 @import '@/styles/variables';
 
 .wrapper {
-
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
-
     text-align: center;
     width: 325px;
     max-height: 505px;
     display: flex;
     flex-direction: column;
 
-    .headerRow { 
+    .headerRow {
         padding-right: 12px; // создаем иллюзию что скроллбар вынесен за компонент
         justify-content: center;
     }
@@ -22,7 +20,7 @@
         box-sizing: border-box;
         padding: 8px;
         height: 44px;
-        background-color: #4D4F60;
+        background-color: #4d4f60;
         color: white;
         margin-bottom: 1px;
     }
@@ -38,22 +36,22 @@
         border-radius: 0;
         padding: 8px;
         height: 44px;
-        background-color: #88D874;
-        margin: 1px 0px;
+        background-color: #88d874;
+        margin: 1px 0;
         color: white;
     }
 
     // Выключаем поведение из бутстрэпа
     button:focus {
-        background-color: #88D874;
+        background-color: #88d874;
         box-shadow: none;
     }
 
     button:hover {
-      background-color: #3192C9;
+        background-color: #3192c9;
     }
 
     button:active {
-        background-color: #3192C9 !important;
-      }
+        background-color: #3192c9 !important;
+    }
 }
