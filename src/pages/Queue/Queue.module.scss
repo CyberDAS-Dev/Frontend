@@ -12,8 +12,8 @@
     margin-right: -15px;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.07);
-    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 5px 5px 0 0;
     background-color: $page-header;
 }
 
@@ -35,7 +35,7 @@
 
 .instruction {
     margin-top: 30px;
-    font: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 13px;
