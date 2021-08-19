@@ -51,7 +51,7 @@
       .react-calendar__month-view__weekdays {
         text-align: center;
         text-transform: capitalize;
-        font-weight: 500;
+        font-weight: 400;
 
         abbr { // т.к в _reboot.scss определены некрасивые штуки
             cursor: auto;
@@ -106,7 +106,7 @@
         padding: 0.5em 0.25em;
         color: white;
         background: #4D4F60;
-        font-weight: 900;
+        font-weight: 500;
       }
       .react-calendar__tile.busy_tile {
         background-color: #FC8383;
