@@ -1,0 +1,32 @@
+name: deploy-dev
+
+on:
+    push:
+        branches: [dev]
+
+jobs:
+    build:
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  path: dev
+            - name: Install dependencies
+              working-directory: dev
+              run: |
+                  npm ci
+
+    deploy:
+        needs: build
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Build
+              working-directory: dev
+              run: |
+                  npm run build
+            - name: Transfer new version to web-server
+              working-directory: dev
+              run: |
+                  rm -rf /var/www/dev/*  
+                  cp -r build/. /var/www/dev/
