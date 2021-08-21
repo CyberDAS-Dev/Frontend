@@ -1,82 +1,101 @@
 {
-    "name": "cyberdas",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@babel/register": "^7.14.5",
-        "@fontsource/open-sans": "^4.5.0",
-        "@fontsource/quantico": "^4.5.0",
-        "@fontsource/roboto": "^4.5.0",
-        "@reduxjs/toolkit": "^1.5.1",
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.3.2",
-        "@testing-library/user-event": "^7.1.2",
-        "axios": "^0.21.1",
-        "babel-eslint": "^10.1.0",
-        "bootstrap": "4.6.0",
-        "date-fns": "^2.23.0",
-        "is-ci": "^3.0.0",
-        "lint-staged": "^11.0.0",
-        "prettier": "^2.3.2",
-        "react": "^17.0.2",
-        "react-bootstrap": "^1.6.1",
-        "react-calendar": "^3.4.0",
-        "react-confirm": "^0.1.24",
-        "react-dom": "^17.0.2",
-        "react-redux": "^7.2.3",
-        "react-router-bootstrap": "^0.25.0",
-        "react-router-dom": "^5.2.0",
-        "react-scripts": "4.0.3"
-    },
-    "lint-staged": {
-        "*.{js,jsx}": [
-            "npx eslint --fix"
+  "name": "cyberdas",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/register": "^7.14.5",
+    "@fontsource/open-sans": "^4.5.0",
+    "@fontsource/quantico": "^4.5.0",
+    "@fontsource/roboto": "^4.5.0",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.21.1",
+    "babel-eslint": "^10.1.0",
+    "bootstrap": "4.6.0",
+    "date-fns": "^2.23.0",
+    "is-ci": "^3.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
+    "react-calendar": "^3.4.0",
+    "react-confirm": "^0.1.24",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npx eslint --fix"
+    ],
+    "*.{css,scss}": [
+      "npx stylelint --fix"
+    ]
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "prepare": "is-ci || husky install",
+    "lint:code": "eslint --ext js,jsx src",
+    "lint:style": "stylelint src/**/*.{css,scss}",
+    "format:code": "eslint --ext js,jsx src --fix",
+    "format:style": "stylelint src/**/*.{css,scss} --fix",
+    "pre-commit": "lint-staged",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
         ],
-        "*.{css,scss}": [
-            "npx stylelint --fix"
-        ]
-    },
-    "scripts": {
-        "start": "react-app-rewired start",
-        "build": "react-app-rewired build",
-        "test": "react-app-rewired test",
-        "eject": "react-app-rewired eject",
-        "prepare": "is-ci || husky install",
-        "lint:code": "eslint --ext js,jsx src",
-        "lint:style": "stylelint src/**/*.{css,scss}",
-        "format:code": "eslint --ext js,jsx src --fix",
-        "format:style": "stylelint src/**/*.{css,scss} --fix",
-        "pre-commit": "lint-staged"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "eslint-config-airbnb": "18.2.1",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-import-resolver-jsconfig": "^1.1.0",
-        "eslint-plugin-prettier": "^3.4.0",
-        "eslint-plugin-react": "^7.24.0",
-        "husky": "^7.0.0",
-        "react-app-rewire-alias": "^1.0.3",
-        "react-app-rewired": "^2.1.8",
-        "sass": "^1.35.2",
-        "stylelint": "^13.13.1",
-        "stylelint-config-prettier": "^8.0.2",
-        "stylelint-config-standard": "^22.0.0",
-        "stylelint-prettier": "^1.2.0",
-        "stylelint-scss": "^3.20.1"
-    }
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/node-logger": "^6.3.7",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.7",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-jsconfig": "^1.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "^7.0.0",
+    "react-app-rewire-alias": "^1.0.3",
+    "react-app-rewired": "^2.1.8",
+    "sass": "^1.35.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-scss": "^3.20.1"
+  }
 }
