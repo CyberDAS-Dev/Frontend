@@ -5,7 +5,7 @@ on:
         branches: [dev]
 
 jobs:
-    build:
+    update:
         runs-on: [self-hosted, linux, X64]
         steps:
             - name: Checkout
@@ -18,7 +18,7 @@ jobs:
                   npm ci
 
     deploy:
-        needs: build
+        needs: update
         runs-on: [self-hosted, linux, X64]
         steps:
             - name: Build
@@ -30,3 +30,17 @@ jobs:
               run: |
                   rm -rf /var/www/dev/*  
                   cp -r build/. /var/www/dev/
+
+    deploy-storybook:
+        needs: update
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Build
+              working-directory: dev
+              run: |
+                  npm run build-storybook
+            - name: Transfer new version to web-server
+              working-directory: dev
+              run: |
+                  rm -rf /var/www/storybook/dev/*  
+                  cp -r storybook-static/. /var/www/storybook/dev/
