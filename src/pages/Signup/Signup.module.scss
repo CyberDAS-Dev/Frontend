@@ -14,14 +14,12 @@
 }
 
 .form {
-    fieldset {
-        position: relative;
-        background-color: white;
-        padding-left: 55px;
-        padding-right: 55px;
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
+    position: relative;
+    background-color: white;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 
     .info {
         font-family: 'Open Sans', sans-serif;
@@ -65,22 +63,5 @@
 
     .formEl + .formEl {
         margin-top: 10px;
-    }
-
-    .disclaimer,
-    .agreement {
-        font-size: 14px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-
-    .disclaimer {
-        span {
-            color: $element-red;
-        }
-    }
-
-    .agreement {
-        margin-bottom: 35px;
     }
 }
