@@ -1,24 +1,33 @@
 import React from 'react'
-import s from '@/pages/Home/Home.module.scss'
+import { Row, Col, Image, Card } from 'react-bootstrap'
 
-export default function Card({ isPrimary, heading, order, children, image }) {
+export default function LandingCard({ isPrimary, heading, order, children, image }) {
     return (
-        <div className={`col-12 col-lg-6 order-lg-${order}`}>
-            <div className={`${s.landingCard} ${isPrimary ? s.cardPrimary : ''}`}>
-                <div className={`row ${s.flexCc} ${s.card_h3}`}>
-                    <h3 className={isPrimary ? 'text-light' : ''}>{heading}</h3>
-                </div>
-                <div className="row align-items-center">
-                    <div className="col-4">
-                        <img className="landing-card-img" src={image} alt="" />
-                    </div>
-                    <div className="col-8">
-                        <p className={`text-large text-right ${isPrimary ? 'text-light' : ''}`}>
-                            {children}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Col xs="12" lg="6" className={order ? `order-lg-${order}` : ''}>
+            <Card bg={isPrimary ? 'primary' : 'light'} text={isPrimary ? 'white' : ''}>
+                <Card.Body className="d-flex flex-column">
+                    <Card.Title
+                        className="d-inline-flex justify-content-center"
+                        style={{ fontWeight: 400 }}
+                    >
+                        {heading}
+                    </Card.Title>
+                    <Card.Text style={{ fontWeight: 300 }}>
+                        <Row className="align-items-center">
+                            <Col
+                                xs="12"
+                                md="8"
+                                className="d-inline-flex justify-content-center d-md-block mb-2 mb-md-0"
+                            >
+                                {children}
+                            </Col>
+                            <Col xs="12" md="4" className="d-inline-flex justify-content-center">
+                                <Image fluid src={image} />
+                            </Col>
+                        </Row>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </Col>
     )
 }
