@@ -15,19 +15,28 @@ export default function Footer() {
                             </Col>
                             <Col xs={12} sm={6}>
                                 <Link to="/" className="link-primary p-1 mb-1 d-block">
-                                    <small>CyberDas</small>
+                                    <small>CyberDAS</small>
                                 </Link>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
+                                <a
+                                    href="https://vk.com/studcomdas"
+                                    className="link-primary p-1 mb-1 d-block"
+                                >
                                     <small>Студком ДАСа</small>
-                                </Link>
+                                </a>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
+                                <a
+                                    href="https://das.msk.ru"
+                                    className="link-primary p-1 mb-1 d-block"
+                                >
                                     <small>Общежитие ДАС</small>
-                                </Link>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
+                                </a>
+                                <a
+                                    href="https://github.com/CyberDAS-Dev"
+                                    className="link-primary p-1 mb-1 d-block"
+                                >
                                     <small>Команда</small>
-                                </Link>
+                                </a>
                             </Col>
                         </Row>
                     </Col>
@@ -45,7 +54,7 @@ export default function Footer() {
                                 </Link>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
+                                <Link to="/queue" className="link-primary p-1 mb-1 d-block">
                                     <small>Эл. очередь</small>
                                 </Link>
                                 <Link to="/" className="link-primary p-1 mb-1 d-block">
