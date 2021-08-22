@@ -55,11 +55,11 @@ export default function Homepage() {
                 <Row md={2} className="g-4">
                     <Col xs="12" lg="6" className="d-inline-flex align-items-center">
                         <span className={s.landingNumbers}>1</span>
-                        <span className="lead">Зарегистрируйся на сайте</span>
+                        <span className="lead fs-4">Зарегистрируйся на сайте</span>
                     </Col>
                     <Col xs="12" lg="6" className="d-inline-flex align-items-center">
                         <span className={s.landingNumbers}>2</span>
-                        <span className="lead">
+                        <span className="lead fs-4">
                             Получи доступ к электронным услугам не выходя из комнаты
                         </span>
                     </Col>
@@ -106,7 +106,7 @@ export default function Homepage() {
             <Container className="mb-6">
                 <Row className="justify-content-center mb-4">
                     <Col xs="auto">
-                        <h1 className="display-6 text-center">И многое другое уже в разработке!</h1>
+                        <h1 className="display-6 text-center">И многое другое!</h1>
                     </Col>
                 </Row>
                 <Row md={2} className="g-4">
@@ -116,7 +116,10 @@ export default function Homepage() {
                     <Col xs="12" lg="9" className="d-inline-flex justify-content-center">
                         <p className="lead">
                             Команда разработчиков постоянно работает над улучшением сервиса и
-                            добавлением нового функционала.
+                            добавлением нового функционала. Если вы хотите помочь нам, то пишите на{' '}
+                            <a href="mailto:support@cyberdas.net">support@cyberdas.net</a> или
+                            присоединяйтесь к{' '}
+                            <a href="https://github.com/CyberDAS-Dev/"> проекту на GitHub</a>
                         </p>
                     </Col>
                 </Row>
