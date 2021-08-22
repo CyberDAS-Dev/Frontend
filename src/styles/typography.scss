@@ -1,69 +1,7 @@
-h1 {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2.3rem;
-    line-height: 3rem;
-}
-
-h2 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 26px;
-}
-
-h3 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 21px;
-    margin: 0;
-    text-decoration: none;
-}
-
-h5 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 18px;
-    margin: 0;
-    text-decoration: none;
-}
-
 a {
     text-decoration: none;
 
     &:hover {
         text-decoration: none;
     }
-}
-
-.text-big {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    text-decoration: none;
-}
-
-.text-large {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1rem;
-    line-height: 2rem;
-}
-
-.text-light {
-    color: white;
-}
-
-.text-primary {
-    color: $primary;
-}
-
-.text-subheader {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 26px;
 }
