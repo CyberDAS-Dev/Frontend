@@ -2,6 +2,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import './typography';
 
-.btn {
+.btn-primary,
+.btn-primary:hover {
     color: #fff;
 }

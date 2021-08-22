@@ -10,25 +10,33 @@ export default function Login() {
         <div className={s.loginPage}>
             <Container>
                 <Form onSubmit={() => {}}>
-                    <Row className="justify-content-center" style={{ backgroundImage: logo }}>
+                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
                         <Card
                             as={Col}
                             md="10"
                             bg="primary"
                             border="primary"
-                            style={{ marginBottom: '1rem' }}
+                            style={{
+                                marginBottom: '1rem',
+                            }}
                         >
-                            <Row className="justify-content-center" style={{ padding: '0.5rem' }}>
+                            <Col
+                                md="12"
+                                style={{
+                                    justifyContent: 'center',
+                                    display: 'flex',
+                                }}
+                            >
                                 <Image src={logo} />
-                            </Row>
+                            </Col>
                         </Card>
                     </Row>
-                    <Row className="justify-content-center">
+                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
                         <Form.Group as={Col} md="6">
                             <Form.Control type="email" name="email" placeholder="Введите почту" />
                         </Form.Group>
                     </Row>
-                    <Row className="justify-content-center">
+                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
                         <Form.Group as={Col} md="6">
                             <Form.Control
                                 type="password"
@@ -37,14 +45,18 @@ export default function Login() {
                             />
                         </Form.Group>
                     </Row>
-                    <Row className="justify-content-center">
-                        <Link style={{ marginBottom: '1rem' }} to="/signup">
-                            <Icon name="key" />
-                            Регистрация
-                        </Link>
+                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
+                        <Col xs="auto">
+                            <Link to="/signup">
+                                <Icon name="key" />
+                                Регистрация
+                            </Link>
+                        </Col>
                     </Row>
                     <Row className="justify-content-center">
-                        <Button type="submit">Вход</Button>
+                        <Button as={Col} xs="8" md="2" type="submit">
+                            Вход
+                        </Button>
                     </Row>
                 </Form>
             </Container>
