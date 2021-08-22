@@ -14,18 +14,18 @@ export default function Footer() {
                                 <h5 className="text-light">О НАС</h5>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>CyberDas</small>
                                 </Link>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Студком ДАСа</small>
                                 </Link>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Общежитие ДАС</small>
                                 </Link>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Команда</small>
                                 </Link>
                             </Col>
@@ -37,18 +37,18 @@ export default function Footer() {
                                 <h5 className="text-light">ПРОЕКТЫ</h5>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Вызов служб</small>
                                 </Link>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Личный кабинет</small>
                                 </Link>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Эл. очередь</small>
                                 </Link>
-                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                <Link to="/" className="link-primary p-1 mb-1 d-block">
                                     <small>Сейчас в разработке</small>
                                 </Link>
                             </Col>
