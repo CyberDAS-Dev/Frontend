@@ -1,78 +1,8 @@
 @import '@/styles/variables';
 
 .loginPage {
-    height: 100vh;
+    height: 80vh;
     background-color: #efefef;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .header {
-        font-size: 22px;
-        margin-bottom: 30px;
-    }
-
-    .logoWrapper {
-        cursor: pointer;
-        height: 110px;
-        width: 100%;
-        background-color: $main-blue;
-        background-image: url(./images/logo-white.png);
-        background-position: center;
-        background-size: auto;
-        background-repeat: no-repeat;
-    }
-
-    .credInput {
-        margin-top: 35px;
-    }
-
-    .additionalButtons {
-        margin-top: 15px;
-        margin-bottom: 45px;
-        display: flex;
-        align-items: center;
-
-        svg {
-            margin-right: 15px;
-        }
-
-        a {
-            color: $main-blue;
-            text-decoration: none;
-            transition: all 0.1s;
-
-            svg {
-                fill: $main-blue;
-                transition: all 0.1s;
-            }
-
-            &:last-of-type {
-                margin-left: 20px;
-            }
-
-            &:hover {
-                color: $mail-blue-hover;
-
-                svg path {
-                    fill: $mail-blue-hover;
-                }
-            }
-
-            &:active,
-            &:focus {
-                color: $mail-blue-click;
-
-                svg path {
-                    fill: $mail-blue-click;
-                }
-            }
-        }
-    }
 }
