@@ -1,61 +1,60 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import s from './Footer.module.scss'
 
 export default function Footer() {
     return (
-        <footer className={s.footer}>
+        <footer className="bg-nav pt-3 pb-3">
             <Container>
                 <Row>
-                    <div className="col-md-1 col-lg-2" />
-                    <div className="col-6 col-md-5 col-lg-4">
+                    <Col md={1} lg={2} />
+                    <Col xs={6} md={5} lg={4}>
                         <Row>
-                            <div className="col-12 p-3">
-                                <h5>О НАС</h5>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">CyberDas</p>
+                            <Col xs={12} className="p-3">
+                                <h5 className="text-light">О НАС</h5>
+                            </Col>
+                            <Col xs={12} sm={6}>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>CyberDas</small>
                                 </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Студком ДАСа</p>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Студком ДАСа</small>
                                 </Link>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">Общежитие ДАС</p>
+                            </Col>
+                            <Col xs={12} sm={6}>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Общежитие ДАС</small>
                                 </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Команда</p>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Команда</small>
                                 </Link>
-                            </div>
+                            </Col>
                         </Row>
-                    </div>
-                    <div className="col-6 col-md-5 col-lg-4">
+                    </Col>
+                    <Col xs={6} md={5} lg={4}>
                         <Row>
-                            <div className="col-12 p-3">
-                                <h5>ПРОЕКТЫ</h5>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">Вызов служб</p>
+                            <Col xs={12} className="p-3">
+                                <h5 className="text-light">ПРОЕКТЫ</h5>
+                            </Col>
+                            <Col xs={12} sm={6}>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Вызов служб</small>
                                 </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Личный кабинет</p>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Личный кабинет</small>
                                 </Link>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">Эл. очередь</p>
+                            </Col>
+                            <Col xs={12} sm={6}>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Эл. очередь</small>
                                 </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Сейчас в разработке</p>
+                                <Link to="/" className="link-light p-1 mb-1 d-block">
+                                    <small>Сейчас в разработке</small>
                                 </Link>
-                            </div>
+                            </Col>
                         </Row>
-                    </div>
-                    <div className="col-md-1 col-lg-2" />
+                    </Col>
+                    <Col md={1} lg={2} />
                 </Row>
             </Container>
         </footer>
