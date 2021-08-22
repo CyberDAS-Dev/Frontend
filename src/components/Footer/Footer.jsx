@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import Link from './Link'
 
 export default function Footer() {
     return (
@@ -14,29 +14,16 @@ export default function Footer() {
                                 <h5 className="text-light">О НАС</h5>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
-                                    <small>CyberDAS</small>
-                                </Link>
-                                <a
-                                    href="https://vk.com/studcomdas"
-                                    className="link-primary p-1 mb-1 d-block"
-                                >
-                                    <small>Студком ДАСа</small>
-                                </a>
+                                <Link to="/" name="CyberDAS" />
+                                <Link external to="https://vk.com/studcomdas" name="Студком ДАСа" />
                             </Col>
                             <Col xs={12} sm={6}>
-                                <a
-                                    href="https://das.msk.ru"
-                                    className="link-primary p-1 mb-1 d-block"
-                                >
-                                    <small>Общежитие ДАС</small>
-                                </a>
-                                <a
-                                    href="https://github.com/CyberDAS-Dev"
-                                    className="link-primary p-1 mb-1 d-block"
-                                >
-                                    <small>Команда</small>
-                                </a>
+                                <Link external to="https://das.msk.ru" name="Общежитие ДАС" />
+                                <Link
+                                    external
+                                    to="https://github.com/CyberDAS-Dev"
+                                    name="Команда"
+                                />
                             </Col>
                         </Row>
                     </Col>
@@ -46,20 +33,12 @@ export default function Footer() {
                                 <h5 className="text-light">ПРОЕКТЫ</h5>
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
-                                    <small>Вызов служб</small>
-                                </Link>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
-                                    <small>Личный кабинет</small>
-                                </Link>
+                                <Link to="/" name="Вызов служб" />
+                                <Link to="/" name="Личный кабинет" />
                             </Col>
                             <Col xs={12} sm={6}>
-                                <Link to="/queue" className="link-primary p-1 mb-1 d-block">
-                                    <small>Эл. очередь</small>
-                                </Link>
-                                <Link to="/" className="link-primary p-1 mb-1 d-block">
-                                    <small>Сейчас в разработке</small>
-                                </Link>
+                                <Link to="/queue" name="Эл. очередь" />
+                                <Link to="/" name="Сейчас в разработке" />
                             </Col>
                         </Row>
                     </Col>
