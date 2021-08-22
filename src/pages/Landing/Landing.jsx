@@ -15,7 +15,7 @@ import blueComingSoon from './images/icons/blue/comingsoon.png'
 
 export default function Homepage() {
     return (
-        <Container fluid className={`p-0 ${s.wrapper}`}>
+        <Container fluid className="p-0">
             <Container
                 fluid
                 className="p-0 mb-6 d-flex align-items-center"
