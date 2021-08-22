@@ -1,64 +1,57 @@
-import React from 'react'
-import { Nav, Container, Navbar, NavDropdown } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Nav, Container, Navbar } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logout } from '@/store/auth/slice'
-import s from './Header.module.scss'
 import logo from './images/header-logo.png'
 
 export default function Header() {
-    const dispatch = useDispatch()
-    const { isAuth, name } = useSelector((state) => state.auth)
+    const [activeKey, setActiveKey] = useState(0)
+    /*
+     Зачем здесь стейт? <Nav> автоматически помечает текущую активную страницу. 
+     То есть, если мы кликнули на `Вход` и находимся на этой странице, то кнопка теперь другого цвета.
+     Проблема в том, что между собой <Nav>'ы не синхронизируются и визуально получается так, 
+     словно мы можем одновременно быть и на `Вход`е и на `Заселении`
+     
+     Зачем несколько <Nav>'ов? Нужно было унести кнопку `Вход` подальше направо. Попробуйте сделать это без них.
+     Поэтому нужно было добавить стейт для синхронизации навов между собой
 
+     По этой же причине внутри <Navbar.Brand> такая мешанина - если не завернуть внутрь <Navbar.Brand> <Nav.Link>, 
+     то не будет возможности ловить момент нажатия на главную и сбрасывать выбор другой страницы с навов.
+
+     NOTE:
+     -7 пикселей налево у картинки потому что она отцентрована, а должна быть прибита к левому краю (на телефонах)
+    */
     return (
-        <Navbar collapseOnSelect expand="lg" variant="dark">
+        <Navbar
+            collapseOnSelect
+            expand="lg"
+            bg="nav"
+            variant="dark"
+            onSelect={(eventKey) => setActiveKey(eventKey)}
+        >
             <Container>
-                <LinkContainer to="/">
-                    <Navbar.Brand>
-                        <img src={logo} className="d-inline-block align-top" alt="CyberDAS" />
-                    </Navbar.Brand>
-                </LinkContainer>
+                <Navbar.Brand>
+                    <LinkContainer to="/">
+                        <Nav.Link className="p-0" eventKey="0">
+                            <img
+                                style={{ marginLeft: '-7px' }}
+                                src={logo}
+                                className="d-inline-block align-top"
+                                alt="CyberDAS"
+                            />
+                        </Nav.Link>
+                    </LinkContainer>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <div className={s.headerLeft}>
-                            <Link to="/">
-                                <div className={s.headerButton}>
-                                    <p>Каталог</p>
-                                </div>
-                            </Link>
-                            <div className={s.headerButton}>
-                                <Link to="/">
-                                    <p>Информация</p>
-                                </Link>
-                            </div>
-                            <div className={s.headerButton}>
-                                <Link to="/queue">
-                                    <p>Заселение</p>
-                                </Link>
-                            </div>
-                        </div>
+                    <Nav className="me-auto" activeKey={activeKey}>
+                        <LinkContainer to="/queue">
+                            <Nav.Link eventKey="1">Заселение</Nav.Link>
+                        </LinkContainer>
                     </Nav>
-                    <Nav>
-                        {' '}
-                        {isAuth ? (
-                            <NavDropdown title={name} id="collasible-nav-dropdown">
-                                <LinkContainer to="/profile">
-                                    <NavDropdown.Item>Профиль</NavDropdown.Item>
-                                </LinkContainer>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item onClick={() => dispatch(logout())}>
-                                    Выход
-                                </NavDropdown.Item>
-                            </NavDropdown>
-                        ) : (
-                            <Link to="/login">
-                                <div className={s.headerButton}>
-                                    <p>Вход</p>
-                                </div>
-                            </Link>
-                        )}
+                    <Nav activeKey={activeKey}>
+                        <LinkContainer to="/login" activeKey={activeKey}>
+                            <Nav.Link eventKey="3">Вход</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
