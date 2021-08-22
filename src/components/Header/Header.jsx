@@ -30,7 +30,7 @@ export default function Header() {
         >
             <Container>
                 <Navbar.Brand>
-                    <LinkContainer to="/">
+                    <LinkContainer exact to="/">
                         <Nav.Link className="p-0" eventKey="0">
                             <img
                                 style={{ marginLeft: '-7px' }}
@@ -44,12 +44,12 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto" activeKey={activeKey}>
-                        <LinkContainer to="/queue">
+                        <LinkContainer exact to="/queue">
                             <Nav.Link eventKey="1">Заселение</Nav.Link>
                         </LinkContainer>
                     </Nav>
                     <Nav activeKey={activeKey}>
-                        <LinkContainer to="/login" activeKey={activeKey}>
+                        <LinkContainer exact to="/login" activeKey={activeKey}>
                             <Nav.Link eventKey="3">Вход</Nav.Link>
                         </LinkContainer>
                     </Nav>
