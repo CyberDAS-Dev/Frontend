@@ -1,7 +1,6 @@
 @import '@/styles/variables';
 
 .background {
-    background-color: $main-background;
     min-height: 100vh;
     display: flex;
 }
@@ -29,7 +28,7 @@
 
 .header {
     margin-bottom: 5px;
-    color: $main-blue;
+    color: $primary;
     font-weight: 400;
 }
 
