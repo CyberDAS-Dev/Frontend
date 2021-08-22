@@ -11,6 +11,17 @@ $navbar-dark-color: white;
 $navbar-dark-hover-color: #c1c1c1;
 $navbar-dark-active-color: #a8a8a8;
 
+$spacer: 1rem;
+$spacers: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 5,
+);
+
 // Переменные проекта
 $page-background: #fcfcfc;
 $page-border: #e8e8e8;

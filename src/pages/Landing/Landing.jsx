@@ -18,7 +18,7 @@ export default function Homepage() {
         <Container fluid className={`p-0 ${s.wrapper}`}>
             <Container
                 fluid
-                className="p-0 mb-5 d-flex align-items-center"
+                className="p-0 mb-6 d-flex align-items-center"
                 style={{
                     minHeight: '60vh',
                     backgroundImage: `url(${jumbo})`,
@@ -46,29 +46,29 @@ export default function Homepage() {
                     </Row>
                 </Container>
             </Container>
-            <Container className="mb-5">
+            <Container className="mb-6">
                 <Row className="justify-content-center mb-4">
                     <Col xs="auto">
-                        <h1 className="display-5">Общежитие стало доступнее!</h1>
+                        <h1 className="display-5 text-center">Общежитие стало доступнее!</h1>
                     </Col>
                 </Row>
                 <Row md={2} className="g-4">
                     <Col xs="12" lg="6" className="d-inline-flex align-items-center">
-                        <p className={s.landingNumbers}>1</p>
-                        <p className="lead">Зарегистрируйся на сайте</p>
+                        <span className={s.landingNumbers}>1</span>
+                        <span className="lead">Зарегистрируйся на сайте</span>
                     </Col>
                     <Col xs="12" lg="6" className="d-inline-flex align-items-center">
-                        <p className={s.landingNumbers}>2</p>
-                        <p className="lead">
+                        <span className={s.landingNumbers}>2</span>
+                        <span className="lead">
                             Получи доступ к электронным услугам не выходя из комнаты
-                        </p>
+                        </span>
                     </Col>
                 </Row>
             </Container>
-            <Container className="mb-5">
+            <Container className="mb-6">
                 <Row className="justify-content-center mb-4">
                     <Col xs="auto">
-                        <h1 className="display-6">Будет запущено:</h1>
+                        <h1 className="display-6 text-center">Будет запущено:</h1>
                     </Col>
                 </Row>
                 <Row md={2} className="g-4">
@@ -103,10 +103,10 @@ export default function Homepage() {
                     </Card>
                 </Row>
             </Container>
-            <Container className="mb-5">
+            <Container className="mb-6">
                 <Row className="justify-content-center mb-4">
                     <Col xs="auto">
-                        <h1 className="display-6">И многое другое уже в разработке!</h1>
+                        <h1 className="display-6 text-center">И многое другое уже в разработке!</h1>
                     </Col>
                 </Row>
                 <Row md={2} className="g-4">
