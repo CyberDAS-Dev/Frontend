@@ -3,8 +3,9 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Link from './Link'
 
 export default function Footer() {
+    // mt-auto нужно для прибития футера вниз страницы
     return (
-        <footer className="bg-nav pt-3 pb-3">
+        <footer className="bg-nav pt-3 pb-3 mt-auto">
             <Container>
                 <Row>
                     <Col md={1} lg={2} />

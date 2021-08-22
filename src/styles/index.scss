@@ -2,20 +2,31 @@
 @import '~bootstrap/scss/bootstrap';
 @import './typography';
 
+/* Webkit должен рендерить кнопки так, как у нас */
 .btn {
     -webkit-appearance: none;
 }
 
+/* По какой-то причине Bootstrap 5.0 неправильно считает противоположный цвет
+   к нашему $primary, поэтому такой костыль */
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus {
     color: #fff;
 }
 
+/* Кастомный utility класс бэкграунда */
 .bg-nav {
     background: #24252e;
 }
 
 :root {
-    --bs-gutter-x: 1.5rem;
+    --bs-gutter-x: 1.5rem; // Отсутствие этого значения по умолчанию скорее всего является багом
+}
+
+/* Нужно для прибития футера вниз страницы */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
