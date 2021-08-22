@@ -1,12 +1,3 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-    color: $main-text;
-}
-
 h1 {
     font-style: normal;
     font-weight: normal;
@@ -67,11 +58,11 @@ p {
 }
 
 .text-light {
-    color: $main-white;
+    color: white;
 }
 
 .text-primary {
-    color: $main-blue;
+    color: $primary;
 }
 
 .text-subheader {
