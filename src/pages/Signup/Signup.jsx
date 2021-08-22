@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Button, Form, Row, Col, Image, Card } from 'react-bootstrap'
+import { Container, Button, Form, Row, Col } from 'react-bootstrap'
 import s from './Signup.module.scss'
 
 export default function Signup() {
