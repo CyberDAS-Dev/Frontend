@@ -2,8 +2,13 @@
 @import '~bootstrap/scss/bootstrap';
 @import './typography';
 
+.btn {
+    -webkit-appearance: none;
+}
+
 .btn-primary,
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     color: #fff;
 }
 
