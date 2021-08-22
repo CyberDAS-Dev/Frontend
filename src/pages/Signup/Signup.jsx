@@ -26,10 +26,11 @@ export default function Signup() {
                     <div className={s.internalWrapper}>
                         <Row>
                             <Form.Group as={Col} md="6">
-                                <Form.Label>
+                                <Form.Label column="lg">
                                     Фамилия:<span style={{ color: 'red' }}>*</span>
                                 </Form.Label>
                                 <Form.Control
+                                    size="lg"
                                     type="text"
                                     name="surname"
                                     placeholder="Введите фамилию"
@@ -39,17 +40,23 @@ export default function Signup() {
                         </Row>
                         <Row>
                             <Form.Group as={Col} md="6">
-                                <Form.Label>
+                                <Form.Label column="lg">
                                     Имя:<span style={{ color: 'red' }}>*</span>
                                 </Form.Label>
-                                <Form.Control type="text" name="name" placeholder="Введите имя" />
+                                <Form.Control
+                                    size="lg"
+                                    type="text"
+                                    name="name"
+                                    placeholder="Введите имя"
+                                />
                                 <Form.Text muted>Используйте буквы русского алфавита</Form.Text>
                             </Form.Group>
                         </Row>
                         <Row>
                             <Form.Group as={Col} md="6">
-                                <Form.Label>Отчество:</Form.Label>
+                                <Form.Label column="lg">Отчество:</Form.Label>
                                 <Form.Control
+                                    size="lg"
                                     type="text"
                                     name="patronymic"
                                     placeholder="Введите отчество"
@@ -59,10 +66,11 @@ export default function Signup() {
                         </Row>
                         <Row>
                             <Form.Group as={Col} md="6">
-                                <Form.Label>
+                                <Form.Label column="lg">
                                     Электронная почта:<span style={{ color: 'red' }}>*</span>
                                 </Form.Label>
                                 <Form.Control
+                                    size="lg"
                                     type="email"
                                     name="email"
                                     placeholder="Введите адрес почты"
@@ -73,28 +81,28 @@ export default function Signup() {
                                 </Form.Text>
                             </Form.Group>
                         </Row>
-                        <Row>
+                        <Row className="mb-3">
                             <Form.Group as={Col} md="6">
-                                <Form.Label>
+                                <Form.Label column="lg">
                                     Факультет:<span style={{ color: 'red' }}>*</span>
                                 </Form.Label>
-                                <Form.Control as="select">
+                                <Form.Select size="lg">
                                     <option disabled selected hidden>
                                         Выберите факультет
                                     </option>
                                     <option value="1">Факультет 1</option>
                                     <option value="2">Факультет 2</option>
-                                </Form.Control>
+                                </Form.Select>
                                 <Form.Text muted>Сначала укажите свой факультет</Form.Text>
                             </Form.Group>
                         </Row>
-                        <Row>
+                        <Row className="mb-3">
                             <Form.Group as={Col} md="12">
                                 <span style={{ color: 'red' }}>*</span> - поля, обязательные для
                                 заполнения
                             </Form.Group>
                         </Row>
-                        <Row>
+                        <Row className="mb-3">
                             <Form.Group as={Col} md="12">
                                 <Form.Check
                                     label="Я прочитал и согласен с условиями использования сайта и политикой обработки персональных данных"

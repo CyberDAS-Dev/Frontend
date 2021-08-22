@@ -10,16 +10,8 @@ export default function Login() {
         <div className={s.loginPage}>
             <Container>
                 <Form onSubmit={() => {}}>
-                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
-                        <Card
-                            as={Col}
-                            md="10"
-                            bg="primary"
-                            border="primary"
-                            style={{
-                                marginBottom: '1rem',
-                            }}
-                        >
+                    <Row className="justify-content-center mb-3">
+                        <Card as={Col} md="10" bg="primary" border="primary">
                             <Col
                                 md="12"
                                 style={{
@@ -31,12 +23,12 @@ export default function Login() {
                             </Col>
                         </Card>
                     </Row>
-                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
+                    <Row className="justify-content-center mb-3">
                         <Form.Group as={Col} md="6">
                             <Form.Control type="email" name="email" placeholder="Введите почту" />
                         </Form.Group>
                     </Row>
-                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
+                    <Row className="justify-content-center mb-3">
                         <Form.Group as={Col} md="6">
                             <Form.Control
                                 type="password"
@@ -45,7 +37,7 @@ export default function Login() {
                             />
                         </Form.Group>
                     </Row>
-                    <Row className="justify-content-center" style={{ marginBottom: '1rem' }}>
+                    <Row className="justify-content-center mb-3">
                         <Col xs="auto">
                             <Link to="/signup">
                                 <Icon name="key" />
