@@ -1,7 +1,6 @@
 @import '@/styles/variables';
 
 .background {
-    background-color: $main-background-dark;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -10,7 +9,7 @@
 .header {
     padding-top: 20px;
     margin-bottom: 15px;
-    color: $main-white;
+    color: white;
 }
 
 .form {

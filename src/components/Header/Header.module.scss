@@ -1,19 +1,19 @@
 @import '@/styles/variables';
 
 nav {
-    background: $header-color;
+    background: #24252e;
 
     a {
-        color: $main-white;
+        color: white;
         text-decoration: none;
 
         &:hover {
-            color: $white-hover;
+            color: white-hover;
         }
 
         &:active,
         &:focus {
-            color: $white-click;
+            color: white-click;
         }
     }
 
@@ -36,7 +36,7 @@ nav {
     .headerButton h3,
     .headerButton p {
         line-height: 40px;
-        color: $main-white;
+        color: white;
     }
     .headerButton:hover {
         background-color: #67677446;

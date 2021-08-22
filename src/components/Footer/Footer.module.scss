@@ -1,14 +1,14 @@
 @import '@/styles/variables';
 
 .footer {
-    background-color: $header-color;
-    color: $main-white;
+    background-color: #24252e;
+    color: white;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 18px;
 
     * {
-        color: $main-white;
+        color: white;
     }
 
     a {
