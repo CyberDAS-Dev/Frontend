@@ -12,8 +12,6 @@ import QueueAPI from '@/API/queue'
 import SlotAPI from '@/API/slot'
 import s from './Queue.module.scss'
 
-const queueService = new QueueAPI()
-const slotService = new SlotAPI('living')
 const isSameDay = (a, b) => differenceInCalendarDays(a, b) === 0
 
 export default function Queue() {
@@ -23,12 +21,17 @@ export default function Queue() {
     const [month, setMonth] = useState(new Date().getMonth())
 
     useEffect(() => {
-        queueService.get('living').then((res) => {
-            setDuration(res.data.duration)
-        })
-        slotService.getAll().then((res) => {
-            setSlots(res.data)
-        })
+        async function fetchAPI() {
+            const response = await QueueAPI.get('living_2')
+            if (response) {
+                setDuration(response.data.duration)
+                const response2 = await SlotAPI.getAll('living_2')
+                if (response2) {
+                    setSlots(response2.data)
+                }
+            }
+        }
+        fetchAPI()
     }, [])
 
     const extractDaySlots = (day) => slots.filter((slot) => isSameDay(new Date(slot.time), day))
@@ -40,13 +43,10 @@ export default function Queue() {
     const onMonthChange = (nextValue) => setMonth(nextValue) || setValue(0)
 
     async function onSlotClick(slot) {
-        if (await confirm(`Забронировать слот на ${slot.value}?`, { title: 'Подтверждение' })) {
-            try {
-                await slotService.reserve(slot.id)
-            } catch (err) {
-                alert(`Произошла ошибка ${err}`)
-                return
-            }
+        if (
+            (await confirm(`Забронировать слот на ${slot.value}?`, { title: 'Подтверждение' })) &&
+            (await SlotAPI.reserve('living_1', slot.id))
+        ) {
             alert('Вы успешно записались на заселение. Копия талона отправлена вам на почту.', {
                 title: 'Отлично!',
             })
