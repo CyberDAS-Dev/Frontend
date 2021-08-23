@@ -1,14 +1,14 @@
 /* eslint-disable class-methods-use-this */
-import http, { simpleGet } from '@/API/http'
+import http from '@/API/http'
 import { errorAlert } from './errors'
 
 class SlotDataService {
     getAll(queue) {
-        return simpleGet(`/queues/${queue}/slots`)
+        return http.simpleGet(`/queues/${queue}/slots`)
     }
 
     get(queue, id) {
-        return simpleGet(`/queues/${queue}/slots/${id}`)
+        return http.simpleGet(`/queues/${queue}/slots/${id}`)
     }
 
     reserve(queue, id, data) {

@@ -1,13 +1,13 @@
 /* eslint-disable class-methods-use-this */
-import { simpleGet } from '@/API/http'
+import http from '@/API/http'
 
 class QueueDataService {
     getAll() {
-        return simpleGet('/queues')
+        return http.simpleGet('/queues')
     }
 
     get(name) {
-        return simpleGet(`/queues/${name}`)
+        return http.simpleGet(`/queues/${name}`)
     }
 }
 

@@ -16,6 +16,8 @@ export default axiosInstance
 
 // Запрос, который не имеет собственных ошибок и обрабатывает их глобально
 // eslint-disable-next-line consistent-return
-export function simpleGet(url) {
-    return axiosInstance.get(url).catch((error) => error.handleGlobally())
+function simpleGet(url) {
+    return this.get(url).catch((error) => error.handleGlobally())
 }
+
+axiosInstance.simpleGet = simpleGet
