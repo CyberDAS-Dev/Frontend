@@ -41,7 +41,7 @@ export default function CustomModal({
                                 <Button
                                     as={Col}
                                     xs={{ span: 4, offset: 0 }}
-                                    size="lg"
+                                    size=""
                                     onClick={() => proceed(false)}
                                 >
                                     {cancelLabel}
@@ -50,7 +50,7 @@ export default function CustomModal({
                             <Button
                                 as={Col}
                                 xs={{ span: 4, offset: noCancel ? 8 : 4 }}
-                                size="lg"
+                                size=""
                                 onClick={() => proceed(true)}
                             >
                                 {okLabel}
