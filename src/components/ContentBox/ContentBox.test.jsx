@@ -6,8 +6,7 @@ it('вообще рендерится', () => {
     act(() => {
         render(<ContentBox>Lol</ContentBox>)
     })
-    // eslint-disable-next-line jest/valid-expect
-    expect(screen.getByText('Lol'))
+    expect(screen.getByText('Lol')).toBeDefined()
 })
 
 it('оборачивает контент в card-body', () => {
@@ -21,8 +20,7 @@ it('может зарендерить хэдер', () => {
     act(() => {
         render(<ContentBox header="Kek123">Lol</ContentBox>)
     })
-    // eslint-disable-next-line jest/valid-expect
-    expect(screen.getByText('Kek123'))
+    expect(screen.getByText('Kek123')).toBeDefined()
 })
 
 it('хэдер обернут в card-header', () => {
