@@ -38,7 +38,7 @@
         ]
     },
     "scripts": {
-        "start": "ESLINT_NO_DEV_ERRORS='true' react-app-rewired start",
+        "start": "react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
