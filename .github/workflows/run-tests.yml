@@ -2,7 +2,7 @@ name: run-tests
 
 on:
     pull_request:
-        branches: [main]
+        branches: [main, dev]
 
 jobs:
     build:
@@ -29,6 +29,10 @@ jobs:
               working-directory: test
               run: |
                   npm run lint:style
+            - name: Run tests
+              working-directory: test
+              run: |
+                  npm test
             - name: Wipe files
               run: |
                   rm -rf test
