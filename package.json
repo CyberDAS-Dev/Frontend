@@ -38,7 +38,7 @@
         ]
     },
     "scripts": {
-        "start": "react-app-rewired start",
+        "start": "ESLINT_NO_DEV_ERRORS='true' react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
@@ -46,7 +46,7 @@
         "lint:code": "eslint --ext js,jsx src",
         "lint:style": "stylelint src/**/*.{css,scss}",
         "format:code": "eslint --ext js,jsx src --fix",
-        "format:style": "stylelint src/**/*.{css,scss} --fix",
+        "format:style": "stylelint src/*/*/*.{css,scss} --fix",
         "pre-commit": "lint-staged",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public"
