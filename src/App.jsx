@@ -15,6 +15,8 @@ import Footer from '@/components/Footer/Footer'
 import Login from '@/pages/Login/Login'
 import Signup from '@/pages/Signup/Signup'
 import Queue from '@/pages/Queue/Queue'
+import Privacy from '@/pages/Privacy/Privacy'
+import UserAgreement from '@/pages/UserAgreement/UserAgreement'
 
 function App() {
     return (
@@ -24,6 +26,8 @@ function App() {
                 <Switch>
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/queue" component={Queue} />
+                    <Route exact path="/privacy" component={Privacy} />
+                    <Route exact path="/agreement" component={UserAgreement} />
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/" component={Landing} />
                     <Route component={NotFoundPage} />
