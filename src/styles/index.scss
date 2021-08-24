@@ -6,9 +6,13 @@
     -webkit-appearance: none;
 }
 
-/* Кастомный utility класс бэкграунда */
+/* Кастомные utility классы бэкграунда */
 .bg-nav {
-    background: #24252e;
+    background: hsl(234, 12%, 16%);
+}
+
+.bg-tinted-dark {
+    background: #4d4f60;
 }
 
 :root {
