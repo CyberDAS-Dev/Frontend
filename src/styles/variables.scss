@@ -7,6 +7,9 @@ $font-family-base: 'Roboto', sans-serif;
 
 $enable-shadows: true;
 
+/* https://stackoverflow.com/questions/65170317/sass-scss-bootstrap-5-color-functions-not-working-well */
+$min-contrast-ratio: 1.65;
+
 $navbar-dark-color: white;
 $navbar-dark-hover-color: #c1c1c1;
 $navbar-dark-active-color: #a8a8a8;
