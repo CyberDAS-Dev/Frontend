@@ -1,53 +1,69 @@
 import React from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
-import s from './SlotList.module.scss'
+import PropTypes from 'prop-types'
+import { Row } from 'react-bootstrap'
+import Slot from '@/components/Slot/Slot'
+import useWindowDimensions from '@/hooks/useWindowDimensions'
 
-function datetimeToHM(datetime) {
-    return `${datetime.getHours()}:${String(datetime.getMinutes()).padStart(2, '0')}`
-}
+export default function SlotList({
+    slots,
+    onClick = null,
+    className = '',
+    xs = '',
+    sm = '',
+    md = '',
+    lg = '',
+    xl = '',
+    xxl = '',
+}) {
+    const { width } = useWindowDimensions()
 
-function addMinutes(dt, minutes) {
-    return new Date(dt.getTime() + minutes * 60000)
-}
-
-function formatSlotTime(slotTime, duration) {
-    const startTime = new Date(slotTime)
-    const endTime = addMinutes(startTime, duration)
-    return `${datetimeToHM(startTime)} - ${datetimeToHM(endTime)}`
-}
-
-export default function SlotList({ slots, duration, className, onClick, freeOnly = true }) {
-    let slotItems = []
-    if (freeOnly) {
-        slotItems = slots.filter((slot) => slot.free)
-    } else {
-        slotItems = slots
-    }
-    // Сортируем по времени, а не по айди
+    // Убираем занятые слоты
+    const slotItems = slots.filter((slot) => slot.free)
+    // Сортируем их по времени, а не по айди
     slotItems.sort((a, b) => new Date(a.time) - new Date(b.time))
+
     const listItems = slotItems.map((slot) => (
-        <Row>
-            <Col>
-                <Button
-                    key={slot.id}
-                    id={slot.id}
-                    value={formatSlotTime(slot.time, duration)}
-                    size="lg"
-                    onClick={(event) => onClick(event.target)}
-                >
-                    {formatSlotTime(slot.time, duration)}
-                </Button>
-            </Col>
-        </Row>
+        <Slot
+            key={slot.id}
+            id={slot.id}
+            time={slot.time}
+            onClick={onClick}
+            size={width >= 768 ? 'lg' : ''} // bootstrap md
+        />
     ))
+
     return (
-        <div className={`${s.wrapper} ${className || ''}`}>
-            <div className={s.headerRow}>
-                <div className={s.headerCol}>Время</div>
-            </div>
-            <div className={s.column}>{listItems}</div>
-        </div>
+        <Row className={`g-2 ${className}`} xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
+            {listItems}
+        </Row>
     )
+}
+
+SlotList.propTypes = {
+    slots: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            time: PropTypes.string.isRequired,
+            free: PropTypes.bool.isRequired,
+        })
+    ).isRequired,
+    onClick: PropTypes.func,
+    className: PropTypes.string,
+    xs: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    lg: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    xl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    xxl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+}
+
+SlotList.defaultProps = {
+    onClick: null,
+    className: '',
+    xs: '',
+    sm: '',
+    md: '',
+    lg: '',
+    xl: '',
+    xxl: '',
 }
