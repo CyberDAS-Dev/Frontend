@@ -11,14 +11,14 @@ export default function Footer() {
                     <Col
                         xs={{ order: 1, span: 6 }}
                         md={{ order: 1, span: 'auto' }}
-                        className="mb-2 mb-md-0"
+                        className="mb-3 mb-md-0"
                     >
                         <FooterLink to="https://vk.com/studcomdas" name="Студком" external />
                     </Col>
                     <Col
                         xs={{ order: 2, span: 6 }}
                         md={{ order: 3, span: 'auto' }}
-                        className="mb-2 mb-md-0"
+                        className="mb-3 mb-md-0"
                     >
                         <FooterLink to="https://das.msk.ru/" name="Общежитие ДАС" external />
                     </Col>
@@ -30,14 +30,14 @@ export default function Footer() {
                     <Col
                         xs={{ order: 3, span: 6 }}
                         md={{ order: 4, span: 'auto' }}
-                        className="mb-2 mb-md-0"
+                        className="mb-3 mb-md-0"
                     >
                         <FooterLink to="/privacy" name="Защита данных" />
                     </Col>
                     <Col
                         xs={{ order: 4, span: 6 }}
                         md={{ order: 5, span: 'auto' }}
-                        className="mb-2 mb-md-0"
+                        className="mb-3 mb-md-0"
                     >
                         <FooterLink to="/agreement" name="Соглашение" />
                     </Col>
