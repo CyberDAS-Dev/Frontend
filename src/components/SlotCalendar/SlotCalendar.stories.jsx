@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import React from 'react'
+import { toDatetime } from '@/utils/dateLib'
 import SlotCalendar from './SlotCalendar'
 import Description from './SlotCalendar.description.md'
 
@@ -21,43 +22,12 @@ export const Primary = Template.bind({})
 
 Primary.args = {
     value: new Date(),
-    monthSlots: [
-        {
-            id: 1,
-            time: new Date(),
-            free: true,
-        },
-        {
-            id: 2,
-            time: new Date().setDate(new Date().getDate() + 1),
-            free: true,
-        },
-        {
-            id: 3,
-            time: new Date().setDate(new Date().getDate() + 2),
-            free: true,
-        },
-        {
-            id: 4,
-            time: new Date().setDate(new Date().getDate() - 1),
-            free: true,
-        },
-        {
-            id: 5,
-            time: new Date().setDate(new Date().getDate() + 1),
-            free: false,
-        },
-        {
-            id: 6,
-            time: new Date().setDate(new Date().getDate() + 3),
-            free: false,
-        },
-    ],
     onChange: (event) => event,
     dailyClasses: Object.fromEntries([
-        [new Date(), 'busy_tile'],
-        [new Date().getDate() + 1, 'hot_tile'],
-        [new Date().getDate() + 2, 'available_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 1))), 'busy_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 2))), 'hot_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 3))), 'available_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 4))), 'available_tile'],
     ]),
-    disabledDates: [new Date().getDate() - 1],
+    disabledDates: [toDatetime(new Date(new Date().setDate(new Date().getDate() + 5)))],
 }
