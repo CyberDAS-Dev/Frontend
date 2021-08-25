@@ -54,4 +54,10 @@ Primary.args = {
         },
     ],
     onChange: (event) => event,
+    dailyClasses: Object.fromEntries([
+        [new Date(), 'busy_tile'],
+        [new Date().getDate() + 1, 'hot_tile'],
+        [new Date().getDate() + 2, 'available_tile'],
+    ]),
+    disabledDates: [new Date().getDate() - 1],
 }
