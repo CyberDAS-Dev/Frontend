@@ -13,7 +13,6 @@ export default {
             description: {
                 component: Description,
             },
-            inlineStories: false,
         },
     },
 }
