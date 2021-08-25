@@ -13,6 +13,7 @@ export default function SlotCalendar({
     monthSlots,
     className,
     disabledDates,
+    show,
 }) {
     /* Вспомогательные функциии */
     const today = new Date()
@@ -74,6 +75,7 @@ export default function SlotCalendar({
 
     return (
         <Calendar
+            show={show}
             className={`${s.wrapper} ${className || ''}`}
             onChange={onChange}
             value={value}
