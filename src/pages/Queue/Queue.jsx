@@ -1,46 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { differenceInCalendarDays } from 'date-fns'
+import { Row, Col } from 'react-bootstrap'
 import Alert from 'react-bootstrap/Alert'
-import MonthSelector from '@/components/Calendar/MonthSelector'
-import SlotCalendar from '@/components/Calendar/SlotCalendar'
-import SlotList from '@/components/SlotList/SlotList'
+import Page from '@/components/Page/Page'
 import confirm from '@/utils/confirm'
 import alert from '@/utils/alert'
-import QueueAPI from '@/API/queue'
 import SlotAPI from '@/API/slot'
-import s from './Queue.module.scss'
-
-const isSameDay = (a, b) => differenceInCalendarDays(a, b) === 0
+import QueueInputGroup from '@/components/QueueInputGroup/QueueInputGroup'
+import getDateStyles from '@/components/SlotCalendar/dateStyling'
+import { earliestAvailableInMonth, tillMonthEnd, toDatetime } from '@/utils/dateLib'
+import getDailySlots from '@/components/QueueInputGroup/slotsMatrix'
+import FacultySelector from '@/components/FacultySelector/FacultySelector'
+import facultyToQueue from '@/utils/facultyToQueue'
 
 export default function Queue() {
-    const [value, setValue] = useState(new Date())
-    const [duration, setDuration] = useState(0)
     const [slots, setSlots] = useState([])
-    const [month, setMonth] = useState(new Date().getMonth())
+    const [faculty, setFaculty] = useState(0)
 
     useEffect(() => {
         async function fetchAPI() {
-            const response = await QueueAPI.get('living_2')
+            const response = await SlotAPI.getAll(
+                facultyToQueue(faculty),
+                earliestAvailableInMonth(new Date().getFullYear(), new Date().getMonth()),
+                tillMonthEnd(new Date()) + 1
+            )
             if (response) {
-                setDuration(response.data.duration)
-                const response2 = await SlotAPI.getAll('living_2')
-                if (response2) {
-                    setSlots(response2.data)
-                }
+                setSlots(response.data)
             }
         }
         fetchAPI()
-    }, [])
-
-    const extractDaySlots = (day) => slots.filter((slot) => isSameDay(new Date(slot.time), day))
-    const dropOldSlots = (array) =>
-        array.filter((slot) => new Date(slot.time).getTime() - new Date().getTime() > 0)
-
-    const onDateChange = (nextValue) => setValue(nextValue)
-    // Сбиваем текущую дату при смене месяца, что бы справа не маячил список слотов
-    const onMonthChange = (nextValue) => setMonth(nextValue) || setValue(0)
+    }, [faculty])
 
     async function onSlotClick(slot) {
         if (
@@ -52,40 +41,52 @@ export default function Queue() {
             })
         }
     }
+
+    // Огромное преимущество от нахождения этих элементов здесь - они не вычисляются при смене
+    // дат календаря и т.д
+    const { slotMatrix, uniqueDates } = getDailySlots(slots)
+    const { dailyClasses, disabledDates } = getDateStyles(slotMatrix, uniqueDates)
+
+    // Текст, отображаемый на месте пустых слотов
+    function noItemsText(date) {
+        if (!(date.getDay() % 6)) {
+            return 'На выходные нет записи'
+        }
+        if (slotMatrix[toDatetime(date)]?.length > 0) {
+            return 'В этот день больше нет свободных мест'
+        }
+        return 'У нас еще нет информации о записи на этот день'
+    }
+
     return (
-        <div className={s.background}>
-            <Container>
-                <Container fluid className={s.page}>
-                    <div className={s.pageHeader}>
-                        <h5 className={s.header}>Электронная регистрация на процедуру заселения</h5>
-                    </div>
-                    <Alert className={s.instruction} variant="info">
-                        Пожалуйста, перед использованием сервиса ознакомьтесь с{' '}
-                        <Link to="/queue">инструкцией.</Link> <br />В случае возникновения проблем,
-                        воспользуйтесь формой обратной связи.
-                    </Alert>
-                    <MonthSelector
-                        className={s.months}
-                        value={month}
-                        onChange={onMonthChange}
-                        slots={slots}
+        <Page header="Электронная регистрация на процедуру заселения">
+            <Alert variant="info">
+                Пожалуйста, перед использованием сервиса ознакомьтесь с{' '}
+                <Link to="/queue">инструкцией.</Link> <br />В случае возникновения проблем,
+                воспользуйтесь формой обратной связи.
+            </Alert>
+            <Row>
+                <Col xs={12} sm={6} lg={4} xl={3}>
+                    <FacultySelector
+                        className="mb-3"
+                        onSelect={(value) => {
+                            setFaculty(value)
+                        }}
+                        value={faculty}
                     />
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <SlotCalendar
-                            onChange={onDateChange}
-                            value={value}
-                            monthValue={month}
-                            slots={dropOldSlots(slots)}
-                            disabledDates={[]}
-                        />
-                        <SlotList
-                            slots={dropOldSlots(extractDaySlots(value))}
-                            duration={duration}
-                            onClick={onSlotClick}
-                        />
-                    </div>
-                </Container>
-            </Container>
-        </div>
+                </Col>
+                <Col xs={6} />
+            </Row>
+            <QueueInputGroup
+                show={faculty !== 0}
+                slots={slots}
+                slotMatrix={slotMatrix}
+                uniqueDates={uniqueDates}
+                dailyClasses={dailyClasses}
+                disabledDates={disabledDates}
+                onSlotClick={onSlotClick}
+                getNoItemsText={noItemsText}
+            />
+        </Page>
     )
 }
