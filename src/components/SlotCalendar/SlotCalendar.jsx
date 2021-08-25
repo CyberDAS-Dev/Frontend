@@ -1,6 +1,6 @@
 import React from 'react'
-import Calendar from '@/components/Calendar/Calendar'
 import { differenceInCalendarDays } from 'date-fns'
+import Calendar from '@/components/Calendar/Calendar'
 import s from './SlotCalendar.module.scss'
 
 const isSameDay = (a, b) => differenceInCalendarDays(a, b) === 0
