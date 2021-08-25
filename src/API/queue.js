@@ -2,8 +2,8 @@
 import http from '@/API/http'
 
 class QueueDataService {
-    getAll() {
-        return http.simpleGet('/queues')
+    getAll(day, offset) {
+        return http.simpleGet('/queues', { params: { day, offset } })
     }
 
     get(name) {
