@@ -24,6 +24,7 @@ export default function Homepage() {
                     backgroundImage: `url(${jumbo})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
+                    backgroundColor: '#394051',
                 }}
             >
                 <Container>
