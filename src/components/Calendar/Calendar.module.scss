@@ -20,9 +20,6 @@
         margin: 0;
         outline: none;
     }
-    .react-calendar button:enabled:hover {
-        cursor: pointer;
-    }
 
     .react-calendar__navigation {
         height: 44px;
@@ -31,6 +28,9 @@
     .react-calendar__navigation button {
         min-width: 44px;
         background: none;
+    }
+    .react-calendar button:enabled:hover {
+        cursor: pointer;
     }
     .react-calendar__navigation button:enabled:hover,
     .react-calendar__navigation button:enabled:focus {
