@@ -28,8 +28,13 @@ export function getDayClass(daySlots) {
 // Должна быть пригодна для Array.prototype.filter(), т.е возвращать true/false
 export function isDayDisabled(day, today, dailySlots) {
     const diffInDays = differenceInCalendarDays(fromDatetime(today), fromDatetime(day))
-    // Если сегодня слотов нет, то на сегодня нельзя записаться и слоты точно не появятся
-    if (diffInDays === 0 && dailySlots[today].length === 0) {
+    // Если сегодня свободных слотов уже нет, то на сегодня нельзя записаться и слоты точно не появятся
+    if (
+        diffInDays === 0 &&
+        dailySlots[today]
+            .filter((slot) => slot.free)
+            .filter((slot) => new Date(slot.time).getTime() - new Date().getTime() > 0).length === 0
+    ) {
         return true
     }
     return false
