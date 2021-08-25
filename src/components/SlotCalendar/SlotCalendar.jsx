@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { differenceInCalendarDays } from 'date-fns'
 import Calendar from '@/components/Calendar/Calendar'
 import s from './SlotCalendar.module.scss'
@@ -6,17 +7,17 @@ import s from './SlotCalendar.module.scss'
 const isSameDay = (a, b) => differenceInCalendarDays(a, b) === 0
 
 export default function SlotCalendar({
-    onChange,
+    onChange = null,
     value,
-    year,
-    month,
     monthSlots,
-    className,
-    disabledDates,
-    show,
+    className = '',
+    disabledDates = [],
+    show = true,
 }) {
     /* Вспомогательные функциии */
     const today = new Date()
+    const year = value.getFullYear()
+    const month = value.getMonth()
     const daysInMonth = new Date(year, month, 0).getDate()
 
     const getDayFromSlot = (slot) => new Date(slot.time).getDate()
@@ -36,7 +37,7 @@ export default function SlotCalendar({
             if (freePercents === 0) {
                 return 'busy_tile'
             }
-            if (freePercents < 0.5) {
+            if (freePercents <= 0.5) {
                 return 'hot_tile'
             }
             return 'available_tile'
@@ -89,4 +90,26 @@ export default function SlotCalendar({
             tileDisabled={tileDisabled}
         />
     )
+}
+
+SlotCalendar.propTypes = {
+    value: PropTypes.instanceOf(Date).isRequired,
+    monthSlots: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            time: PropTypes.string.isRequired,
+            free: PropTypes.bool.isRequired,
+        })
+    ).isRequired,
+    show: PropTypes.bool,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    disabledDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+}
+
+SlotCalendar.defaultProps = {
+    show: true,
+    className: '',
+    onChange: () => {},
+    disabledDates: [],
 }
