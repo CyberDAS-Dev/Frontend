@@ -32,3 +32,11 @@
 .link-light:focus {
     color: $gray-400;
 }
+
+.form-select {
+    &:focus,
+    &:active,
+    &:hover {
+        border-color: $element-grey;
+    }
+}
