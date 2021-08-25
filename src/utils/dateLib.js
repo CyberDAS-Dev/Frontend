@@ -1,19 +1,26 @@
 import { parseISO } from 'date-fns'
 
-export const toDatetime = (date) =>
-    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(
-        date.getDate()
-    ).padStart(2, '0')}T00:00:00`
+export const toDate = (date, monthOnly = false) => {
+    const year = `${date.getFullYear()}`
+    const month = `${String(date.getMonth() + 1).padStart(2, '0')}`
+    if (monthOnly) {
+        return `${year}-${month}`
+    }
+    const day = `${String(date.getDate()).padStart(2, '0')}`
+    return `${year}-${month}-${day}`
+}
+
+export const toDatetime = (date) => `${String(toDate(date))}T00:00:00`
 
 export const toObject = (date) => {
     const splitted = date.split('T')
     const yearMonthDay = splitted[0].split('-')
-        return {
-            year: yearMonthDay[0],
-            month: yearMonthDay[1] - 1,
-        ...(yearMonthDay[2] && { day: yearMonthDay[2] }),
-        }
+    return {
+        year: parseInt(yearMonthDay[0], 10),
+        month: parseInt(yearMonthDay[1] - 1, 10),
+        ...(yearMonthDay[2] && { day: parseInt(yearMonthDay[2], 10) }),
     }
+}
 
 export const fromDatetime = (date) => parseISO(date)
 
