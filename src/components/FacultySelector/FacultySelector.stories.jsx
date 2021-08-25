@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react'
 import FacultySelector from './FacultySelector'
 import Description from './FacultySelector.description.md'
