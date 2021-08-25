@@ -3,14 +3,13 @@ import Calendar from 'react-calendar'
 import { differenceInCalendarDays } from 'date-fns'
 import './SlotCalendar.module.scss'
 
-function isSameDay(a, b) {
-    return differenceInCalendarDays(a, b) === 0
-}
+const isSameDay = (a, b) => differenceInCalendarDays(a, b) === 0
 
 export default function SlotCalendar({
     onChange,
     value,
-    monthValue,
+    year,
+    month,
     slots,
     className,
     disabledDates,
@@ -55,21 +54,20 @@ export default function SlotCalendar({
     }
 
     return (
-        <div className={`${className || ''}`}>
-            <Calendar
-                onChange={onChange}
-                value={value}
-                activeStartDate={new Date(new Date().getFullYear(), monthValue, 1)}
-                view="month"
-                maxDetail="month"
-                minDetail="year"
-                showNeighboringMonth={false}
-                showNavigation={false}
-                locale="ru-RU"
-                calendarType="ISO 8601"
-                tileDisabled={tileDisabled}
-                tileClassName={tileClassName}
-            />
-        </div>
+        <Calendar
+            className={`${className || ''}`}
+            onChange={onChange}
+            value={value}
+            activeStartDate={new Date(year, month, 1)}
+            view="month"
+            maxDetail="month"
+            minDetail="year"
+            showNeighboringMonth={false}
+            showNavigation={false}
+            locale="ru-RU"
+            calendarType="ISO 8601"
+            tileDisabled={tileDisabled}
+            tileClassName={tileClassName}
+        />
     )
 }
