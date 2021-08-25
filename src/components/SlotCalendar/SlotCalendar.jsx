@@ -10,47 +10,66 @@ export default function SlotCalendar({
     value,
     year,
     month,
-    slots,
+    monthSlots,
     className,
     disabledDates,
 }) {
-    const extractDaySlots = (day) => slots.filter((slot) => isSameDay(new Date(slot.time), day))
+    /* Вспомогательные функциии */
+    const today = new Date()
+    const daysInMonth = new Date(year, month, 0).getDate()
 
-    function countDemand(day) {
-        const daySlots = extractDaySlots(day)
+    const getDayFromSlot = (slot) => new Date(slot.time).getDate()
+    // Формируем матрицу из дней и слотов
+    const dailySlots = Array.from(Array(daysInMonth), () => new Array(0))
+    monthSlots.map((item) => dailySlots[getDayFromSlot(item)].push(item))
+
+    // Вспомогательная функция, подсчитывающая процентное соотношение свободных слотов к занятым
+    function countFree(daySlots) {
         const freeSlots = daySlots.filter((slot) => slot.free)
         return freeSlots.length / daySlots.length
     }
-
-    function tileClassName({ date, view }) {
-        if (view === 'month') {
-            if (extractDaySlots(date).length > 0) {
-                const demand = countDemand(date)
-                if (demand === 0) {
-                    return 'busy_tile'
-                }
-                if (demand < 0.5) {
-                    return 'hot_tile'
-                }
-                return 'available_tile'
+    // Функция, раздающая каждому дню классы
+    function getDayClass(item) {
+        if (item.length > 0) {
+            const freePercents = countFree(item)
+            if (freePercents === 0) {
+                return 'busy_tile'
             }
+            if (freePercents < 0.5) {
+                return 'hot_tile'
+            }
+            return 'available_tile'
         }
         return false
     }
+    // Формируем массив из классов на каждый день
+    const dailyClasses = dailySlots.map((day) => getDayClass(day))
+    /* Вспомогательные функции кончились */
 
-    function tileDisabled({ date, view }) {
-        if (view === 'month') {
-            // Нельзя записаться на прошедшие даты
-            if (differenceInCalendarDays(new Date(), date) > 0) {
-                return true
-            }
-            // Если сегодня слотов нет, то на сегодня нельзя записаться и слоты точно не появятся
-            if (isSameDay(new Date(), date) && extractDaySlots(new Date()).length === 0) {
-                return true
-            }
-            return disabledDates.find((dDate) => isSameDay(dDate, date))
+    /* 
+       Так как эта функция была самой медленной на странице, её пришлось здоровски переписать 
+       Она вызывается на каждом тайле и, первоначально, она при этом каждый раз пробегала по всему
+       массиву слотов и искала слоты на день тайла. Это приводило к ужасной производительности. 
+       Решение: провести повторяющиеся вычисления заранее. Можно было просто посчитать массив
+       dailySlots и впихнуть его в эту функцию, но видимо её вызовы супер неоптимизированные,
+       потому что в текущем виде (просто ищет в массиве элемент с определенным индексом) она работает 
+       быстрее, чем когда она проводила вычисления сама. 
+    */
+    function tileClassName({ date }) {
+        return dailyClasses[date.getDate()]
+    }
+
+    function tileDisabled({ date }) {
+        const diffInDays = differenceInCalendarDays(today, date)
+        // Нельзя записаться на прошедшие даты
+        if (diffInDays > 0) {
+            return true
         }
-        return false
+        // Если сегодня слотов нет, то на сегодня нельзя записаться и слоты точно не появятся
+        if (diffInDays === 0 && dailySlots[today.getDate()].length === 0) {
+            return true
+        }
+        return disabledDates.find((dDate) => isSameDay(dDate, date))
     }
 
     return (
@@ -64,8 +83,8 @@ export default function SlotCalendar({
             minDetail="year"
             showNeighboringMonth={false}
             showNavigation={false}
-            tileDisabled={tileDisabled}
             tileClassName={tileClassName}
+            tileDisabled={tileDisabled}
         />
     )
 }
