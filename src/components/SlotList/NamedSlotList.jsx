@@ -35,7 +35,7 @@ export default function NamedSlotList({
     } else {
         toRender = (
             <Row className="g-2">
-                <Col xs="12" className="text-center">
+                <Col xs="12" className="text-center fs-5">
                     <p>{noItemsText}</p>
                 </Col>
             </Row>
