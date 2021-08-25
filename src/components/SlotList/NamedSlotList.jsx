@@ -16,10 +16,10 @@ export default function NamedSlotList({
     xxl = '',
 }) {
     // Убираем занятые слоты, чтобы выяснить, вдруг свободных вовсе нет
-    const slotItems = slots.filter((slot) => slot.free)
+    const slotItems = slots?.filter((slot) => slot.free)
 
     let toRender
-    if (slotItems.length) {
+    if (slotItems?.length) {
         toRender = (
             <SlotList
                 xs={xs}
