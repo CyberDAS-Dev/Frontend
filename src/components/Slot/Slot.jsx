@@ -17,7 +17,7 @@ export default function Slot({ id = 0, size = '', time = '', onClick = null, mas
                 style={{ borderRadius: 0 }}
                 id={id}
                 size={size} // bootstrap md
-                value={formatSlotTime(time)}
+                value={time}
                 onClick={(event) => onClick(event.target)}
             >
                 {masked ? '' : formatSlotTime(time)}
