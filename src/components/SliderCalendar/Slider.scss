@@ -1,0 +1,39 @@
+@import '@/styles/variables';
+@import '~@brainhubeu/react-carousel/lib/style.css';
+
+.BrainhubCarouselItem {
+    > div {
+        transition: all 0.3s;
+        background-color: #bcbcbc;
+    }
+
+    &--active > div {
+        background-color: #0d6efd !important;
+    }
+
+    > div.available_tile {
+        background-color: $success;
+    }
+
+    > div.disabled {
+        background-color: #8a8a8a;
+    }
+
+    > div.busy_tile {
+        background-color: $element_red;
+    }
+
+    > div.hot_tile {
+        background-color: #ffa06a;
+    }
+}
+
+.BrainhubCarousel__custom-arrowLeft:first-of-type {
+    position: absolute;
+    left: 0;
+}
+
+.BrainhubCarousel__custom-arrowLeft:last-of-type {
+    position: absolute;
+    right: 0;
+}

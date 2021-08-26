@@ -1,45 +1,63 @@
-import React, { useEffect, useRef } from 'react'
-import { Row } from 'react-bootstrap'
+import React from 'react'
 import {
     getDate,
     eachDayOfInterval,
     startOfMonth,
     lastDayOfMonth,
     setMonth,
-    getMonth,
+    parseISO,
+    isSameDay,
+    differenceInCalendarDays,
 } from 'date-fns'
-import Slider from 'react-slick'
+import { Col } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-// import dailyClasses from 'dailyClasses';
-// import toDatetime from 'toDatetime'
+import Carousel, { slidesToShowPlugin, arrowsPlugin } from '@brainhubeu/react-carousel'
+import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons'
+import { toDatetime } from '@/utils/dateLib'
 
-import './Slick.scss'
+import './Slider.scss'
 
-export default function SliderCalendar({ onDateChange = null, month, disabledDates = [] }) {
-    const currMonth = getMonth(new Date())
-
-    const slickRef = useRef()
-
-    // количество дней (индексов) от начала месяца до текущего дня
-    const offset = getDate(new Date()) - 1
-
-    // при изменении месяца сбрасывает положение слайдера
-    useEffect(() => {
-        if (month !== currMonth) slickRef.current.slickGoTo(0, true)
-        if (month === currMonth) slickRef.current.slickGoTo(offset, true)
-    }, [month, currMonth, offset])
-
-    // собирает все дни текущего месяца в массив
+// собирает все дни текущего месяца в массив с датами
+function generateMonthDates(month) {
     const dates = eachDayOfInterval({
         start: startOfMonth(setMonth(new Date(), month)),
         end: lastDayOfMonth(setMonth(new Date(), month)),
     })
 
-    // генерируется разметка всех дней месяца, для активных дней устанавливаются нужные классы
-    const days = dates.map((date) => {
+    return dates
+}
+
+// преобразоввывает массив с днями в финальный массив вида [[Date, 'disabled'], [Date, '']],
+// отключает прошлые дни и дни из disabledDates
+function sortDates(dates, disabledDates) {
+    dates.forEach((date, index) => {
+        dates[index] = [date, '']
+
+        const diffInDays = differenceInCalendarDays(new Date(), date)
+        if (diffInDays > 0) {
+            dates[index][1] = 'disabled'
+        }
+        if (disabledDates.some((dDate) => isSameDay(parseISO(dDate), date))) {
+            dates[index][1] = 'disabled'
+        }
+    })
+
+    return dates
+}
+
+// генерируется разметка всех дней месяца, для активных дней устанавливаются нужные классы,
+// для выключенных тоже
+function generateDays(dates, dailyClasses) {
+    const days = dates.map((dateArr) => {
+        const date = dateArr[0]
+        const isDisabled = dateArr[1]
+
         return (
-            // <div className={`ps-4 ps-md-5 ps-lg-6 pe-4 pe-md-5 pe-lg-6 bg-success text-white bg-opacity-50 ${dailyClasses[toDatetime(date) || ''} ${disabledDates.includes(date) ? 'disabled' : ' }`}>
-            <div className="ps-3 ps-sm-4 ps-md-5 ps-lg-6 pe-3 pe-sm-4 pe-md-5 pe-lg-6 bg-success bg-gradient text-white">
+            <div
+                className={`ps-4 ps-md-5 ps-lg-6 pe-4 pe-md-5 pe-lg-6 text-white rounded ${isDisabled} ${
+                    dailyClasses[toDatetime(date)] || ''
+                }`}
+            >
                 <div
                     style={{
                         borderRadius: '.25rem',
@@ -59,38 +77,64 @@ export default function SliderCalendar({ onDateChange = null, month, disabledDat
         )
     })
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 150,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        focusOnSelect: true,
-        centerMode: true,
-        touchThreshold: 10,
-        swipeToSlide: true,
-        initialSlide: offset,
-        afterChange(index) {
-            onDateChange(dates[index])
-        },
+    return days
+}
+
+export default function SliderCalendar({ onDateChange, value, disabledDates = [], dailyClasses }) {
+    const month = value.getMonth()
+
+    const dates = sortDates(generateMonthDates(month), disabledDates)
+    const days = generateDays(dates, dailyClasses)
+
+    // вызывает коллбек с новым date, если день не отключен
+    function onChange(index) {
+        // проверка из-за неправильного поведения слайдера, при клике на любой слайд он выбрасывает NaN
+        // eslint-disable-next-line no-restricted-globals
+        if (!isNaN(index)) {
+            if (!dates[index].includes('disabled')) onDateChange(dates[index][0])
+        }
     }
 
     return (
-        <Row className="mb-5">
-            <Slider ref={slickRef} {...settings}>
+        <Col className="mb-5 position-relative">
+            <Carousel
+                plugins={[
+                    'centered',
+                    {
+                        resolve: slidesToShowPlugin,
+                        options: {
+                            numberOfSlides: 3,
+                        },
+                    },
+                    {
+                        resolve: arrowsPlugin,
+                        options: {
+                            arrowLeft: <ArrowLeft />,
+                            arrowLeftDisabled: <ArrowLeft className="opacity-50" />,
+                            arrowRight: <ArrowRight />,
+                            arrowRightDisabled: <ArrowRight className="opacity-50" />,
+                            addArrowClickHandler: true,
+                        },
+                    },
+                ]}
+                clickToChange
+                value={getDate(value) - 1}
+                onChange={onChange}
+                animationSpeed={150}
+            >
                 {days}
-            </Slider>
-        </Row>
+            </Carousel>
+        </Col>
     )
 }
 
 SliderCalendar.propTypes = {
-    onDateChange: PropTypes.func,
-    month: PropTypes.number.isRequired,
-    disabledDates: PropTypes.arrayOf(PropTypes.Date),
+    value: PropTypes.instanceOf(Date).isRequired,
+    onDateChange: PropTypes.func.isRequired,
+    dailyClasses: PropTypes.func.isRequired,
+    disabledDates: PropTypes.arrayOf(PropTypes.string),
 }
 
 SliderCalendar.defaultProps = {
-    onDateChange: null,
     disabledDates: [],
 }
