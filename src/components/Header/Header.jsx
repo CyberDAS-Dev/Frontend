@@ -48,7 +48,7 @@ export default function Header() {
                             <Nav.Link eventKey="1">Заселение</Nav.Link>
                         </LinkContainer>
                     </Nav>
-                    <Nav activeKey={activeKey}>
+                    <Nav hidden activeKey={activeKey}>
                         <LinkContainer exact to="/login" activeKey={activeKey}>
                             <Nav.Link eventKey="3">Вход</Nav.Link>
                         </LinkContainer>
