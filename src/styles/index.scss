@@ -33,6 +33,15 @@
     color: $gray-400;
 }
 
+/* Приятный эффект обводки при наведении на элементы формы */
+.form-control {
+    &:focus,
+    &:active,
+    &:hover {
+        border-color: $element-grey;
+    }
+}
+
 .form-select {
     &:focus,
     &:active,
