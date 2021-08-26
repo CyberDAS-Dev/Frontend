@@ -34,14 +34,14 @@ export default function Homepage() {
                         </Col>
                     </Row>
                     <Row className="pt-5 pb-5">
-                        <LinkContainer to="/signup">
+                        <LinkContainer to="/queue">
                             <Button
                                 as={Col}
                                 xs={{ span: 6, offset: 3 }}
                                 md={{ span: 3, offset: 8 }}
                                 size="lg"
                             >
-                                Регистрация
+                                Заселение
                             </Button>
                         </LinkContainer>
                     </Row>
