@@ -1,4 +1,5 @@
 import React from 'react'
+import { toDatetime } from '@/utils/dateLib'
 import SliderCalendar from './SliderCalendar'
 import Description from './SliderCalendar.description.md'
 
@@ -19,6 +20,12 @@ const Template = (args) => <SliderCalendar {...args} />
 export const Primary = Template.bind({})
 
 Primary.args = {
-    onDateChange: (value) => alert(value),
-    month: 7,
+    value: new Date(),
+    onDateChange: (event) => event,
+    dailyClasses: Object.fromEntries([
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 1))), 'busy_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 2))), 'hot_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 3))), 'available_tile'],
+        [toDatetime(new Date(new Date().setDate(new Date().getDate() + 4))), 'available_tile'],
+    ]),
 }
