@@ -101,9 +101,8 @@ export default function SliderCalendar({
     // вызывает коллбек с новым date, если день не отключен
     function onDateChange(index) {
         // проверка из-за неправильного поведения слайдера, при клике на любой слайд он выбрасывает NaN
-        // eslint-disable-next-line no-restricted-globals
-        if (!isNaN(index)) {
-            if (!dates[index].includes('disabled')) onDateChange(dates[index][0])
+        if (!Number.isNaN(index)) {
+            if (!dates[index].includes('disabled')) onChange(dates[index][0])
         }
     }
 
