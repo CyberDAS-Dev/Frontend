@@ -23,4 +23,5 @@ Primary.args = {
     variant: 'primary',
     date: { year: 2019, month: 7 },
     onClick: ({ year, month }) => alert(`${year} ${month}`),
+    noYear: false,
 }

@@ -29,4 +29,5 @@ Primary.args = {
         { year: 2019, month: 6 },
     ],
     onChange: ({ year, month }) => alert(`${year} ${month}`),
+    noYear: false,
 }

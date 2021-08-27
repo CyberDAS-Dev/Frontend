@@ -18,9 +18,14 @@ const monthNames = [
     'Декабрь',
 ]
 
-const formatDate = (date) => `${monthNames[date.month]} ${date.year}`
+const formatDate = (date, noYear) => {
+    if (noYear) {
+        return `${monthNames[date.month]}`
+    }
+    return `${monthNames[date.month]} ${date.year}`
+}
 
-export default function Month({ date, variant = '', onClick = null }) {
+export default function Month({ date, variant = '', onClick = null, noYear = false }) {
     return (
         <Col className="d-flex justify-content-center">
             <Button
@@ -34,7 +39,7 @@ export default function Month({ date, variant = '', onClick = null }) {
                     })
                 }
             >
-                {formatDate(date)}
+                {formatDate(date, noYear)}
             </Button>
         </Col>
     )
@@ -44,9 +49,11 @@ Month.propTypes = {
     variant: PropTypes.string,
     date: PropTypes.shape({ year: PropTypes.number, month: PropTypes.number }).isRequired,
     onClick: PropTypes.func,
+    noYear: PropTypes.bool,
 }
 
 Month.defaultProps = {
     variant: '',
     onClick: null,
+    noYear: false,
 }
