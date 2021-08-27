@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     getDate,
     eachDayOfInterval,
@@ -8,8 +8,10 @@ import {
     parseISO,
     isSameDay,
     differenceInCalendarDays,
+    getUnixTime,
+    fromUnixTime,
+    isWeekend,
 } from 'date-fns'
-import { Col } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import Carousel, { slidesToShowPlugin, arrowsPlugin } from '@brainhubeu/react-carousel'
 import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons'
@@ -47,16 +49,23 @@ function sortDates(dates, disabledDates) {
 
 // генерируется разметка всех дней месяца, для активных дней устанавливаются нужные классы,
 // для выключенных тоже
-function generateDays(dates, dailyClasses) {
+function generateDays(dates, dailyClasses, onDateChange) {
     const days = dates.map((dateArr) => {
         const date = dateArr[0]
         const isDisabled = dateArr[1]
+        const dateUnix = getUnixTime(date)
 
         return (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus
             <div
                 className={`ps-4 ps-md-5 ps-lg-6 pe-4 pe-md-5 pe-lg-6 text-white rounded ${isDisabled} ${
                     dailyClasses[toDatetime(date)] || ''
-                }`}
+                } ${isWeekend(date) ? 'weekend' : ''}`}
+                id={dateUnix}
+                onClick={(e) => {
+                    if (isDisabled !== 'disabled') onDateChange(fromUnixTime(e.currentTarget.id))
+                }}
+                role="button"
             >
                 <div
                     style={{
@@ -83,8 +92,13 @@ function generateDays(dates, dailyClasses) {
 export default function SliderCalendar({ onDateChange, value, disabledDates = [], dailyClasses }) {
     const month = value.getMonth()
 
-    const dates = sortDates(generateMonthDates(month), disabledDates)
-    const days = generateDays(dates, dailyClasses)
+    const [dates, setDates] = useState(sortDates(generateMonthDates(month), disabledDates))
+
+    useEffect(() => {
+        setDates(sortDates(generateMonthDates(month), disabledDates))
+    }, [month, disabledDates])
+
+    const days = generateDays(dates, dailyClasses, onDateChange)
 
     // вызывает коллбек с новым date, если день не отключен
     function onChange(index) {
@@ -96,35 +110,33 @@ export default function SliderCalendar({ onDateChange, value, disabledDates = []
     }
 
     return (
-        <Col className="mb-5 position-relative">
-            <Carousel
-                plugins={[
-                    'centered',
-                    {
-                        resolve: slidesToShowPlugin,
-                        options: {
-                            numberOfSlides: 3,
-                        },
+        <Carousel
+            plugins={[
+                'centered',
+                {
+                    resolve: slidesToShowPlugin,
+                    options: {
+                        numberOfSlides: 3,
                     },
-                    {
-                        resolve: arrowsPlugin,
-                        options: {
-                            arrowLeft: <ArrowLeft />,
-                            arrowLeftDisabled: <ArrowLeft className="opacity-50" />,
-                            arrowRight: <ArrowRight />,
-                            arrowRightDisabled: <ArrowRight className="opacity-50" />,
-                            addArrowClickHandler: true,
-                        },
+                },
+                {
+                    resolve: arrowsPlugin,
+                    options: {
+                        arrowLeft: <ArrowLeft />,
+                        arrowLeftDisabled: <ArrowLeft className="opacity-50" />,
+                        arrowRight: <ArrowRight />,
+                        arrowRightDisabled: <ArrowRight className="opacity-50" />,
+                        addArrowClickHandler: true,
                     },
-                ]}
-                clickToChange
-                value={getDate(value) - 1}
-                onChange={onChange}
-                animationSpeed={150}
-            >
-                {days}
-            </Carousel>
-        </Col>
+                },
+            ]}
+            clickToChange
+            value={getDate(value) - 1}
+            onChange={onChange}
+            animationSpeed={150}
+        >
+            {days}
+        </Carousel>
     )
 }
 
