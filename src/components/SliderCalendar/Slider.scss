@@ -8,32 +8,32 @@
         user-select: none;
     }
 
-    > div {
+    > button {
         transition: all 0.3s;
         background-color: $element-grey;
     }
 
-    &--active > div {
+    &--active > button {
         background-color: $primary !important;
     }
 
-    > div.available_tile {
+    .available_tile {
         background-color: $success;
     }
 
-    > div.weekend {
+    .weekend {
         background-color: #bcbcbc;
     }
 
-    > div.disabled {
+    .disabled {
         background-color: #8a8a8a;
     }
 
-    > div.busy_tile {
+    .busy_tile {
         background-color: $element_red;
     }
 
-    > div.hot_tile {
+    .hot_tile {
         background-color: #ffa06a;
     }
 }

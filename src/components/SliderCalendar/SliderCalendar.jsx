@@ -56,33 +56,24 @@ function generateDays(dates, dailyClasses, onChange) {
         const dateUnix = getUnixTime(date)
 
         return (
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus
-            <div
-                className={`ps-4 ps-md-5 ps-lg-6 pe-4 pe-md-5 pe-lg-6 text-white rounded ${isDisabled} ${
-                    dailyClasses[toDatetime(date)] || ''
-                } ${isWeekend(date) ? 'weekend' : ''}`}
+            <button
                 id={dateUnix}
+                key={dateUnix}
+                className={`text-white rounded ${isDisabled} ${isWeekend(date) ? 'weekend' : ''}  ${
+                    dailyClasses[toDatetime(date)] || ''
+                } `}
+                style={{ width: '90%', height: '4rem', border: '0' }}
                 onClick={(e) => {
                     if (isDisabled !== 'disabled') onChange(fromUnixTime(e.currentTarget.id))
                 }}
-                role="button"
             >
-                <div
-                    style={{
-                        borderRadius: '.25rem',
-                        padding: '5rem !important',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                >
-                    <span>{date.toLocaleDateString('ru-RU', { weekday: 'short' })}</span>
-                    <span>
+                <div className="d-flex flex-column justify-content-center align-items-center">
+                    <p className="mb-2">{date.toLocaleDateString('ru-RU', { weekday: 'short' })}</p>
+                    <p>
                         <strong>{getDate(date)}</strong>
-                    </span>
+                    </p>
                 </div>
-            </div>
+            </button>
         )
     })
 
