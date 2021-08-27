@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'react-bootstrap'
 import MonthSelector from '@/components/MonthSelector/MonthSelector'
 import SlotCalendar from '@/components/SlotCalendar/SlotCalendar'
+import SliderCalendar from '../SliderCalendar/SliderCalendar'
 import NamedSlotList from '@/components/SlotList/NamedSlotList'
 import { toObject, toDate, toDatetime } from '@/utils/dateLib'
+import useWindowDimensions from '@/hooks/useWindowDimensions'
 
 const today = new Date()
 const getInitialDay = (disabledDates) => {
@@ -22,6 +24,7 @@ export default function QueueInputGroup({
     onSlotClick = () => {},
     getNoItemsText = () => {},
 }) {
+    const { width } = useWindowDimensions()
     const [date, setDate] = useState(new Date())
     const months = Object.keys(dailyClasses).map((element) =>
         element.split('-').slice(0, 2).join('-')
@@ -49,6 +52,8 @@ export default function QueueInputGroup({
         onDateChange(earliestDay)
     }
 
+    const Calendar = width < 768 ? SliderCalendar : SlotCalendar
+
     if (show) {
         return (
             <div>
@@ -56,18 +61,21 @@ export default function QueueInputGroup({
                     <Col>
                         <MonthSelector
                             xs={2}
-                            lg={4}
+                            sm={3}
+                            md={4}
+                            xxl={6}
                             className="mb-3"
                             current={toObject(toDate(date, true))}
                             dates={uniqueMonths}
                             onChange={onMonthChange}
+                            noYear
                         />
                     </Col>
                     <Col />
                 </Row>
                 <Row xs={1} lg={2}>
                     <Col>
-                        <SlotCalendar
+                        <Calendar
                             className="mb-3"
                             onChange={onDateChange}
                             value={date}
@@ -75,7 +83,6 @@ export default function QueueInputGroup({
                             disabledDates={disabledDates}
                         />
                     </Col>
-
                     <Col>
                         <NamedSlotList
                             xs={3}
