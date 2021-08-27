@@ -98,17 +98,9 @@
     ```bash
     npm i
     ```
-    или
-    ```bash
-    yarn
-    ```
 3. Запустите локальный сервер для разработки, приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000)
     ```bash
     npm start
-    ```
-    или
-    ```bash
-    yarn start
     ```
 
 ### Развертывание
@@ -117,14 +109,10 @@
     ```bash
     npm run build
     ```
-    или
-    ```bash
-    yarn build
-    ```
 
 ## Дорожная карта
 
-Смотрите [open issues](https://github.com/CyberDAS-Dev/Frontend/issues) для информации о планируемых улучшениях и известных проблемах.
+Смотрите [milestones](https://github.com/CyberDAS-Dev/Frontend/milestones) для информации о планируемых релизах и долгосрочных планов.
 
 ## Содействие
 
