@@ -25,16 +25,16 @@
         background-color: #bcbcbc;
     }
 
-    .disabled {
-        background-color: #8a8a8a;
-    }
-
     .busy_tile {
         background-color: $element_red;
     }
 
     .hot_tile {
         background-color: #ffa06a;
+    }
+
+    .disabled {
+        background-color: #8a8a8a;
     }
 }
 

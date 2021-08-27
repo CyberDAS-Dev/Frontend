@@ -73,7 +73,7 @@ export default function QueueInputGroup({
                     </Col>
                     <Col />
                 </Row>
-                <Row xs={1} lg={2}>
+                <Row xs={1} lg={2} className="position-relative">
                     <Col>
                         <Calendar
                             className="mb-3"
