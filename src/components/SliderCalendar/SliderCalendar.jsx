@@ -49,7 +49,7 @@ function sortDates(dates, disabledDates) {
 
 // генерируется разметка всех дней месяца, для активных дней устанавливаются нужные классы,
 // для выключенных тоже
-function generateDays(dates, dailyClasses, onDateChange) {
+function generateDays(dates, dailyClasses, onChange) {
     const days = dates.map((dateArr) => {
         const date = dateArr[0]
         const isDisabled = dateArr[1]
@@ -63,7 +63,7 @@ function generateDays(dates, dailyClasses, onDateChange) {
                 } ${isWeekend(date) ? 'weekend' : ''}`}
                 id={dateUnix}
                 onClick={(e) => {
-                    if (isDisabled !== 'disabled') onDateChange(fromUnixTime(e.currentTarget.id))
+                    if (isDisabled !== 'disabled') onChange(fromUnixTime(e.currentTarget.id))
                 }}
                 role="button"
             >
@@ -89,7 +89,14 @@ function generateDays(dates, dailyClasses, onDateChange) {
     return days
 }
 
-export default function SliderCalendar({ onDateChange, value, disabledDates = [], dailyClasses }) {
+export default function SliderCalendar({
+    onChange = () => {},
+    value,
+    className = '',
+    dailyClasses = [],
+    disabledDates = [],
+    show = true,
+}) {
     const month = value.getMonth()
 
     const [dates, setDates] = useState(sortDates(generateMonthDates(month), disabledDates))
@@ -98,10 +105,10 @@ export default function SliderCalendar({ onDateChange, value, disabledDates = []
         setDates(sortDates(generateMonthDates(month), disabledDates))
     }, [month, disabledDates])
 
-    const days = generateDays(dates, dailyClasses, onDateChange)
+    const days = generateDays(dates, dailyClasses, onChange)
 
     // вызывает коллбек с новым date, если день не отключен
-    function onChange(index) {
+    function onDateChange(index) {
         // проверка из-за неправильного поведения слайдера, при клике на любой слайд он выбрасывает NaN
         // eslint-disable-next-line no-restricted-globals
         if (!isNaN(index)) {
@@ -109,44 +116,55 @@ export default function SliderCalendar({ onDateChange, value, disabledDates = []
         }
     }
 
-    return (
-        <Carousel
-            plugins={[
-                'centered',
-                {
-                    resolve: slidesToShowPlugin,
-                    options: {
-                        numberOfSlides: 3,
+    if (show) {
+        return (
+            <Carousel
+                className={className}
+                plugins={[
+                    'centered',
+                    {
+                        resolve: slidesToShowPlugin,
+                        options: {
+                            numberOfSlides: 3,
+                        },
                     },
-                },
-                {
-                    resolve: arrowsPlugin,
-                    options: {
-                        arrowLeft: <ArrowLeft />,
-                        arrowLeftDisabled: <ArrowLeft className="opacity-50" />,
-                        arrowRight: <ArrowRight />,
-                        arrowRightDisabled: <ArrowRight className="opacity-50" />,
-                        addArrowClickHandler: true,
+                    {
+                        resolve: arrowsPlugin,
+                        options: {
+                            arrowLeft: <ArrowLeft />,
+                            arrowLeftDisabled: <ArrowLeft className="opacity-50" />,
+                            arrowRight: <ArrowRight />,
+                            arrowRightDisabled: <ArrowRight className="opacity-50" />,
+                            addArrowClickHandler: true,
+                        },
                     },
-                },
-            ]}
-            clickToChange
-            value={getDate(value) - 1}
-            onChange={onChange}
-            animationSpeed={150}
-        >
-            {days}
-        </Carousel>
-    )
+                ]}
+                clickToChange
+                value={getDate(value) - 1}
+                onChange={onDateChange}
+                animationSpeed={150}
+            >
+                {days}
+            </Carousel>
+        )
+    }
+
+    return ''
 }
 
 SliderCalendar.propTypes = {
     value: PropTypes.instanceOf(Date).isRequired,
-    onDateChange: PropTypes.func.isRequired,
-    dailyClasses: PropTypes.func.isRequired,
+    show: PropTypes.bool,
+    className: PropTypes.string,
+    onChange: PropTypes.func,
+    dailyClasses: PropTypes.objectOf(PropTypes.string),
     disabledDates: PropTypes.arrayOf(PropTypes.string),
 }
 
 SliderCalendar.defaultProps = {
+    show: true,
+    className: '',
+    onChange: () => {},
+    dailyClasses: {},
     disabledDates: [],
 }
