@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'react-bootstrap'
 import MonthSelector from '@/components/MonthSelector/MonthSelector'
-// import SlotCalendar from '@/components/SlotCalendar/SlotCalendar'
-import SliderCalendar from '@/components/SliderCalendar/SliderCalendar'
+import SlotCalendar from '@/components/SlotCalendar/SlotCalendar'
 import NamedSlotList from '@/components/SlotList/NamedSlotList'
 import { toObject, toDate, toDatetime } from '@/utils/dateLib'
 
@@ -68,20 +67,15 @@ export default function QueueInputGroup({
                 </Row>
                 <Row xs={1} lg={2}>
                     <Col>
-                        {/* <SlotCalendar
+                        <SlotCalendar
                             className="mb-3"
                             onChange={onDateChange}
                             value={date}
                             dailyClasses={dailyClasses}
                             disabledDates={disabledDates}
-                        /> */}
+                        />
                     </Col>
-                    <SliderCalendar
-                        value={date}
-                        onDateChange={onDateChange}
-                        dailyClasses={dailyClasses}
-                        disabledDates={disabledDates}
-                    />
+
                     <Col>
                         <NamedSlotList
                             xs={3}

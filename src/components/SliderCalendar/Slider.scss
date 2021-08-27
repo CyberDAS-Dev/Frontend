@@ -2,9 +2,15 @@
 @import '~@brainhubeu/react-carousel/lib/style.css';
 
 .BrainhubCarouselItem {
+    cursor: pointer;
+
+    span {
+        user-select: none;
+    }
+
     > div {
         transition: all 0.3s;
-        background-color: #bcbcbc;
+        background-color: #4d4f60;
     }
 
     &--active > div {
@@ -13,6 +19,10 @@
 
     > div.available_tile {
         background-color: $success;
+    }
+
+    > div.weekend {
+        background-color: #bcbcbc;
     }
 
     > div.disabled {
@@ -28,12 +38,19 @@
     }
 }
 
-.BrainhubCarousel__custom-arrowLeft:first-of-type {
+.BrainhubCarousel__customArrows {
+    height: 100%;
+    cursor: pointer;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BrainhubCarousel__custom-arrowLeft:first-of-type {
     left: 0;
 }
 
 .BrainhubCarousel__custom-arrowLeft:last-of-type {
-    position: absolute;
     right: 0;
 }
