@@ -36,6 +36,27 @@ class SlotDataService {
             }
         })
     }
+
+    undo(token) {
+        if (!token) {
+            errorAlert('Пустая строка с токеном, перейдите по ссылке из письма еще раз')
+            return false
+        }
+        return http.get(`/undo?token=${token}`).catch((err) => {
+            const statusCode = err.response?.status
+            if (statusCode === 400) {
+                errorAlert('Неверный токен')
+            } else if (statusCode === 404) {
+                errorAlert('Слот на это время и так свободен, нет необходимости его освобождать')
+            } else if (statusCode === 403) {
+                errorAlert(
+                    'Запись на это время уже истекла. Нет необходимости её освобождать, вы можете заново зарегистрироваться на любое другое удобное время'
+                )
+            } else {
+                err.handleGlobally()
+            }
+        })
+    }
 }
 
 export default new SlotDataService()
