@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'react-bootstrap'
 import MonthSelector from '@/components/MonthSelector/MonthSelector'
 import SlotCalendar from '@/components/SlotCalendar/SlotCalendar'
 import NamedSlotList from '@/components/SlotList/NamedSlotList'
-import {
-    toObject,
-    toDate,
-    toDatetime,
-    earliestAvailableInMonth,
-    fromDatetime,
-} from '@/utils/dateLib'
+import { toObject, toDate, toDatetime } from '@/utils/dateLib'
+
+const today = new Date()
+const getInitialDay = (disabledDates) => {
+    if (disabledDates.includes(toDatetime(today))) {
+        return new Date(new Date().setDate(today.getDate() + 1))
+    }
+    return new Date()
+}
 
 export default function QueueInputGroup({
     show = true,
@@ -20,28 +22,32 @@ export default function QueueInputGroup({
     onSlotClick = () => {},
     getNoItemsText = () => {},
 }) {
-    // Если пользователь переключился на сегодняшний день, но он уже закрыт или
-    // (скользкий момент) длина disabledDates нулевая, что говорит о том что
-    // массив еще не подгрузился, то мы переносим его на следующий день
-    const correctDay = (nextValue) => {
-        if (
-            toDatetime(nextValue) === toDatetime(new Date()) &&
-            (disabledDates.includes(toDatetime(new Date())) || disabledDates.length === 0)
-        ) {
-            return new Date(new Date().setDate(nextValue.getDate() + 1))
-        }
-        return new Date(nextValue)
-    }
-
-    const [date, setDate] = useState(correctDay(new Date()))
+    const [date, setDate] = useState(new Date())
     const months = Object.keys(dailyClasses).map((element) =>
         element.split('-').slice(0, 2).join('-')
     )
     const uniqueMonths = [...new Set(months)].map((element) => toObject(element))
 
-    const onDateChange = (nextValue) => setDate(correctDay(nextValue))
-    const onMonthChange = (nextValue) =>
-        onDateChange(fromDatetime(earliestAvailableInMonth(nextValue.year, nextValue.month)))
+    /* 
+        При инициализации компонента нам нужно проставить начальную дату, при этом 
+        это не всегда будет сегодняшная дата (т.к она может быть в disabledDates), 
+        поэтому `new Date()` внутри useState не сработает. Сайд эффект от этого -
+        при смене факультете будет меняться выбранный день
+    */
+    useEffect(() => {
+        setDate(getInitialDay(disabledDates))
+    }, [disabledDates])
+
+    const onDateChange = (nextValue) => setDate(nextValue)
+    const onMonthChange = (nextValue) => {
+        let earliestDay
+        if (nextValue.month === today.getMonth()) {
+            earliestDay = getInitialDay(disabledDates)
+        } else {
+            earliestDay = new Date(nextValue.year, nextValue.month, 1)
+        }
+        onDateChange(earliestDay)
+    }
 
     if (show) {
         return (
