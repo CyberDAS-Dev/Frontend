@@ -1,12 +1,35 @@
-$main-white: #fff;
-$white-hover: #c1c1c1;
-$white-click: #a8a8a8;
-$main-blue: #3192c9;
-$mail-blue-click: #0087d3;
-$mail-blue-hover: #3ca3de;
-$main-text: #3b3c47;
-$main-background: #efefef;
-$main-background-dark: #4d4f60;
+// Переменные Bootstrap
+$primary: #3192c9;
+$success: #88d874;
+$body-bg: #efefef;
+$body-color: #3b3c47;
+$link-color: #0c76bc;
+$font-family-base: 'Roboto', sans-serif;
+
+$enable-shadows: true;
+
+/* https://stackoverflow.com/questions/65170317/sass-scss-bootstrap-5-color-functions-not-working-well */
+$min-contrast-ratio: 1.65;
+
+$navbar-dark-color: white;
+$navbar-dark-hover-color: #c1c1c1;
+$navbar-dark-active-color: #a8a8a8;
+
+$spacer: 1rem;
+$spacers: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 5,
+);
+
+$link-decoration: none;
+$link-hover-decoration: none;
+
+// Переменные проекта
 $page-background: #fcfcfc;
 $page-border: #e8e8e8;
 $page-header: #f9f9f9;
@@ -15,4 +38,6 @@ $element-bright: #99999c;
 $element-green: #88d874;
 $element-turquoise: #89d7c6;
 $element-red: #fc8383;
-$header-color: #24252e;
+
+$input-bg: $page-background;
+$form-select-bg: $page-background;

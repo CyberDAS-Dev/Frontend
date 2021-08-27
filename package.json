@@ -1,9 +1,10 @@
 {
     "name": "cyberdas",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "private": true,
     "dependencies": {
         "@babel/register": "^7.14.5",
+        "@brainhubeu/react-carousel": "^2.0.4",
         "@fontsource/open-sans": "^4.5.0",
         "@fontsource/quantico": "^4.5.0",
         "@fontsource/roboto": "^4.5.0",
@@ -13,20 +14,26 @@
         "@testing-library/user-event": "^7.1.2",
         "axios": "^0.21.1",
         "babel-eslint": "^10.1.0",
-        "bootstrap": "4.6.0",
+        "bootstrap": "^5.1.0",
         "date-fns": "^2.23.0",
+        "formik": "^2.2.9",
         "is-ci": "^3.0.0",
         "lint-staged": "^11.0.0",
         "prettier": "^2.3.2",
+        "prop-types": "^15.7.2",
         "react": "^17.0.2",
-        "react-bootstrap": "^1.6.1",
+        "react-bootstrap": "^2.0.0-beta.5",
+        "react-bootstrap-icons": "^1.5.0",
         "react-calendar": "^3.4.0",
         "react-confirm": "^0.1.24",
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.3",
         "react-router-bootstrap": "^0.25.0",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "4.0.3"
+        "react-scripts": "4.0.3",
+        "yup": "^0.32.9",
+        "react-slick": "^0.28.1",
+        "slick-carousel": "^1.8.1"
     },
     "lint-staged": {
         "*.{js,jsx}": [
@@ -45,11 +52,23 @@
         "lint:code": "eslint --ext js,jsx src",
         "lint:style": "stylelint src/**/*.{css,scss}",
         "format:code": "eslint --ext js,jsx src --fix",
-        "format:style": "stylelint src/**/*.{css,scss} --fix",
-        "pre-commit": "lint-staged"
+        "format:style": "stylelint src/*/*/*.{css,scss} --fix",
+        "pre-commit": "lint-staged",
+        "storybook": "start-storybook -p 6006 -s public",
+        "build-storybook": "build-storybook -s public"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": "react-app",
+        "overrides": [
+            {
+                "files": [
+                    "**/*.stories.*"
+                ],
+                "rules": {
+                    "import/no-anonymous-default-export": "off"
+                }
+            }
+        ]
     },
     "browserslist": {
         "production": [
@@ -64,6 +83,12 @@
         ]
     },
     "devDependencies": {
+        "@storybook/addon-actions": "^6.3.7",
+        "@storybook/addon-essentials": "^6.3.7",
+        "@storybook/addon-links": "^6.3.7",
+        "@storybook/node-logger": "^6.3.7",
+        "@storybook/preset-create-react-app": "^3.2.0",
+        "@storybook/react": "^6.3.7",
         "eslint-config-airbnb": "18.2.1",
         "eslint-config-prettier": "^8.3.0",
         "eslint-import-resolver-jsconfig": "^1.1.0",

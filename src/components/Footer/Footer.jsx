@@ -1,61 +1,46 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import s from './Footer.module.scss'
+import { Container, Row, Col } from 'react-bootstrap'
+import FooterLink from './FooterLink'
 
 export default function Footer() {
+    // mt-auto нужно для прибития футера вниз страницы
     return (
-        <footer className={s.footer}>
+        <footer className="bg-nav pt-4 pb-4 mt-auto">
             <Container>
-                <Row>
-                    <div className="col-md-1 col-lg-2" />
-                    <div className="col-6 col-md-5 col-lg-4">
-                        <Row>
-                            <div className="col-12 p-3">
-                                <h5>О НАС</h5>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">CyberDas</p>
-                                </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Студком ДАСа</p>
-                                </Link>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">Общежитие ДАС</p>
-                                </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Команда</p>
-                                </Link>
-                            </div>
-                        </Row>
-                    </div>
-                    <div className="col-6 col-md-5 col-lg-4">
-                        <Row>
-                            <div className="col-12 p-3">
-                                <h5>ПРОЕКТЫ</h5>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">Вызов служб</p>
-                                </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Личный кабинет</p>
-                                </Link>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Link to="/">
-                                    <p className="text-subheader">Эл. очередь</p>
-                                </Link>
-                                <Link to="/">
-                                    <p className="text-subheader">Сейчас в разработке</p>
-                                </Link>
-                            </div>
-                        </Row>
-                    </div>
-                    <div className="col-md-1 col-lg-2" />
+                <Row className="text-center justify-content-md-center">
+                    <Col
+                        xs={{ order: 1, span: 6 }}
+                        md={{ order: 1, span: 'auto' }}
+                        className="mb-3 mb-md-0"
+                    >
+                        <FooterLink to="https://vk.com/studcomdas" name="Студком" external />
+                    </Col>
+                    <Col
+                        xs={{ order: 2, span: 6 }}
+                        md={{ order: 3, span: 'auto' }}
+                        className="mb-3 mb-md-0"
+                    >
+                        <FooterLink to="https://das.msk.ru/" name="Общежитие ДАС" external />
+                    </Col>
+                    <Col xs={{ order: 'last', span: 12 }} md={{ order: 3, span: 'auto' }}>
+                        <a href="https://github.com/CyberDAS-Dev" className="link-secondary">
+                            © 2021 «CyberDAS-Dev»
+                        </a>
+                    </Col>
+                    <Col
+                        xs={{ order: 3, span: 6 }}
+                        md={{ order: 4, span: 'auto' }}
+                        className="mb-3 mb-md-0"
+                    >
+                        <FooterLink to="/privacy" name="Защита данных" />
+                    </Col>
+                    <Col
+                        xs={{ order: 4, span: 6 }}
+                        md={{ order: 5, span: 'auto' }}
+                        className="mb-3 mb-md-0"
+                    >
+                        <FooterLink to="/agreement" name="Соглашение" />
+                    </Col>
                 </Row>
             </Container>
         </footer>

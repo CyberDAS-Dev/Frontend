@@ -9,12 +9,14 @@ import '@fontsource/open-sans'
 import '@fontsource/open-sans/300.css'
 import '@/styles/index.scss'
 import Header from '@/components/Header/Header'
-import Home from '@/pages/Home/Home'
+import Landing from '@/pages/Landing/Landing'
 import NotFoundPage from '@/pages/NotFound/NotFound'
 import Footer from '@/components/Footer/Footer'
 import Login from '@/pages/Login/Login'
 import Signup from '@/pages/Signup/Signup'
 import Queue from '@/pages/Queue/Queue'
+import Privacy from '@/pages/Privacy/Privacy'
+import UserAgreement from '@/pages/UserAgreement/UserAgreement'
 
 function App() {
     return (
@@ -24,8 +26,10 @@ function App() {
                 <Switch>
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/queue" component={Queue} />
+                    <Route exact path="/privacy" component={Privacy} />
+                    <Route exact path="/agreement" component={UserAgreement} />
                     <Route exact path="/signup" component={Signup} />
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={Landing} />
                     <Route component={NotFoundPage} />
                 </Switch>
                 <Footer />

@@ -2,13 +2,13 @@
 import http from '@/API/http'
 
 class QueueDataService {
-    getAll() {
-        return http.get('/queues')
+    getAll(day, offset) {
+        return http.simpleGet('/queues', { params: { day, offset } })
     }
 
     get(name) {
-        return http.get(`/queues/${name}`)
+        return http.simpleGet(`/queues/${name}`)
     }
 }
 
-export default QueueDataService
+export default new QueueDataService()

@@ -23,8 +23,8 @@
         "react/prop-types": 0,
         "require-jsdoc": 0,
         "react/button-has-type": 0,
-        "react/jsx-props-no-spreading": ["error", { "html": "ignore" }],
-        "jsx-a11y/label-has-associated-control": [2, {"controlComponents": ["Input"]}],
+        "react/jsx-props-no-spreading": 0,
+        "jsx-a11y/label-has-associated-control": [2, { "controlComponents": ["Input"] }],
         "no-param-reassign": ["error", { "props": false }],
         "prettier/prettier": ["error", { "endOfLine": "auto" }],
         "no-unused-vars": "warn"
