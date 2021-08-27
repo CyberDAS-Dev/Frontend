@@ -33,7 +33,9 @@ export function isDayDisabled(day, today, dailySlots) {
         diffInDays === 0 &&
         dailySlots[today]
             .filter((slot) => slot.free)
-            .filter((slot) => new Date(slot.time).getTime() - new Date().getTime() > 0).length === 0
+            .filter(
+                (slot) => new Date(fromDatetime(slot.time)).getTime() - new Date().getTime() > 0
+            ).length === 0
     ) {
         return true
     }
@@ -51,6 +53,7 @@ export default function SlotCalendar({
     const today = new Date()
     const year = value.getFullYear()
     const month = value.getMonth()
+    console.log(value)
 
     /* 
        Так как эта функция была самой медленной на странице, её пришлось здоровски переписать 
