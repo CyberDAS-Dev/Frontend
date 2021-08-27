@@ -10,11 +10,11 @@
 
     > div {
         transition: all 0.3s;
-        background-color: #4d4f60;
+        background-color: $element-grey;
     }
 
     &--active > div {
-        background-color: #0d6efd !important;
+        background-color: $primary !important;
     }
 
     > div.available_tile {
