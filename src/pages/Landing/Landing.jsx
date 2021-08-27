@@ -1,7 +1,9 @@
 import React from 'react'
 import { Container, Row, Col, Button, Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useHistory } from 'react-router-dom'
 import Card from '@/pages/Landing/components/Card/Card'
+import queryRoutes from '@/utils/queryRoutes'
 import useQuery from '@/hooks/useQuery'
 import s from './Landing.module.scss'
 import jumbo from './images/jumbotron.jpg'
@@ -14,13 +16,8 @@ import whiteForms from './images/icons/white/forms.png'
 import blueInfo from './images/icons/blue/info.png'
 import blueComingSoon from './images/icons/blue/comingsoon.png'
 
-import alert from '@/utils/alert'
-
 export default function Homepage() {
-    // Временная заплатка на показ поп-апа об отмене записи
-    if (useQuery().has('cancel')) {
-        alert('Вы успешно отменили запись', { title: 'Успех!' })
-    }
+    queryRoutes(useQuery(), useHistory())
 
     return (
         <Container fluid className="p-0">
