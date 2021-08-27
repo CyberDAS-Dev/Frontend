@@ -53,7 +53,6 @@ export default function SlotCalendar({
     const today = new Date()
     const year = value.getFullYear()
     const month = value.getMonth()
-    console.log(value)
 
     /* 
        Так как эта функция была самой медленной на странице, её пришлось здоровски переписать 
