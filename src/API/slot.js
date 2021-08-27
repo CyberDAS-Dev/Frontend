@@ -23,6 +23,19 @@ class SlotDataService {
             }
         })
     }
+
+    fasttrack(queue, id, data) {
+        return http.post(`/fasttrack`, { queue, slotId: id, ...data }).catch((err) => {
+            const statusCode = err.response?.status
+            if (statusCode === 400) {
+                errorAlert(err.response.data.description)
+            } else if (statusCode === 403) {
+                errorAlert('Этот слот уже занят или истёк.')
+            } else {
+                err.handleGlobally()
+            }
+        })
+    }
 }
 
 export default new SlotDataService()
