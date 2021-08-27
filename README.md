@@ -8,6 +8,8 @@
   <p align="center">
     Сайт общежития ДАС МГУ, работающий на базе <a href="https://github.com/CyberDAS-Dev/API">CyberDAS API</a>
     <br />
+    <a href="https://cyberdas.net/storybook"><strong>Сторибук »</strong></a>
+    <br />
     <br />
     <a href="https://github.com/CyberDAS-Dev/Frontend/issues">Сообщить об ошибке</a>
     ·
