@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react'
 import { toDatetime } from '@/utils/dateLib'
 import SliderCalendar from './SliderCalendar'
@@ -21,7 +22,7 @@ export const Primary = Template.bind({})
 
 Primary.args = {
     value: new Date(),
-    onDateChange: (event) => event,
+    onDateChange: (event) => alert(event),
     dailyClasses: Object.fromEntries([
         [toDatetime(new Date(new Date().setDate(new Date().getDate() + 1))), 'busy_tile'],
         [toDatetime(new Date(new Date().setDate(new Date().getDate() + 2))), 'hot_tile'],
