@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import Alert from 'react-bootstrap/Alert'
 import Page from '@/components/Page/Page'
 import confirm from '@/utils/confirm'
 import alert from '@/utils/alert'
+import confirmForm from '@/utils/confirmForm'
 import SlotAPI from '@/API/slot'
 import QueueInputGroup from '@/components/QueueInputGroup/QueueInputGroup'
 import getDateStyles from '@/components/SlotCalendar/dateStyling'
-import { earliestAvailableInMonth, tillMonthEnd, toDatetime } from '@/utils/dateLib'
+import { earliestAvailableInMonth, tillMonthEnd, toDatetime, fromDatetime } from '@/utils/dateLib'
 import getDailySlots from '@/components/QueueInputGroup/slotsMatrix'
 import FacultySelector from '@/components/FacultySelector/FacultySelector'
 import facultyToQueue from '@/utils/facultyToQueue'
+import FasttrackForm from '@/forms/Fasttrack'
 
 export default function Queue() {
     const [slots, setSlots] = useState([])
@@ -28,17 +29,64 @@ export default function Queue() {
                 setSlots(response.data)
             }
         }
-        fetchAPI()
+        if (faculty !== 0) {
+            fetchAPI()
+        }
     }, [faculty])
 
     async function onSlotClick(slot) {
+        if (faculty === 18 && fromDatetime(slot.value) < new Date('2021-09-01')) {
+            alert(
+                'Студенты экономического факультета не могут записаться в очередь до 1 сентября.',
+                { title: 'Ошибка :(' }
+            )
+            return
+        }
         if (
-            (await confirm(`Забронировать слот на ${slot.value}?`, { title: 'Подтверждение' })) &&
-            (await SlotAPI.reserve('living_1', slot.id))
+            await confirm(
+                `Записаться в очередь на ${slot.value
+                    .split('T')[1]
+                    .split(':')
+                    .slice(0, 2)
+                    .join(':')}?`,
+                {
+                    title: 'Подтверждение',
+                }
+            )
         ) {
-            alert('Вы успешно записались на заселение. Копия талона отправлена вам на почту.', {
-                title: 'Отлично!',
+            const values = await confirmForm(FasttrackForm, {
+                title: 'Оставьте информацию о себе',
+                cancelLabel: 'Отменить',
             })
+            if (values) {
+                if (values.course !== '1' && fromDatetime(slot.value) < new Date('2021-09-13')) {
+                    alert('До 13 сентября запись доступна только для студентов первого курса.', {
+                        title: 'Ошибка :(',
+                    })
+                    return
+                }
+                if (
+                    await SlotAPI.fasttrack(facultyToQueue(faculty), parseInt(slot.id, 10), {
+                        ...values,
+                        faculty,
+                    })
+                ) {
+                    alert(
+                        <>
+                            Вы успешно записались на заселение. Копия талона отправлена вам на
+                            почту.
+                            <br />
+                            <br />
+                            Обратите внимание, что в случае ошибки или изменения планов вы сможете
+                            отменить запись, нажав на специальную ссылку в письме. Не забудьте
+                            проверить папку &quot;Спам&quot;!
+                        </>,
+                        {
+                            title: 'Отлично!',
+                        }
+                    )
+                }
+            }
         }
     }
 
