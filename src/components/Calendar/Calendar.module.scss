@@ -94,6 +94,7 @@
         padding: 0.4em 0.25em;
         color: white;
         background: $element-grey;
+        transition: background-color 0.3s;
         font-weight: 500;
     }
     .react-calendar__tile:disabled {
