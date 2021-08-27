@@ -9,7 +9,6 @@ import {
     isSameDay,
     differenceInCalendarDays,
     getUnixTime,
-    fromUnixTime,
     isWeekend,
 } from 'date-fns'
 import PropTypes from 'prop-types'
@@ -49,7 +48,7 @@ function sortDates(dates, disabledDates) {
 
 // генерируется разметка всех дней месяца, для активных дней устанавливаются нужные классы,
 // для выключенных тоже
-function generateDays(dates, dailyClasses, onChange) {
+function generateDays(dates, dailyClasses) {
     const days = dates.map((dateArr) => {
         const date = dateArr[0]
         const isDisabled = dateArr[1]
@@ -63,9 +62,6 @@ function generateDays(dates, dailyClasses, onChange) {
                     dailyClasses[toDatetime(date)] || ''
                 } `}
                 style={{ width: '90%', height: '4rem', border: '0' }}
-                onClick={(e) => {
-                    if (isDisabled !== 'disabled') onChange(fromUnixTime(e.currentTarget.id))
-                }}
             >
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <p className="mb-2">{date.toLocaleDateString('ru-RU', { weekday: 'short' })}</p>
