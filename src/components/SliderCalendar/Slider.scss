@@ -54,3 +54,7 @@
 .BrainhubCarousel__custom-arrowLeft:last-of-type {
     right: 0;
 }
+
+.BrainhubCarousel__container {
+    touch-action: pan-x;
+}
