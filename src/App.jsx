@@ -17,7 +17,7 @@ import Signup from '@/pages/Signup/Signup'
 import Queue from '@/pages/Queue/Queue'
 import Privacy from '@/pages/Privacy/Privacy'
 import UserAgreement from '@/pages/UserAgreement/UserAgreement'
-import ScrollToTop from './utils/ScrollToTop'
+import ScrollToTop from '@/utils/ScrollToTop'
 
 function App() {
     return (
