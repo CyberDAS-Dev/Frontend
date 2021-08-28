@@ -29,16 +29,19 @@ export function getDayClass(daySlots) {
 export function isDayDisabled(day, today, dailySlots) {
     const diffInDays = differenceInCalendarDays(fromDatetime(today), fromDatetime(day))
     // Если сегодня свободных слотов уже нет, то на сегодня нельзя записаться и слоты точно не появятся
+    // Если время больше 8 утра, то записаться на сегодня уже нельзя, так как списки составляются до 8 часов
     if (
-        diffInDays === 0 &&
-        dailySlots[today]
-            .filter((slot) => slot.free)
-            .filter(
-                (slot) => new Date(fromDatetime(slot.time)).getTime() - new Date().getTime() > 0
-            ).length === 0
+        (diffInDays === 0 &&
+            dailySlots[today]
+                .filter((slot) => slot.free)
+                .filter(
+                    (slot) => new Date(fromDatetime(slot.time)).getTime() - new Date().getTime() > 0
+                ).length === 0) ||
+        (diffInDays === 0 && new Date().getHours() >= 8)
     ) {
         return true
     }
+
     return false
 }
 
