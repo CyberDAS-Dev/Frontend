@@ -17,11 +17,15 @@ import Signup from '@/pages/Signup/Signup'
 import Queue from '@/pages/Queue/Queue'
 import Privacy from '@/pages/Privacy/Privacy'
 import UserAgreement from '@/pages/UserAgreement/UserAgreement'
+import Metric from '@/utils/Metric'
 
 function App() {
+    const isProduction = process.env.NODE_ENV === 'production'
+
     return (
         <div className="App">
             <Router>
+                {isProduction ? <Metric /> : null}
                 <Header />
                 <Switch>
                     <Route exact path="/login" component={Login} />
