@@ -11,7 +11,7 @@ export default function Metric() {
 
     return (
         <YMInitializer
-            accounts={['YA_ID']} // TODO CHANGEME
+            accounts={[`${process.env.REACT_APP_YM_ID}`]}
             options={{ webvisor: true, defer: true }}
             version="2"
         />
