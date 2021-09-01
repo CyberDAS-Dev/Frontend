@@ -30,6 +30,7 @@ function App() {
                     <Route exact path="/agreement" component={UserAgreement} />
                     <Route exact path="/signup" component={Signup} />
                     <Route exact path="/" component={Landing} />
+                    <Route exact path="/cancel" component={Landing} />
                     <Route component={NotFoundPage} />
                 </Switch>
                 <Footer />
