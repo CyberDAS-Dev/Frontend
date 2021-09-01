@@ -66,9 +66,9 @@ export default function Queue() {
                     return
                 }
                 if (
-                    await SlotAPI.fasttrack(facultyToQueue(faculty), parseInt(slot.id, 10), {
+                    await SlotAPI.reserve(facultyToQueue(faculty), parseInt(slot.id, 10), {
                         ...values,
-                        faculty,
+                        faculty_id: faculty,
                     })
                 ) {
                     alert(
