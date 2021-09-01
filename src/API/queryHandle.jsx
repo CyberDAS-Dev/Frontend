@@ -4,7 +4,7 @@ import http from '@/API/http'
 import { errorAlert, supportEmail } from './errors'
 
 class QueryHandleService {
-    post(token, url) {
+    get(token, url) {
         if (!token || !url) {
             errorAlert(
                 <div>

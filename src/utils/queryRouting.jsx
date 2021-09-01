@@ -8,7 +8,7 @@ async function onCancel(token, backendUrl) {
             title: 'Подтверждение',
         })
     ) {
-        if (await QueryHandleAPI.post(token, backendUrl)) {
+        if (await QueryHandleAPI.get(token, backendUrl)) {
             alert('Вы успешно отменили запись', { title: 'Успех!' })
         }
     }
