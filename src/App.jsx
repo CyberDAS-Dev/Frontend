@@ -18,6 +18,7 @@ import Queue from '@/pages/Queue/Queue'
 import Privacy from '@/pages/Privacy/Privacy'
 import UserAgreement from '@/pages/UserAgreement/UserAgreement'
 import Metric from '@/utils/Metric'
+import ScrollToTop from '@/utils/ScrollToTop'
 
 function App() {
     const isProduction = process.env.NODE_ENV === 'production'
@@ -26,6 +27,7 @@ function App() {
         <div className="App">
             <Router>
                 {isProduction ? <Metric /> : null}
+                <ScrollToTop />
                 <Header />
                 <Switch>
                     <Route exact path="/login" component={Login} />
