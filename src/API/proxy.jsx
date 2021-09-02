@@ -14,7 +14,7 @@ class BackendProxyService {
             )
             return false
         }
-        return http.simpleGet(`/${url}?token=${token}`)
+        return http.get(`/${url}?token=${token}`)
     }
 }
 

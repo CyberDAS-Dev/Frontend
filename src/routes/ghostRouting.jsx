@@ -8,7 +8,20 @@ async function onCancel(token, backendUrl) {
             title: 'Подтверждение',
         })
     ) {
-        if (await BackendProxyAPI.get(token, backendUrl)) {
+        if (
+            await BackendProxyAPI.get(token, backendUrl).catch((err) => {
+                const statusCode = err.response?.status
+                if (statusCode === 404) {
+                    err.alert('Слот на это время и так свободен, нет необходимости его освобождать')
+                } else if (statusCode === 403) {
+                    err.alert(
+                        'Запись на это время уже истекла. Нет необходимости её освобождать, вы можете заново зарегистрироваться на любое другое удобное время'
+                    )
+                } else {
+                    err.handleGlobally()
+                }
+            })
+        ) {
             alert('Вы успешно отменили запись', { title: 'Успех!' })
         }
     }
