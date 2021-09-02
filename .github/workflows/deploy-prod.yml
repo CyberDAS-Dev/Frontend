@@ -21,9 +21,11 @@ jobs:
                   npm ci
 
     deploy:
-            needs: update
-            runs-on: [self-hosted, linux, X64]
-            steps:
+        needs: update
+        runs-on: [self-hosted, linux, X64]
+        env:
+            REACT_APP_YM_ID: ${{ secrets.YM_ID }}
+        steps:
             - name: Set production API
               working-directory: prod/src/API
               run: |
