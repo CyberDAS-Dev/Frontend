@@ -1,19 +1,24 @@
 name: deploy-prod
 
 on:
-    push:
-        branches: [main]
+    release:
+        branches: [ main ]
+        types: [ released, deleted ]
 
 jobs:
     update:
         runs-on: [self-hosted, linux, X64]
-        defaults:
-            run:
-                working-directory: /usr/share/cyberdas_front
         steps:
-            - name: Checkout
+            - name: Get latest released version
+              id: lastver
+              uses: pozetroninc/github-action-get-latest-release@v0.5.0
+              with:
+                  repository: ${{ github.repository }}
+                  excludes: prerelease, draft
+            - name: Checkout latest tag
               uses: actions/checkout@v2
               with:
+                  ref: ${{ steps.lastver.outputs.release }}
                   path: prod
             - name: Install dependencies
               working-directory: prod
@@ -21,9 +26,11 @@ jobs:
                   npm ci
 
     deploy:
-            needs: update
-            runs-on: [self-hosted, linux, X64]
-            steps:
+        needs: update
+        runs-on: [self-hosted, linux, X64]
+        env:
+            REACT_APP_YM_ID: ${{ secrets.YM_ID }}
+        steps:
             - name: Set production API
               working-directory: prod/src/API
               run: |

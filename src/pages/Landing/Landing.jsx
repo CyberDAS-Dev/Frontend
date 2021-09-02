@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Row, Col, Button, Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import Card from '@/pages/Landing/components/Card/Card'
-import queryRoutes from '@/utils/queryRoutes'
+import ghostRouting from '@/routes/ghostRouting'
 import useQuery from '@/hooks/useQuery'
 import s from './Landing.module.scss'
 import jumbo from './images/jumbotron.jpg'
@@ -17,7 +17,7 @@ import blueInfo from './images/icons/blue/info.png'
 import blueComingSoon from './images/icons/blue/comingsoon.png'
 
 export default function Homepage() {
-    queryRoutes(useQuery(), useHistory())
+    ghostRouting(useLocation(), useQuery(), useHistory())
 
     return (
         <Container fluid className="p-0">
