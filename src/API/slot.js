@@ -15,9 +15,7 @@ class SlotDataService {
         return http.post(`/queues/${queue}/slots/${id}/reserve?next=cancel`, data).catch((err) => {
             const statusCode = err.response?.status
             if (statusCode === 403) {
-                errorAlert(
-                    'Этот слот уже занят или истёк или, возможно, вы уже записывались в эту очередь.'
-                )
+                errorAlert(err.response.data.description)
             } else {
                 err.handleGlobally()
             }

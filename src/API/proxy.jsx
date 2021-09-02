@@ -3,7 +3,7 @@ import React from 'react'
 import http from '@/API/http'
 import { errorAlert, supportEmail } from './errors'
 
-class QueryHandleService {
+class BackendProxyService {
     get(token, url) {
         if (!token || !url) {
             errorAlert(
@@ -18,4 +18,4 @@ class QueryHandleService {
     }
 }
 
-export default new QueryHandleService()
+export default new BackendProxyService()

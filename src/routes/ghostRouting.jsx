@@ -1,6 +1,6 @@
 import confirm from '@/utils/confirm'
 import alert from '@/utils/alert'
-import QueryHandleAPI from '@/API/queryHandle'
+import BackendProxyAPI from '@/API/proxy'
 
 async function onCancel(token, backendUrl) {
     if (
@@ -8,13 +8,13 @@ async function onCancel(token, backendUrl) {
             title: 'Подтверждение',
         })
     ) {
-        if (await QueryHandleAPI.get(token, backendUrl)) {
+        if (await BackendProxyAPI.get(token, backendUrl)) {
             alert('Вы успешно отменили запись', { title: 'Успех!' })
         }
     }
 }
 
-export default function queryRouting({ pathname }, query, history) {
+export default function ghostRouting({ pathname }, query, history) {
     const token = query.get('token')
     const backendUrl = query.get('backend')
 
