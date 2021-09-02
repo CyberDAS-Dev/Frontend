@@ -12,21 +12,21 @@ export default function errorComposer(error) {
     return () => {
         const statusCode = error.response?.status
         if (statusCode === 404) {
-            errorAlert(<div>Этого ресурса не существовало или он был удален. {mayBeError}</div>)
+            error.alert(<div>Этого ресурса не существовало или он был удален. {mayBeError}</div>)
         } else if (statusCode === 403) {
-            errorAlert(
+            error.alert(
                 <div>
                     У вашего аккаунта недостаточно прав для доступа к этому ресурсу. {mayBeError}{' '}
                 </div>
             )
         } else if (statusCode === 401) {
-            errorAlert(
+            error.alert(
                 <div>
                     Чтобы попасть на эту страницу вам нужно войти в свой аккаунт. {mayBeError}
                 </div>
             )
         } else if (statusCode >= 500) {
-            errorAlert(
+            error.alert(
                 <div>
                     Что-то не так с сервером! Ошибка номер {statusCode}
                     <br /> Возможно, вы узнали об этом первее нас. Если вам не трудно, опишите
@@ -34,7 +34,7 @@ export default function errorComposer(error) {
                 </div>
             )
         } else {
-            errorAlert(
+            error.alert(
                 <div>
                     Произошла непредвиденная ошибка, номер {statusCode}. Если вам не трудно, опишите
                     проблему в письме на {supportEmail}

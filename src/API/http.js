@@ -1,5 +1,5 @@
 import axios from 'axios'
-import errorComposer from './errors'
+import errorComposer, { errorAlert } from './errors'
 
 const axiosInstance = axios.create({
     baseURL: 'https://api.cyberdas.net/next',
@@ -9,6 +9,7 @@ const axiosInstance = axios.create({
 // eslint-disable-next-line func-names
 axiosInstance.interceptors.response.use(undefined, function (error) {
     error.handleGlobally = errorComposer(error)
+    error.alert = errorAlert
     return Promise.reject(error)
 })
 
