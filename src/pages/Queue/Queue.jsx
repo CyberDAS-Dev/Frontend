@@ -35,13 +35,6 @@ export default function Queue() {
     }, [faculty])
 
     async function onSlotClick(slot) {
-        if (faculty === 18 && fromDatetime(slot.value) < new Date('2021-09-01')) {
-            alert(
-                'Студенты экономического факультета не могут записаться в очередь до 1 сентября.',
-                { title: 'Ошибка :(' }
-            )
-            return
-        }
         if (
             await confirm(
                 `Записаться в очередь на ${slot.value
@@ -110,10 +103,6 @@ export default function Queue() {
         <Page header="Электронная регистрация на процедуру заселения">
             <Alert variant="warning">
                 Внимание! До 13 сентября запись доступна только для студентов первого курса.
-            </Alert>
-            <Alert variant="warning">
-                Внимание! Студенты экономического факультета не могут записаться в очередь до 1
-                сентября из-за проблем с документами.
             </Alert>
             <Alert variant="info">
                 Запись в электронную очередь - это не время, в которое вас будут пускать в
