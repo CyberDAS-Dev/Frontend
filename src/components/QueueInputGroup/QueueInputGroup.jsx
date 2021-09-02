@@ -29,7 +29,9 @@ export default function QueueInputGroup({
     const months = Object.keys(dailyClasses).map((element) =>
         element.split('-').slice(0, 2).join('-')
     )
-    const uniqueMonths = [...new Set(months)].map((element) => toObject(element))
+    const uniqueMonths = [...new Set(months)]
+        .map((element) => toObject(element))
+        .filter((value) => value.month >= new Date().getMonth())
 
     /* 
         При инициализации компонента нам нужно проставить начальную дату, при этом 
@@ -64,7 +66,7 @@ export default function QueueInputGroup({
                             sm={3}
                             md={4}
                             xxl={6}
-                            className="mb-3"
+                            className="mb-3 justify-content-center justify-content-md-start"
                             current={toObject(toDate(date, true))}
                             dates={uniqueMonths}
                             onChange={onMonthChange}
