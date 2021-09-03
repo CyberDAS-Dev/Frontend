@@ -101,7 +101,12 @@ export default function FasttrackForm({ id, onSubmit }) {
                         type="course"
                         name="course"
                         value={formik.values.course}
-                        onChange={formik.handleChange}
+                        onChange={(event) => {
+                            formik.setFieldValue(
+                                event.target.name,
+                                parseInt(event.target.value, 10)
+                            )
+                        }}
                         onBlur={formik.handleBlur}
                         isValid={formik.touched.course && !formik.errors.course}
                         isInvalid={formik.touched.course && !!formik.errors.course}
