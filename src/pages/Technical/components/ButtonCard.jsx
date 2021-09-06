@@ -1,19 +1,21 @@
 import React from 'react'
-import Image from 'react-bootstrap/Image'
+import { Card } from 'react-bootstrap'
 
 export default function ButtonCard({ service, heading, icon, onClick }) {
     return (
-        <button
-            className="d-flex flex-column border rounded w-100 align-items-stretch bg-primary p-0"
-            type="button"
+        <Card
+            className="w-100 p-0"
+            text="white"
+            bg="primary"
+            as="button"
             onClick={() => onClick(service)}
         >
-            <div className="py-2 ">
-                <Image src={icon} />
+            <div className="py-2">
+                <Card.Img className="w-auto" variant="top" src={icon} />
             </div>
-            <div className="bg-dark py-2">
-                <h5 className="m-0 text-white">{heading}</h5>
-            </div>
-        </button>
+            <Card.Body className="bg-dark">
+                <Card.Title className="m-0">{heading}</Card.Title>
+            </Card.Body>
+        </Card>
     )
 }
