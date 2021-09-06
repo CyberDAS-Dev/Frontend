@@ -31,7 +31,7 @@ export default function TechnicalForm({ onSubmit }) {
     return (
         <Form onSubmit={formik.handleSubmit}>
             <Row>
-                <Form.Group as={Col} md="3">
+                <Form.Group as={Col} lg="3">
                     <Form.Label column="lg">Электронная почта:</Form.Label>
                     <Form.Control
                         size="lg"
@@ -47,7 +47,7 @@ export default function TechnicalForm({ onSubmit }) {
                 </Form.Group>
             </Row>
             <Row>
-                <Form.Group as={Col} md="3" controlId="validationFormik01">
+                <Form.Group as={Col} lg="3" controlId="validationFormik01">
                     <Form.Label column="lg">Фамилия:</Form.Label>
                     <Form.Control
                         size="lg"
@@ -61,7 +61,7 @@ export default function TechnicalForm({ onSubmit }) {
                         isValid={formik.touched.surname && !formik.errors.surname}
                     />
                 </Form.Group>
-                <Form.Group as={Col} md="3" controlId="validationFormik02">
+                <Form.Group as={Col} lg="3" controlId="validationFormik02">
                     <Form.Label column="lg">Имя:</Form.Label>
                     <Form.Control
                         size="lg"
@@ -75,7 +75,7 @@ export default function TechnicalForm({ onSubmit }) {
                         isValid={formik.touched.name && !formik.errors.name}
                     />
                 </Form.Group>
-                <Form.Group as={Col} md="3">
+                <Form.Group as={Col} lg="3">
                     <Form.Label column="lg">Отчество:</Form.Label>
                     <Form.Control
                         size="lg"
@@ -91,7 +91,7 @@ export default function TechnicalForm({ onSubmit }) {
                 </Form.Group>
             </Row>
             <Row>
-                <Form.Group as={Col} md="1">
+                <Form.Group as={Col} xs="6" lg="3" xxl="1">
                     <Form.Label column="lg">Корпус:</Form.Label>
                     <Form.Control
                         size="lg"
@@ -104,7 +104,7 @@ export default function TechnicalForm({ onSubmit }) {
                         isValid={formik.touched.corpus && !formik.errors.corpus}
                     />
                 </Form.Group>
-                <Form.Group as={Col} md="2">
+                <Form.Group as={Col} xs="6" lg="3" xxl="2">
                     <Form.Label column="lg">Комната:</Form.Label>
                     <Form.Control
                         size="lg"
@@ -120,7 +120,7 @@ export default function TechnicalForm({ onSubmit }) {
             </Row>
 
             <Row>
-                <Form.Group as={Col} md="6">
+                <Form.Group as={Col} lg="6">
                     <Form.Label column="lg">Описание проблемы:</Form.Label>
                     <Form.Control
                         as="textarea"
