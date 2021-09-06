@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap'
 export default function ButtonCard({ service, heading, icon, onClick }) {
     return (
         <Card
-            className="w-100 p-0"
+            className="w-100 p-0 align-items-stretch"
             text="white"
             bg="primary"
             as="button"
