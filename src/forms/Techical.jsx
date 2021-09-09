@@ -8,8 +8,8 @@ const schema = yup.object().shape({
     surname: yup.string().required(),
     name: yup.string().required(),
     patronymic: yup.string(),
-    corpus: yup.number().required().nullable(),
-    room: yup.number().required(),
+    corpus: yup.number().required().oneOf([1, 2]),
+    room: yup.number().required().integer().positive(),
     description: yup.string().required(),
     email: yup.string().email().required(),
 })
@@ -130,7 +130,7 @@ export default function TechnicalForm({ onSubmit }) {
                         onBlur={formik.handleBlur}
                         isInvalid={formik.touched.description && !!formik.errors.description}
                         isValid={formik.touched.description && !formik.errors.description}
-                        style={{ height: '200px' }}
+                        rows={8}
                     />
                 </Form.Group>
             </Row>
