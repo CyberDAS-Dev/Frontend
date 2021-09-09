@@ -72,6 +72,7 @@ export default function Technical() {
                     <button
                         onClick={backToSelection}
                         className="d-flex align-items-center mb-2 btn-link border-0 bg-transparent"
+                        type="button"
                     >
                         <ArrowLeft className="me-1" />
                         Назад
