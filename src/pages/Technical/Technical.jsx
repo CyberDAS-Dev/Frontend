@@ -34,12 +34,11 @@ export default function Technical() {
         <Page header="Электронная запись на оказание технических услуг">
             {!isServiceSelected ? (
                 <>
-                    {/* TODO добавить инструкцию? */}
                     <Alert variant="info">
-                        Запись в электронную очередь - это не время, в которое вас будут пускать в
-                        общежитие. В общежитие можно приехать в любое время и в любой день, вас
-                        поселят. Электронная очередь нужна для оплаты проживания. Оплату можно будет
-                        произвести через какое-то время после приезда и поселения в комнату.
+                        На этой странице можно оставить заявку на оказание технических услуг. Для
+                        этого нужно выбрать желаемую категорию услуги, после заполнить контактную
+                        информацию и оставить описание проблемы. Далее останется лишь дождаться
+                        прихода мастера.
                     </Alert>
                     <Row className="gx-5 gy-3 mt-3 mb-1 mt-lg-5 mb-lg-3 justify-content-center">
                         <Col md={8} lg={3}>
@@ -70,17 +69,13 @@ export default function Technical() {
                 </>
             ) : (
                 <>
-                    <a
-                        href="/technical"
-                        onClick={(e) => {
-                            e.preventDefault()
-                            backToSelection()
-                        }}
-                        className="d-flex align-items-center mb-2"
+                    <button
+                        onClick={backToSelection}
+                        className="d-flex align-items-center mb-2 btn-link border-0 bg-transparent"
                     >
                         <ArrowLeft className="me-1" />
                         Назад
-                    </a>
+                    </button>
                     <TechnicalForm onSubmit={sendRequest} />
                 </>
             )}
