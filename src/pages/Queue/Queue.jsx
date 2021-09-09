@@ -52,7 +52,7 @@ export default function Queue() {
                 cancelLabel: 'Отменить',
             })
             if (values) {
-                if (values.course !== '1' && fromDatetime(slot.value) < new Date('2021-09-13')) {
+                if (values.course !== 1 && fromDatetime(slot.value) < new Date('2021-09-13')) {
                     alert('До 13 сентября запись доступна только для студентов первого курса.', {
                         title: 'Ошибка :(',
                     })
