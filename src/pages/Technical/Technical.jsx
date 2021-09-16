@@ -40,6 +40,10 @@ export default function Technical() {
                         информацию и оставить описание проблемы. Далее останется лишь дождаться
                         прихода мастера.
                     </Alert>
+                    <Alert variant="warning">
+                        Заявки с этой страницы отправляются каждый день в 8 часов утра. Если вам
+                        срочно нужна помощь - обратитесь к коменданту.
+                    </Alert>
                     <Row className="gx-5 gy-3 mt-3 mb-1 mt-lg-5 mb-lg-3 justify-content-center">
                         <Col md={8} lg={3}>
                             <ButtonCard
