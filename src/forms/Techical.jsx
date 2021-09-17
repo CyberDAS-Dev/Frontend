@@ -123,6 +123,7 @@ export default function TechnicalForm({ onSubmit }) {
                 <Form.Group as={Col} lg="6">
                     <Form.Label column="lg">Описание проблемы:</Form.Label>
                     <Form.Control
+                        size="lg"
                         as="textarea"
                         name="description"
                         value={formik.values.description}
