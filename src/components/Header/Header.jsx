@@ -47,6 +47,9 @@ export default function Header() {
                         <LinkContainer exact to="/queue">
                             <Nav.Link eventKey="1">Заселение</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer exact to="/feedback">
+                            <Nav.Link eventKey="3">Обратная связь</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                     <Nav hidden activeKey={activeKey}>
                         <LinkContainer exact to="/login" activeKey={activeKey}>
