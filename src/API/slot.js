@@ -12,15 +12,14 @@ class SlotDataService {
     }
 
     reserve(queue, id, token) {
+        const headers = {}
+        if (token) headers.Authorization = `${token.type} ${token.string}`
+
         return http
-            .post(
-                `/queues/${queue}/slots/${id}/reserve?next=cancel`,
-                {},
-                { headers: { Authorization: `Bearer ${token}` } }
-            )
+            .post(`/queues/${queue}/slots/${id}/reserve?next=cancel`, {}, { headers })
             .catch((err) => {
                 const statusCode = err.response?.status
-                if (statusCode === 403) {
+                if (statusCode === 403 || statusCode === 401) {
                     errorAlert(err.response.data.description)
                 } else {
                     err.handleGlobally()

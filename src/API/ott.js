@@ -1,16 +1,22 @@
 /* eslint-disable class-methods-use-this */
 import http from '@/API/http'
+import { errorAlert } from './errors'
 
 class OttService {
     post(reqData) {
         return http.post(`/account/ott`, reqData).catch((err) => {
-            err.handleGlobally()
+            const statusCode = err.response?.status
+            if (statusCode === 401) {
+                errorAlert(err.response.data.description)
+            } else {
+                err.handleGlobally()
+            }
         })
     }
 
     async getToken(reqData) {
         const { data } = await this.post(reqData)
-        return data.token
+        return { type: data.token_type, string: data.token }
     }
 }
 

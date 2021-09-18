@@ -63,7 +63,7 @@ export default function Queue() {
                     await SlotAPI.reserve(
                         facultyToQueue(faculty),
                         parseInt(slot.id, 10),
-                        OttApi.getToken({ ...values, faculty_id: faculty })
+                        await OttApi.getToken({ ...values, faculty_id: faculty })
                     )
                 ) {
                     alert(
