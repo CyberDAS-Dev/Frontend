@@ -11,7 +11,7 @@ class SlotDataService {
         return http.simpleGet(`/queues/${queue}/slots/${id}`)
     }
 
-    reserve(queue, id, token) {
+    reserve(queue, id, token = null) {
         const headers = {}
         if (token) headers.Authorization = `${token.type} ${token.string}`
 
