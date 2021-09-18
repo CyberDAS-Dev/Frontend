@@ -36,23 +36,19 @@ export default function CustomModal({
                     {footer !== null ? (
                         <Row className="w-100">{footer}</Row>
                     ) : (
-                        <Row className="w-100">
+                        <Row className="w-100 justify-content-between">
                             {noCancel || (
                                 <Button
                                     as={Col}
-                                    xs={{ span: 4, offset: 0 }}
+                                    xs="auto"
+                                    sm="4"
                                     size=""
                                     onClick={() => proceed(false)}
                                 >
                                     {cancelLabel}
                                 </Button>
                             )}
-                            <Button
-                                as={Col}
-                                xs={{ span: 4, offset: noCancel ? 8 : 4 }}
-                                size=""
-                                onClick={() => proceed(true)}
-                            >
+                            <Button as={Col} xs="auto" sm="4" size="" onClick={() => proceed(true)}>
                                 {okLabel}
                             </Button>
                         </Row>
