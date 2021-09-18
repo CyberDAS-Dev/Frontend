@@ -11,15 +11,20 @@ class SlotDataService {
         return http.simpleGet(`/queues/${queue}/slots/${id}`)
     }
 
-    reserve(queue, id, data) {
-        return http.post(`/queues/${queue}/slots/${id}/reserve?next=cancel`, data).catch((err) => {
-            const statusCode = err.response?.status
-            if (statusCode === 403) {
-                errorAlert(err.response.data.description)
-            } else {
-                err.handleGlobally()
-            }
-        })
+    reserve(queue, id, token = null) {
+        const headers = {}
+        if (token) headers.Authorization = `${token.type} ${token.string}`
+
+        return http
+            .post(`/queues/${queue}/slots/${id}/reserve?next=cancel`, {}, { headers })
+            .catch((err) => {
+                const statusCode = err.response?.status
+                if (statusCode === 403 || statusCode === 401) {
+                    errorAlert(err.response.data.description)
+                } else {
+                    err.handleGlobally()
+                }
+            })
     }
 }
 

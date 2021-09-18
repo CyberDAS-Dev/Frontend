@@ -6,6 +6,7 @@ import confirm from '@/utils/confirm'
 import alert from '@/utils/alert'
 import confirmForm from '@/utils/confirmForm'
 import SlotAPI from '@/API/slot'
+import OttApi from '@/API/ott'
 import QueueInputGroup from '@/components/QueueInputGroup/QueueInputGroup'
 import getDateStyles from '@/components/SlotCalendar/dateStyling'
 import { earliestAvailableInMonth, tillMonthEnd, toDatetime, fromDatetime } from '@/utils/dateLib'
@@ -59,10 +60,11 @@ export default function Queue() {
                     return
                 }
                 if (
-                    await SlotAPI.reserve(facultyToQueue(faculty), parseInt(slot.id, 10), {
-                        ...values,
-                        faculty_id: faculty,
-                    })
+                    await SlotAPI.reserve(
+                        facultyToQueue(faculty),
+                        parseInt(slot.id, 10),
+                        await OttApi.getToken({ ...values, faculty_id: faculty })
+                    )
                 ) {
                     alert(
                         <>
