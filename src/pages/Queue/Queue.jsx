@@ -50,6 +50,7 @@ export default function Queue() {
             const values = await confirmForm(FasttrackForm, {
                 title: 'Оставьте информацию о себе',
                 cancelLabel: 'Отменить',
+                okLabel: 'Отправить',
             })
             if (values) {
                 if (values.course !== 1 && fromDatetime(slot.value) < new Date('2021-09-13')) {

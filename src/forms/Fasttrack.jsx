@@ -136,11 +136,9 @@ export default function FasttrackForm({ id, onSubmit }) {
             </Row>
             <Row>
                 <Col>
-                    <p className="mt-3">
-                        {' '}
-                        Нажимая кнопку Отправить, вы принимаете <a href="/agreement">
-                            условия
-                        </a> и <a href="/privacy">политику обработки данных</a>
+                    <p className="mb-0">
+                        Нажимая кнопку Отправить, вы принимаете <a href="/agreement">условия</a> и{' '}
+                        <a href="/privacy">политику обработки данных</a>
                     </p>
                 </Col>
             </Row>
