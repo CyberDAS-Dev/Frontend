@@ -52,12 +52,6 @@ export default function Queue() {
                 cancelLabel: 'Отменить',
             })
             if (values) {
-                if (values.course !== 1 && fromDatetime(slot.value) < new Date('2021-09-13')) {
-                    alert('До 13 сентября запись доступна только для студентов первого курса.', {
-                        title: 'Ошибка :(',
-                    })
-                    return
-                }
                 if (
                     await SlotAPI.reserve(facultyToQueue(faculty), parseInt(slot.id, 10), {
                         ...values,
@@ -101,9 +95,6 @@ export default function Queue() {
 
     return (
         <Page header="Электронная регистрация на процедуру заселения">
-            <Alert variant="warning">
-                Внимание! До 13 сентября запись доступна только для студентов первого курса.
-            </Alert>
             <Alert variant="info">
                 Запись в электронную очередь - это не время, в которое вас будут пускать в
                 общежитие. В общежитие можно приехать в любое время и в любой день, вас поселят.
