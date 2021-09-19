@@ -146,8 +146,8 @@ export default function TechnicalForm({ onSubmit }) {
                 </Col>
             </Row>
             <Form.Group as={Row} className="mb-3">
-                <Col>
-                    <Button size="lg" type="submit">
+                <Col xs="12" sm="auto">
+                    <Button size="lg" type="submit" className="w-100 w-sm-auto">
                         Отправить
                     </Button>
                 </Col>
