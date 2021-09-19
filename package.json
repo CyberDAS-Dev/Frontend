@@ -51,7 +51,7 @@
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
         "prepare": "is-ci || husky install",
-        "lint:code": "eslint --ext js,jsx src",
+        "lint:code": "eslint --max-warnings 0 --ext js,jsx src",
         "lint:style": "stylelint src/**/*.{css,scss}",
         "format:code": "eslint --ext js,jsx src --fix",
         "format:style": "stylelint src/*/*/*.{css,scss} --fix",
