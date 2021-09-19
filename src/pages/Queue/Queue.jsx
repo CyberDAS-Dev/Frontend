@@ -51,6 +51,7 @@ export default function Queue() {
             const values = await confirmForm(FasttrackForm, {
                 title: 'Оставьте информацию о себе',
                 cancelLabel: 'Отменить',
+                okLabel: 'Отправить',
             })
             if (values) {
                 if (

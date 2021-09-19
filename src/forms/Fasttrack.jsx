@@ -9,7 +9,6 @@ const schema = yup.object().shape({
     patronymic: yup.string(),
     email: yup.string().email().required(),
     course: yup.number().required(),
-    terms: yup.bool().required().oneOf([true], 'Вы должны принять условия пользования'),
 })
 
 export default function FasttrackForm({ id, onSubmit }) {
@@ -22,7 +21,6 @@ export default function FasttrackForm({ id, onSubmit }) {
             patronymic: '',
             email: '',
             course: '',
-            terms: false,
         },
     })
     return (
@@ -137,24 +135,12 @@ export default function FasttrackForm({ id, onSubmit }) {
                 </Form.Group>
             </Row>
             <Row>
-                <Form.Group as={Col} md="12">
-                    <Form.Check
-                        id="validationFormik0"
-                        name="terms"
-                        type="checkbox"
-                        label={
-                            <>
-                                Я прочитал и согласен с{' '}
-                                <a href="/agreement">условиями пользования сайта</a> и{' '}
-                                <a href="/privacy">политикой обработки персональных данных</a>
-                            </>
-                        }
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        isInvalid={formik.touched.terms && !!formik.errors.terms}
-                        feedback={formik.errors.terms}
-                    />
-                </Form.Group>
+                <Col>
+                    <p className="mb-0">
+                        Нажимая кнопку Отправить, вы принимаете <a href="/agreement">условия</a> и{' '}
+                        <a href="/privacy">политику обработки данных</a>
+                    </p>
+                </Col>
             </Row>
         </Form>
     )
