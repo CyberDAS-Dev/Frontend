@@ -4,6 +4,7 @@ import FeedbackForm from '@/forms/Feedback'
 import FeedbackApi from '@/API/feedback'
 import Item from './components/Item'
 import ContentBox from '@/components/ContentBox/ContentBox'
+import alert from '@/utils/alert'
 
 function getRecipientObj(recipient, recipients) {
     const obj = recipients.find((rec) => rec.name === recipient)
@@ -23,16 +24,20 @@ export default function Feedback() {
         FetchApi()
     }, [])
 
-    function sendRequest(values) {
+    async function sendRequest(values) {
         const data = { category: values.category, text: values.text }
         if (values.email) data.email = values.email
 
-        FeedbackApi.post(getRecipientObj(recipient, recipients)?.name, data)
+        if (await FeedbackApi.post(getRecipientObj(recipient, recipients)?.name, data)) {
+            alert('Вы успешно отправили свой запрос', {
+                title: 'Успех!',
+            })
+        }
     }
 
     return (
         <Container className="my-5">
-            <ContentBox header="Шаг 1. Укажите, кому будет направлен ваш вопрос" className="mb-5">
+            <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос" className="mb-5">
                 <Row
                     className="gy-4"
                     xs={{ cols: '1' }}
