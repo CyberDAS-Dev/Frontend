@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
-import { Card, Col, Row, Nav } from 'react-bootstrap'
-import { ExclamationDiamond, QuestionOctagon } from 'react-bootstrap-icons'
+import React, { useState, useEffect } from 'react'
+import { Row, Nav } from 'react-bootstrap'
 import Page from '@/components/Page/Page'
-import FeedbackAdminForm from '@/forms/FeedbackAdmin'
-import FeedbackCommitteeForm from '@/forms/FeedbackCommittee'
+import FeedbackForm from '@/forms/Feedback'
+import FeedbackApi from '@/API/feedback'
+import Item from './components/Item'
 
 export default function Feedback() {
-    const [receiver, setReceiver] = useState('admin')
+    const [recipients, setRecipients] = useState([])
+    const [recipient, setRecipient] = useState({})
 
-    // TODO temp
-    function onSubmit(v) {
-        console.log(v)
+    useEffect(() => {
+        async function FetchApi() {
+            const response = await FeedbackApi.getAll()
+            setRecipients(response?.data)
+            setRecipient(response?.data[0])
+        }
+        FetchApi()
+    }, [])
+
+    function sendRequest(data) {
+        FeedbackApi.post(recipient.name, data)
     }
 
     return (
@@ -19,89 +28,26 @@ export default function Feedback() {
                 <Nav
                     variant="pills"
                     className="my-3"
-                    activeKey={receiver}
-                    onSelect={(eventKey) => setReceiver(eventKey)}
+                    activeKey={recipient?.name}
+                    onSelect={(eventKey) => {
+                        setRecipient(recipients.find((rec) => rec?.name === eventKey))
+                    }}
                 >
-                    <Row className="justify-content-center gx-5 gy-4">
-                        <Col xs="12" md="10" lg="6">
-                            <Nav.Item>
-                                <Nav.Link eventKey="admin">
-                                    <Card.Body className="d-flex flex-column">
-                                        <Card.Title
-                                            className="d-inline-flex justify-content-center"
-                                            style={{ fontWeight: 400 }}
-                                        >
-                                            Администрация сайта
-                                        </Card.Title>
-                                        <Card.Text style={{ fontWeight: 300 }}>
-                                            <Row className="align-items-center">
-                                                <Col
-                                                    xs="12"
-                                                    md="8"
-                                                    className="d-inline-flex justify-content-center d-md-block mb-2 mb-md-0"
-                                                >
-                                                    Ошибки, возникшие при работе с сайтом, а также
-                                                    пожелания и предложения по его модернизации
-                                                </Col>
-                                                <Col
-                                                    xs="12"
-                                                    md="4"
-                                                    className="d-inline-flex justify-content-center"
-                                                >
-                                                    <ExclamationDiamond size={128} />
-                                                </Col>
-                                            </Row>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Col>
-                        <Col xs="12" md="10" lg="6">
-                            <Nav.Item>
-                                <Nav.Link eventKey="committee">
-                                    <Card.Body className="d-flex flex-column">
-                                        <Card.Title
-                                            className="d-inline-flex justify-content-center"
-                                            style={{ fontWeight: 400 }}
-                                        >
-                                            Студенческий комитет
-                                        </Card.Title>
-                                        <Card.Text style={{ fontWeight: 300 }}>
-                                            <Row className="align-items-center">
-                                                <Col
-                                                    xs="12"
-                                                    md="8"
-                                                    className="d-inline-flex justify-content-center d-md-block mb-2 mb-md-0"
-                                                >
-                                                    Здесь вы можете указать проблемы, возникшие при
-                                                    проживании в общежитии или задать интересующий
-                                                    вас вопрос
-                                                </Col>
-                                                <Col
-                                                    xs="12"
-                                                    md="4"
-                                                    className="d-inline-flex justify-content-center"
-                                                >
-                                                    <QuestionOctagon size={128} />
-                                                </Col>
-                                            </Row>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Col>
+                    <Row className="gx-5 gy-4">
+                        {recipients.map((rec) => {
+                            return (
+                                <Item
+                                    title={rec.title}
+                                    name={rec.name}
+                                    description={rec.description}
+                                />
+                            )
+                        })}
                     </Row>
                 </Nav>
             </Page>
-            <Page
-                header={`Шаг 2. Опишите вопрос ${
-                    (receiver === 'admin' && 'к администрации') ||
-                    (receiver === 'committee' && 'к студенческому комитету')
-                }`}
-            >
-                {/* TODO этот костыль (придумали древние укры)  надо поправить, можно сделать все в 1 форме, но надо как-то ресетить прошлую */}
-                {receiver === 'admin' && <FeedbackAdminForm onSubmit={onSubmit} />}
-                {receiver === 'committee' && <FeedbackCommitteeForm onSubmit={onSubmit} />}
+            <Page header="Шаг 2. Опишите вопрос">
+                <FeedbackForm onSubmit={sendRequest} categories={recipient?.categories} />
             </Page>
         </>
     )
