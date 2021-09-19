@@ -10,7 +10,7 @@ const schema = yup.object().shape({
     patronymic: yup.string(),
     corpus: yup.number().required().oneOf([1, 2]),
     room: yup.number().required().integer().positive(),
-    description: yup.string().required(),
+    text: yup.string().required(),
     email: yup.string().email().required(),
 })
 
@@ -25,7 +25,7 @@ export default function TechnicalForm({ onSubmit }) {
             email: '',
             corpus: '',
             room: '',
-            description: '',
+            text: '',
         },
     })
     return (
@@ -125,12 +125,12 @@ export default function TechnicalForm({ onSubmit }) {
                     <Form.Control
                         size="lg"
                         as="textarea"
-                        name="description"
-                        value={formik.values.description}
+                        name="text"
+                        value={formik.values.text}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        isInvalid={formik.touched.description && !!formik.errors.description}
-                        isValid={formik.touched.description && !formik.errors.description}
+                        isInvalid={formik.touched.text && !!formik.errors.text}
+                        isValid={formik.touched.text && !formik.errors.text}
                         rows={8}
                     />
                 </Form.Group>

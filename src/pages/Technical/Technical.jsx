@@ -5,6 +5,8 @@ import Page from '@/components/Page/Page'
 import ButtonCard from './components/ButtonCard'
 import alert from '@/utils/alert'
 import TechnicalForm from '@/forms/Techical'
+import TechnicalApi from '@/API/technical'
+// import OttApi from '@/API/ott'
 
 import electrician from './icons/electrician.png'
 import plumber from './icons/plumber.png'
@@ -21,13 +23,28 @@ export default function Technical() {
         selectService(null)
     }
 
-    function sendRequest(values) {
-        backToSelection()
-        alert('Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера', {
-            title: 'Успех!',
-        })
-        console.log({ ...values, service })
-        // TODO if feedbackApi.post({ ...values, service }) {...}
+    async function sendRequest(values) {
+        // if (
+        //     await TechnicalApi.post(
+        //         { text: values.text, category: service },
+        //         await OttApi.getToken({
+        //             email: values.email,
+        //             surname: values.surname,
+        //             name: values.name,
+        //             patronymic: values.patronymic,
+        //             corpus: values.corpus,
+        //             room: values.room,
+        //         })
+        //     )
+        // ) {
+        //     backToSelection()
+        //     alert(
+        //         'Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера',
+        //         {
+        //             title: 'Успех!',
+        //         }
+        //     )
+        // }
     }
 
     return (
