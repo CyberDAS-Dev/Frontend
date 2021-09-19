@@ -32,7 +32,7 @@ export default function Technical() {
         //             surname: values.surname,
         //             name: values.name,
         //             patronymic: values.patronymic,
-        //             corpus: values.corpus,
+        //             building: values.building,
         //             room: values.room,
         //         })
         //     )

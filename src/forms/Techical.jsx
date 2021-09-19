@@ -23,7 +23,7 @@ export default function TechnicalForm({ onSubmit }) {
             name: '',
             patronymic: '',
             email: '',
-            corpus: '',
+            building: '',
             room: '',
             text: '',
         },
@@ -96,12 +96,12 @@ export default function TechnicalForm({ onSubmit }) {
                     <Form.Control
                         size="lg"
                         type="number"
-                        name="corpus"
-                        value={formik.values.corpus}
+                        name="building"
+                        value={formik.values.building}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        isInvalid={formik.touched.corpus && !!formik.errors.corpus}
-                        isValid={formik.touched.corpus && !formik.errors.corpus}
+                        isInvalid={formik.touched.building && !!formik.errors.building}
+                        isValid={formik.touched.building && !formik.errors.building}
                     />
                 </Form.Group>
                 <Form.Group as={Col} xs="6" lg="3" xxl="2">
