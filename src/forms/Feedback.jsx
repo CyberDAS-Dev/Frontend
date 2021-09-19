@@ -19,6 +19,7 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
         initialValues: {
             category: '',
             text: '',
+            email: '',
         },
     })
 
@@ -94,8 +95,8 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
                 </Form.Group>
             </Row>
             <Form.Group as={Row} className="my-3">
-                <Col>
-                    <Button size="lg" type="submit">
+                <Col xs="12" sm="auto">
+                    <Button size="lg" type="submit" className="w-100 w-sm-auto">
                         Отправить
                     </Button>
                 </Col>
