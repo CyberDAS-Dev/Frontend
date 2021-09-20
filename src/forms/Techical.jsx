@@ -8,7 +8,7 @@ const schema = yup.object().shape({
     surname: yup.string().required(),
     name: yup.string().required(),
     patronymic: yup.string(),
-    corpus: yup.number().required().oneOf([1, 2]),
+    building: yup.number().required().oneOf([1, 2]),
     room: yup.number().required().integer().positive(),
     text: yup.string().required(),
     email: yup.string().email().required(),
