@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
-export default function ButtonCard({ service, heading, icon, onClick }) {
+export default function ButtonCard({ service, heading, icon, onClick, alt }) {
     return (
         <Card
             className="w-100 p-0 align-items-stretch"
@@ -11,7 +11,7 @@ export default function ButtonCard({ service, heading, icon, onClick }) {
             onClick={() => onClick(service)}
         >
             <div className="py-2">
-                <Card.Img className="w-auto" variant="top" src={icon} />
+                <Card.Img className="w-auto" variant="top" alt={alt} src={icon} />
             </div>
             <Card.Body className="bg-dark">
                 <Card.Title className="m-0">{heading}</Card.Title>

@@ -66,6 +66,7 @@ export default function Technical() {
                             <ButtonCard
                                 heading="Электрик"
                                 icon={electrician}
+                                alt="Икона лампочки © Realgieya, Noun Project"
                                 service="electrician"
                                 onClick={selectService}
                             />
@@ -74,6 +75,7 @@ export default function Technical() {
                             <ButtonCard
                                 heading="Сантехник"
                                 icon={plumber}
+                                alt="Икона крана © barureze, Noun Project"
                                 service="plumber"
                                 onClick={selectService}
                             />
@@ -82,6 +84,7 @@ export default function Technical() {
                             <ButtonCard
                                 heading="Плотник"
                                 icon={carpenter}
+                                alt="Икона инструментов © Muhammad Khoirul Amal, Noun Project"
                                 service="carpenter"
                                 onClick={selectService}
                             />
