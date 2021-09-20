@@ -4,7 +4,10 @@ import alert from '@/utils/alert'
 export const errorAlert = (text) => alert(text, { title: 'Ошибка :(' })
 export const supportEmail = <a href="mailto:support@cyberdas.net">support@cyberdas.net</a>
 export const mayBeError = (
-    <span>Если вы считаете, что это ошибка, то сообщите на {supportEmail}</span>
+    <span>
+        Если вы считаете, что это ошибка, то сообщите на {supportEmail} или воспользуйтесь{' '}
+        <a href="/feedback">формой обратной связи</a>
+    </span>
 )
 
 // Глобальный обработчик ошибок
