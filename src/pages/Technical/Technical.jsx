@@ -74,13 +74,15 @@ export default function Technical() {
                                 onClick={selectService}
                             />
                         </Col>
-                        <Col md={8} lg={3}>
+                        <Col md={8} lg={3} className="align-items-center d-flex flex-column">
                             <ButtonCard
                                 heading="Плотник"
                                 icon="carpenter"
                                 service="carpenter"
                                 onClick={selectService}
+                                disabled
                             />
+                            <p className="text-muted mb-0">будет доступен позже</p>
                         </Col>
                     </Row>
                 </>
