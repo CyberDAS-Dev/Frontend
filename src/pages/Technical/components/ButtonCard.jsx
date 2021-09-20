@@ -3,11 +3,8 @@ import { Card } from 'react-bootstrap'
 
 export default function ButtonCard({ service, heading, icon, onClick, alt }) {
     return (
-        <Card
-            className="w-100 p-0 align-items-stretch"
-            text="white"
-            bg="primary"
-            as="button"
+        <button
+            className="w-100 p-0 align-items-stretch btn btn-primary"
             onClick={() => onClick(service)}
         >
             <div className="py-2">
@@ -16,6 +13,6 @@ export default function ButtonCard({ service, heading, icon, onClick, alt }) {
             <Card.Body className="bg-dark">
                 <Card.Title className="m-0">{heading}</Card.Title>
             </Card.Body>
-        </Card>
+        </button>
     )
 }
