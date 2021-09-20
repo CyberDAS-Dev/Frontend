@@ -94,7 +94,7 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
                     </Form.Text>
                 </Form.Group>
             </Row>
-            <Form.Group as={Row} className="my-3">
+            <Form.Group as={Row}>
                 <Col xs="12" sm="auto">
                     <Button size="lg" type="submit" className="w-100 w-sm-auto">
                         Отправить

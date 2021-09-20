@@ -36,10 +36,10 @@ export default function Feedback() {
     }
 
     return (
-        <Container className="my-5">
+        <Container className="mt-4 mb-5">
             <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос" className="mb-5">
                 <Row
-                    className="gy-4"
+                    className="gy-3"
                     xs={{ cols: '1' }}
                     md={{ cols: (recipients.length <= 2 && recipients.length) || 1 }}
                     lg={{ cols: (recipients.length <= 3 && recipients.length) || 2 }}
