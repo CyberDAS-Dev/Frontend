@@ -37,7 +37,7 @@ export default function Feedback() {
 
     return (
         <Container className="mt-4 mb-5">
-            <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос" className="mb-5">
+            <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос">
                 <Row
                     className="gy-3"
                     xs={{ cols: '1' }}
@@ -58,7 +58,7 @@ export default function Feedback() {
                     })}
                 </Row>
             </ContentBox>
-            <ContentBox header="Шаг 2. Опишите вопрос">
+            <ContentBox header="Шаг 2. Опишите вопрос" className="mt-4">
                 <FeedbackForm
                     onSubmit={sendRequest}
                     categories={getRecipientObj(recipient, recipients)?.categories || []}
