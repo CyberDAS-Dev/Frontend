@@ -8,10 +8,6 @@ import TechnicalForm from '@/forms/Techical'
 import TechnicalApi from '@/API/technical'
 // import OttApi from '@/API/ott'
 
-import electrician from './icons/electrician.png'
-import plumber from './icons/plumber.png'
-import carpenter from './icons/carpenter.png'
-
 export default function Technical() {
     const [service, selectService] = useState(null)
 
@@ -61,12 +57,11 @@ export default function Technical() {
                         Заявки с этой страницы отправляются каждый день в 8 часов утра. Если вам
                         срочно нужна помощь - обратитесь к коменданту.
                     </Alert>
-                    <Row className="gx-5 gy-3 mt-3 mb-3 justify-content-center">
+                    <Row className="gx-5 gy-3 gy-lg-0 justify-content-center">
                         <Col md={8} lg={3}>
                             <ButtonCard
                                 heading="Электрик"
-                                icon={electrician}
-                                alt="Икона лампочки © Realgieya, Noun Project"
+                                icon="electrician"
                                 service="electrician"
                                 onClick={selectService}
                             />
@@ -74,8 +69,7 @@ export default function Technical() {
                         <Col md={8} lg={3}>
                             <ButtonCard
                                 heading="Сантехник"
-                                icon={plumber}
-                                alt="Икона крана © barureze, Noun Project"
+                                icon="plumber"
                                 service="plumber"
                                 onClick={selectService}
                             />
@@ -83,8 +77,7 @@ export default function Technical() {
                         <Col md={8} lg={3}>
                             <ButtonCard
                                 heading="Плотник"
-                                icon={carpenter}
-                                alt="Икона инструментов © Muhammad Khoirul Amal, Noun Project"
+                                icon="carpenter"
                                 service="carpenter"
                                 onClick={selectService}
                             />
