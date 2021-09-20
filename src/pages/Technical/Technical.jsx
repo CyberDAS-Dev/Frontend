@@ -6,7 +6,7 @@ import ButtonCard from './components/ButtonCard'
 import alert from '@/utils/alert'
 import TechnicalForm from '@/forms/Techical'
 import TechnicalApi from '@/API/technical'
-// import OttApi from '@/API/ott'
+import OttApi from '@/API/ott'
 
 export default function Technical() {
     const [service, selectService] = useState(null)
@@ -20,27 +20,27 @@ export default function Technical() {
     }
 
     async function sendRequest(values) {
-        // if (
-        //     await TechnicalApi.post(
-        //         { text: values.text, category: service },
-        //         await OttApi.getToken({
-        //             email: values.email,
-        //             surname: values.surname,
-        //             name: values.name,
-        //             patronymic: values.patronymic,
-        //             building: values.building,
-        //             room: values.room,
-        //         })
-        //     )
-        // ) {
-        //     backToSelection()
-        //     alert(
-        //         'Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера',
-        //         {
-        //             title: 'Успех!',
-        //         }
-        //     )
-        // }
+        if (
+            await TechnicalApi.post(
+                { text: values.text, category: service },
+                await OttApi.getToken({
+                    email: values.email,
+                    surname: values.surname,
+                    name: values.name,
+                    patronymic: values.patronymic,
+                    building: values.building,
+                    room: values.room,
+                })
+            )
+        ) {
+            backToSelection()
+            alert(
+                'Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера',
+                {
+                    title: 'Успех!',
+                }
+            )
+        }
     }
 
     return (
