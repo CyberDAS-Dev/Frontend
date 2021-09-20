@@ -34,7 +34,7 @@ export default function Footer() {
                                 />
                             </Col>
                             <Col>
-                                <FooterLink to="/copyright" name="Обратная связь" external />
+                                <FooterLink to="/feedback" name="Обратная связь" />
                             </Col>
                         </Row>
                     </Col>
