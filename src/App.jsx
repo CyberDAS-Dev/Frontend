@@ -20,6 +20,7 @@ import UserAgreement from '@/pages/UserAgreement/UserAgreement'
 import ghostRoutes from '@/routes/ghostRoutes'
 import Metric from '@/utils/Metric'
 import ScrollToTop from '@/utils/ScrollToTop'
+import Technical from '@/pages/Technical/Technical'
 
 function App() {
     const isProduction = process.env.NODE_ENV === 'production'
@@ -36,6 +37,7 @@ function App() {
                     <Route exact path="/privacy" component={Privacy} />
                     <Route exact path="/agreement" component={UserAgreement} />
                     <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/technical" component={Technical} />
                     <Route exact path="/" component={Landing} />
                     {ghostRoutes()}
                     <Route component={NotFoundPage} />
