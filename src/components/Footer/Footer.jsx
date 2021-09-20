@@ -15,9 +15,9 @@ export default function Footer() {
                     >
                         <Row
                             xs={{ cols: 1 }}
-                            md={{ cols: 3 }}
+                            md={{ cols: 6 }}
                             xl={{ cols: 'auto' }}
-                            className="justify-content-center h-100  gy-2"
+                            className="justify-content-between h-100 gy-2"
                         >
                             <Col>
                                 <FooterLink
@@ -57,9 +57,9 @@ export default function Footer() {
                     >
                         <Row
                             xs={{ cols: 1 }}
-                            md={{ cols: 3 }}
+                            md={{ cols: 6 }}
                             xl={{ cols: 'auto' }}
-                            className="justify-content-center h-100  gy-2"
+                            className="justify-content-between h-100 gy-2"
                         >
                             <Col>
                                 <FooterLink to="/privacy" name="Защита данных" />
