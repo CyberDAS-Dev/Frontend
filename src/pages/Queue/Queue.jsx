@@ -6,9 +6,10 @@ import confirm from '@/utils/confirm'
 import alert from '@/utils/alert'
 import confirmForm from '@/utils/confirmForm'
 import SlotAPI from '@/API/slot'
+import OttApi from '@/API/ott'
 import QueueInputGroup from '@/components/QueueInputGroup/QueueInputGroup'
 import getDateStyles from '@/components/SlotCalendar/dateStyling'
-import { earliestAvailableInMonth, tillMonthEnd, toDatetime, fromDatetime } from '@/utils/dateLib'
+import { earliestAvailableInMonth, tillMonthEnd, toDatetime } from '@/utils/dateLib'
 import getDailySlots from '@/components/QueueInputGroup/slotsMatrix'
 import FacultySelector from '@/components/FacultySelector/FacultySelector'
 import facultyToQueue from '@/utils/facultyToQueue'
@@ -50,19 +51,15 @@ export default function Queue() {
             const values = await confirmForm(FasttrackForm, {
                 title: 'Оставьте информацию о себе',
                 cancelLabel: 'Отменить',
+                okLabel: 'Отправить',
             })
             if (values) {
-                if (values.course !== 1 && fromDatetime(slot.value) < new Date('2021-09-13')) {
-                    alert('До 13 сентября запись доступна только для студентов первого курса.', {
-                        title: 'Ошибка :(',
-                    })
-                    return
-                }
                 if (
-                    await SlotAPI.reserve(facultyToQueue(faculty), parseInt(slot.id, 10), {
-                        ...values,
-                        faculty_id: faculty,
-                    })
+                    await SlotAPI.reserve(
+                        facultyToQueue(faculty),
+                        parseInt(slot.id, 10),
+                        await OttApi.getToken({ ...values, faculty_id: faculty })
+                    )
                 ) {
                     alert(
                         <>
@@ -101,9 +98,6 @@ export default function Queue() {
 
     return (
         <Page header="Электронная регистрация на процедуру заселения">
-            <Alert variant="warning">
-                Внимание! До 13 сентября запись доступна только для студентов первого курса.
-            </Alert>
             <Alert variant="info">
                 Запись в электронную очередь - это не время, в которое вас будут пускать в
                 общежитие. В общежитие можно приехать в любое время и в любой день, вас поселят.
