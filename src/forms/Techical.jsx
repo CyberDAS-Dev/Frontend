@@ -31,10 +31,9 @@ export default function TechnicalForm({ onSubmit }) {
     return (
         <Form onSubmit={formik.handleSubmit}>
             <Row>
-                <Form.Group as={Col} lg="3">
+                <Form.Group as={Col} lg="4">
                     <Form.Label column="lg">Электронная почта:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="email"
                         name="email"
                         placeholder="Введите адрес почты"
@@ -47,10 +46,9 @@ export default function TechnicalForm({ onSubmit }) {
                 </Form.Group>
             </Row>
             <Row>
-                <Form.Group as={Col} lg="3" controlId="validationFormik01">
+                <Form.Group as={Col} lg="4" controlId="validationFormik01">
                     <Form.Label column="lg">Фамилия:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="text"
                         name="surname"
                         placeholder="Введите фамилию"
@@ -61,10 +59,9 @@ export default function TechnicalForm({ onSubmit }) {
                         isValid={formik.touched.surname && !formik.errors.surname}
                     />
                 </Form.Group>
-                <Form.Group as={Col} lg="3" controlId="validationFormik02">
+                <Form.Group as={Col} lg="4" controlId="validationFormik02">
                     <Form.Label column="lg">Имя:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="text"
                         name="name"
                         placeholder="Введите имя"
@@ -75,10 +72,9 @@ export default function TechnicalForm({ onSubmit }) {
                         isValid={formik.touched.name && !formik.errors.name}
                     />
                 </Form.Group>
-                <Form.Group as={Col} lg="3">
+                <Form.Group as={Col} lg="4">
                     <Form.Label column="lg">Отчество:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="text"
                         name="patronymic"
                         placeholder="Введите отчество"
@@ -91,10 +87,9 @@ export default function TechnicalForm({ onSubmit }) {
                 </Form.Group>
             </Row>
             <Row>
-                <Form.Group as={Col} xs="6" lg="3" xxl="1">
+                <Form.Group as={Col} xs="6" lg="2" xxl="1">
                     <Form.Label column="lg">Корпус:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="number"
                         name="building"
                         value={formik.values.building}
@@ -104,10 +99,9 @@ export default function TechnicalForm({ onSubmit }) {
                         isValid={formik.touched.building && !formik.errors.building}
                     />
                 </Form.Group>
-                <Form.Group as={Col} xs="6" lg="3" xxl="2">
+                <Form.Group as={Col} xs="6" lg="2" xxl="2">
                     <Form.Label column="lg">Комната:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="number"
                         name="room"
                         value={formik.values.room}
@@ -120,10 +114,9 @@ export default function TechnicalForm({ onSubmit }) {
             </Row>
 
             <Row>
-                <Form.Group as={Col} lg="6">
+                <Form.Group as={Col} lg="12">
                     <Form.Label column="lg">Описание проблемы:</Form.Label>
                     <Form.Control
-                        size="lg"
                         as="textarea"
                         name="text"
                         value={formik.values.text}

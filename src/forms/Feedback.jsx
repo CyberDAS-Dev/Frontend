@@ -33,10 +33,9 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
     return (
         <Form onSubmit={formik.handleSubmit}>
             <Row className="mb-3">
-                <Form.Group as={Col} lg="6">
+                <Form.Group as={Col} lg="4">
                     <Form.Label column="lg">Категория:</Form.Label>
                     <Form.Select
-                        size="lg"
                         type="category"
                         name="category"
                         value={formik.values.category}
@@ -59,10 +58,9 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
                 </Form.Group>
             </Row>
             <Row className="mb-3">
-                <Form.Group as={Col} lg="8">
+                <Form.Group as={Col} lg="12">
                     <Form.Label column="lg">Суть обращения:</Form.Label>
                     <Form.Control
-                        size="lg"
                         as="textarea"
                         name="text"
                         placeholder="Вы можете описать проблему или задать вопрос тут"
@@ -76,10 +74,9 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
                 </Form.Group>
             </Row>
             <Row className="mb-3">
-                <Form.Group as={Col} lg="8">
+                <Form.Group as={Col} lg="4">
                     <Form.Label column="lg">Электронная почта:</Form.Label>
                     <Form.Control
-                        size="lg"
                         type="email"
                         name="email"
                         placeholder="Введите адрес почты"
