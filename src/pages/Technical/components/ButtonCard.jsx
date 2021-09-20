@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import Icon from '@/components/Icon/index'
 
-export default function ButtonCard({ service, heading, icon, onClick, alt }) {
+export default function ButtonCard({ service, heading, icon, onClick }) {
     return (
         <Button
             className="w-100 p-0 align-items-stretch"
