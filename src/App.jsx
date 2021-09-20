@@ -16,6 +16,7 @@ import Login from '@/pages/Login/Login'
 import Signup from '@/pages/Signup/Signup'
 import Queue from '@/pages/Queue/Queue'
 import Privacy from '@/pages/Privacy/Privacy'
+import Feedback from '@/pages/Feedback/Feedback'
 import UserAgreement from '@/pages/UserAgreement/UserAgreement'
 import ghostRoutes from '@/routes/ghostRoutes'
 import Metric from '@/utils/Metric'
@@ -37,6 +38,7 @@ function App() {
                     <Route exact path="/privacy" component={Privacy} />
                     <Route exact path="/agreement" component={UserAgreement} />
                     <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/feedback" component={Feedback} />
                     <Route exact path="/technical" component={Technical} />
                     <Route exact path="/" component={Landing} />
                     {ghostRoutes()}

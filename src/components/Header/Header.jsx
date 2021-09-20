@@ -50,6 +50,9 @@ export default function Header() {
                         <LinkContainer exact to="/technical">
                             <Nav.Link eventKey="2">Технические услуги</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer exact to="/feedback">
+                            <Nav.Link eventKey="3">Обратная связь</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                     <Nav hidden activeKey={activeKey}>
                         <LinkContainer exact to="/login" activeKey={activeKey}>
