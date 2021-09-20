@@ -13,7 +13,7 @@ export default function Copyright() {
                 </Col>
                 <Col className="d-flex flex-column align-items-center">
                     <Icon name="plumber" />
-                    <a href="https://thenounproject.com/">© Made, Noun Project</a>
+                    <a href="https://thenounproject.com/">© barurezeki, Noun Project</a>
                 </Col>
                 <Col className="d-flex flex-column align-items-center">
                     <Icon name="carpenter" />
