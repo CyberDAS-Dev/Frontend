@@ -16,8 +16,6 @@ export default function Technical() {
 
     function cardClick(nextService) {
         selectService(nextService)
-        // eslint-disable-next-line no-restricted-globals
-        location.hash = '#step-2'
     }
 
     async function sendRequest(values) {
