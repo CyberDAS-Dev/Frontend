@@ -11,10 +11,11 @@ export default function ContentBox({
     children,
     closable = false,
     onClose = null,
+    ...rest
 }) {
     if (show) {
         return (
-            <Card className={`${s.wrapper} ${className}`}>
+            <Card className={`${s.wrapper} ${className}`} {...rest}>
                 <Card.Header className="d-flex">
                     <h5 className={`mb-1 ps-1 pt-1 ${hidden ? 'text-muted' : ''}`}>{header}</h5>
                     {closable ? <CloseButton className="ms-auto" onClick={onClose} /> : ''}
