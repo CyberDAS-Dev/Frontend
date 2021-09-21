@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Alert, Col, Container, Row } from 'react-bootstrap'
 import { ArrowLeft } from 'react-bootstrap-icons'
-import Page from '@/components/Page/Page'
 import ButtonCard from './components/ButtonCard'
 import alert from '@/utils/alert'
 import TechnicalForm from '@/forms/Techical'
@@ -47,7 +46,7 @@ export default function Technical() {
 
     return (
         <Container className="mt-4 mb-5">
-            <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос">
+            <ContentBox header="Шаг 1. Выберите мастера, к которому направится ваш запрос">
                 <Alert variant="info">
                     На этой странице можно оставить заявку на оказание технических услуг. Для этого
                     нужно выбрать желаемую категорию услуги, после заполнить контактную информацию и
@@ -89,7 +88,7 @@ export default function Technical() {
                     </Col>
                 </Row>
             </ContentBox>
-            <ContentBox header="Шаг 2. Опишите вопрос" className="mt-4" id="step-2">
+            <ContentBox header="Шаг 2. Опишите проблему" className="mt-4" id="step-2">
                 <button
                     onClick={backToSelection}
                     className="d-flex align-items-center mb-2 btn-link border-0 bg-transparent px-0 fs-5"
