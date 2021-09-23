@@ -44,14 +44,14 @@ export default function Technical() {
 
     return (
         <Container className="mt-4 mb-5">
-            <ContentBox header="Шаг 1. Выберите мастера, к которому направится ваш запрос">
+            <ContentBox header="Шаг 1. Выберите мастера, к которому будет направлен ваш запрос">
                 <Alert variant="info">
                     На этой странице можно оставить заявку на оказание технических услуг. Для этого
                     нужно выбрать желаемую категорию услуги, после заполнить контактную информацию и
                     оставить описание проблемы. Далее останется лишь дождаться прихода мастера.
                 </Alert>
                 <Alert variant="warning">
-                    Заявки с этой страницы отправляются каждый день в 8 часов утра. Если вам срочно
+                    Заявки с этой страницы отправляются каждый день в 7 часов утра. Если вам срочно
                     нужна помощь - обратитесь к коменданту.
                 </Alert>
                 <Row className="gy-3" xs={{ cols: 1 }} lg={{ cols: 3 }}>
@@ -62,6 +62,7 @@ export default function Technical() {
                             service="electrician"
                             onClick={cardClick}
                             currentSerivce={service}
+                            scrollTo="#step-2"
                         />
                     </Col>
                     <Col>
@@ -71,6 +72,7 @@ export default function Technical() {
                             service="carpenter"
                             onClick={cardClick}
                             currentSerivce={service}
+                            scrollTo="#step-2"
                         />
                     </Col>
                     <Col className="align-items-center d-flex flex-column">
@@ -80,6 +82,7 @@ export default function Technical() {
                             service="plumber"
                             onClick={cardClick}
                             currentSerivce={service}
+                            scrollTo="#step-2"
                             disabled
                         />
                         <p className="text-muted mb-0">будет доступен позже</p>
@@ -91,7 +94,6 @@ export default function Technical() {
                     onClick={backToSelection}
                     className="d-flex align-items-center mb-2 btn-link border-0 bg-transparent px-0 fs-5"
                     type="button"
-                    id="test"
                 >
                     <ArrowLeft className="me-2" />
                     Назад
