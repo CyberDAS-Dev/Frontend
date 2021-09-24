@@ -1,21 +1,27 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
 import Icon from '@/components/Icon/index'
 
-export default function ButtonCard({ service, heading, icon, onClick, disabled = false }) {
+export default function ButtonCard({
+    service,
+    heading,
+    icon,
+    onClick,
+    disabled = false,
+    currentSerivce,
+    scrollTo,
+}) {
     return (
-        <Button
-            className="w-100 p-0 align-items-stretch"
-            variant="outline-primary"
+        <a
+            className={`w-100 btn p-2 ${
+                currentSerivce === service ? 'btn-primary' : 'btn-outline-primary'
+            } ${disabled ? 'disabled' : ''}`}
+            href={scrollTo || ''}
             onClick={() => onClick(service)}
-            disabled={disabled}
         >
-            <div className="py-2">
+            <div className="mb-2">
                 <Icon name={icon} />
             </div>
-            <Card.Body>
-                <Card.Title className="m-0">{heading}</Card.Title>
-            </Card.Body>
-        </Button>
+            <h5>{heading}</h5>
+        </a>
     )
 }
