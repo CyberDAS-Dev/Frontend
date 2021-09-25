@@ -38,7 +38,7 @@
         },
         "import/resolver": {
             "jsconfig": {
-                "config": "jsconfig.paths.json"
+                "config": "jsconfig.json"
             }
         }
     },

@@ -1,3 +1,9 @@
 {
-    "extends": "./jsconfig.paths.json"
+    "compilerOptions": {
+        "baseUrl": ".",
+        "jsx": "react",
+        "paths": {
+            "@/*": ["./src/*"]
+        }
+    }
 }
