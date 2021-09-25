@@ -2,10 +2,10 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import Link from 'next/link'
 
-import useWindowDimensions from '@/hooks/useWindowDimensions'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 export default function NotFoundPage() {
-    const isBreakpoint = useWindowDimensions(576)
+    const isBreakpoint = useMediaQuery(576)
     return (
         <Container
             className="d-flex justify-content-center align-items-center text-center"
