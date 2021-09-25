@@ -28,7 +28,7 @@ export default function SlotList({
             id={slot.id}
             time={slot.time}
             onClick={onClick}
-            size={isBreakpoint ? 'lg' : ''}
+            size={isBreakpoint ? '' : 'lg'}
         />
     ))
 
