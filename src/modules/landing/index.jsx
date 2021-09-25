@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'next/link'
-import { Container, Row, Col, Button, Image } from 'react-bootstrap'
+import Img from 'next/image'
+import { Container, Row, Col, Button } from 'react-bootstrap'
+import LinkContainer from '@/common/components/LinkContainer/LinkContainer'
 // import { useHistory, useLocation } from 'react-router-dom'
 // import ghostRouting from '@/routes/ghostRouting'
 // import useQuery from '@/hooks/useQuery'
 import Card from './components/Card/Card'
-import jumbo from './images/jumbotron.jpg'
 import jumbologo from './images/jumbotron-logo.png'
 import whiteRem from './images/icons/white/rem.png'
 import blueQueen from './images/icons/blue/queue.png'
@@ -21,25 +21,15 @@ export default function Homepage() {
 
     return (
         <Container fluid className="p-0">
-            <Container
-                fluid
-                className="p-0 mb-6 d-flex align-items-center"
-                style={{
-                    minHeight: '60vh',
-                    backgroundImage: `url(${jumbo})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundColor: '#394051',
-                }}
-            >
+            <Container fluid className={`p-0 mb-6 d-flex align-items-center ${s.jumboBg}`}>
                 <Container>
                     <Row className="pt-5 pb-5">
                         <Col lg={{ span: 6, offset: 1 }}>
-                            <Image src={jumbologo} fluid />
+                            <Img src={jumbologo} />
                         </Col>
                     </Row>
                     <Row className="pt-5 pb-5">
-                        <Link href="/queue">
+                        <LinkContainer href="/queue">
                             <Button
                                 as={Col}
                                 xs={{ span: 6, offset: 3 }}
@@ -48,7 +38,7 @@ export default function Homepage() {
                             >
                                 Заселение
                             </Button>
-                        </Link>
+                        </LinkContainer>
                     </Row>
                 </Container>
             </Container>
@@ -116,10 +106,10 @@ export default function Homepage() {
                     </Col>
                 </Row>
                 <Row md={2} className="g-4">
-                    <Col xs="12" lg="3" className="d-inline-flex justify-content-center">
-                        <Image fluid className={s.landingCardImg} src={blueComingSoon} alt="" />
+                    <Col xs="12" md="3" className="d-inline-flex justify-content-center">
+                        <Img src={blueComingSoon} layout="fixed" />
                     </Col>
-                    <Col xs="12" lg="9" className="d-inline-flex justify-content-center">
+                    <Col xs="12" md="9" className="d-inline-flex justify-content-center">
                         <p className="lead">
                             Команда разработчиков постоянно работает над улучшением сервиса и
                             добавлением нового функционала. Если вы хотите помочь нам, то пишите на{' '}

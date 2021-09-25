@@ -1,5 +1,6 @@
 import React from 'react'
-import { Row, Col, Image, Card } from 'react-bootstrap'
+import Img from 'next/image'
+import { Row, Col, Card } from 'react-bootstrap'
 
 export default function LandingCard({ isPrimary, heading, order, children, image }) {
     return (
@@ -22,7 +23,7 @@ export default function LandingCard({ isPrimary, heading, order, children, image
                                 {children}
                             </Col>
                             <Col xs="12" md="4" className="d-inline-flex justify-content-center">
-                                <Image fluid src={image} />
+                                <Img src={image} />
                             </Col>
                         </Row>
                     </Card.Text>
