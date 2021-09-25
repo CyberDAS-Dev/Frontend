@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Nav, Container, Navbar } from 'react-bootstrap'
 import Link from 'next/link'
-import logo from './images/header-logo.png'
+import Img from 'next/image'
+import logo from '@/../public/images/header-logo.png'
 
 export default function Header() {
     const [activeKey, setActiveKey] = useState(0)
@@ -31,13 +32,12 @@ export default function Header() {
             <Container>
                 <Navbar.Brand>
                     <Link href="/" passHref>
-                        <Nav.Link className="p-0" eventKey="0">
-                            <img
-                                style={{ marginLeft: '-7px' }}
-                                src={logo}
-                                className="d-inline-block align-top"
-                                alt="CyberDAS"
-                            />
+                        <Nav.Link
+                            className="p-0 align-items-center d-flex"
+                            eventKey="0"
+                            style={{ marginLeft: '-7px' }}
+                        >
+                            <Img layout="fixed" quality={100} src={logo} alt="CyberDAS" />
                         </Nav.Link>
                     </Link>
                 </Navbar.Brand>
