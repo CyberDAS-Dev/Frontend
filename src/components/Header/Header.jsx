@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Nav, Container, Navbar } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import Link from 'next/link'
 import logo from './images/header-logo.png'
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
         >
             <Container>
                 <Navbar.Brand>
-                    <LinkContainer exact to="/">
+                    <Link href="/" passHref>
                         <Nav.Link className="p-0" eventKey="0">
                             <img
                                 style={{ marginLeft: '-7px' }}
@@ -39,25 +39,25 @@ export default function Header() {
                                 alt="CyberDAS"
                             />
                         </Nav.Link>
-                    </LinkContainer>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto" activeKey={activeKey}>
-                        <LinkContainer exact to="/queue">
+                        <Link href="/queue" passHref>
                             <Nav.Link eventKey="1">Заселение</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer exact to="/technical">
+                        </Link>
+                        <Link href="/technical" passHref>
                             <Nav.Link eventKey="2">Технические услуги</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer exact to="/feedback">
+                        </Link>
+                        <Link href="/feedback" passHref>
                             <Nav.Link eventKey="3">Обратная связь</Nav.Link>
-                        </LinkContainer>
+                        </Link>
                     </Nav>
                     <Nav hidden activeKey={activeKey}>
-                        <LinkContainer exact to="/login" activeKey={activeKey}>
+                        <Link href="/login" passHref>
                             <Nav.Link eventKey="3">Вход</Nav.Link>
-                        </LinkContainer>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

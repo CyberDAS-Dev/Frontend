@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 export default function FooterLink({ to, name, external }) {
     let link
@@ -11,7 +11,7 @@ export default function FooterLink({ to, name, external }) {
         )
     } else {
         link = (
-            <Link to={to} className="link-light d-block">
+            <Link href={to} className="link-light d-block">
                 {name}
             </Link>
         )
