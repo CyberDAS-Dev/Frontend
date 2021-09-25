@@ -1,10 +1,11 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import Link from 'next/link'
+
 import useWindowDimensions from '@/hooks/useWindowDimensions'
 
 export default function NotFoundPage() {
-    const { width } = useWindowDimensions()
+    const isBreakpoint = useWindowDimensions(576)
     return (
         <Container
             className="d-flex justify-content-center align-items-center text-center"
@@ -18,9 +19,9 @@ export default function NotFoundPage() {
                     <h4 className="display-4">Страница не найдена</h4>
                 </Col>
                 <Col className="mt-4">
-                    <LinkContainer exact to="/">
-                        <Button size={width < 576 ? `` : 'lg'}>Вернуться на главную</Button>
-                    </LinkContainer>
+                    <Link href="/" passHref>
+                        <Button size={isBreakpoint ? `` : 'lg'}>Вернуться на главную</Button>
+                    </Link>
                 </Col>
             </Row>
         </Container>
