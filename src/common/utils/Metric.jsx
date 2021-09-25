@@ -1,23 +1,25 @@
 import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import ym, { YMInitializer } from 'react-yandex-metrika'
 import ReactGA from 'react-ga'
 
 export default function Metric() {
-    const { pathname } = useLocation()
+    const router = useRouter()
 
     useEffect(() => {
-        ReactGA.initialize(`${process.env.REACT_APP_GA_ID}`)
+        ReactGA.initialize(`${process.env.NEXT_PUBLIC_GA_ID}`)
     }, [])
 
     useEffect(() => {
-        ym('hit', pathname, {})
-        ReactGA.pageview(pathname)
-    }, [pathname])
+        router.events.on('routeChangeComplete', (url) => {
+            ym('hit', url)
+            ReactGA.pageview(url)
+        })
+    }, [router.events])
 
     return (
         <YMInitializer
-            accounts={[`${process.env.REACT_APP_YM_ID}`]}
+            accounts={[`${process.env.NEXT_PUBLIC_YM_ID}`]}
             options={{ webvisor: true, defer: true }}
             version="2"
         />
