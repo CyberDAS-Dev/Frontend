@@ -20,7 +20,7 @@
 }
 
 /* Нужно для прибития футера вниз страницы */
-.App {
+#__next {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
