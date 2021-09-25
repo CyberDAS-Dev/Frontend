@@ -19,7 +19,7 @@ export default function CustomModal({
     footer = null,
 }) {
     return (
-        <div className="static-modal">
+        <div className={`static-modal ${s.wrapper}`}>
             <Modal
                 show={show}
                 size={size}
@@ -27,7 +27,6 @@ export default function CustomModal({
                 onHide={() => proceed(false)}
                 backdrop={enableEscape ? true : 'static'}
                 keyboard={enableEscape}
-                className={s.wrapper}
             >
                 <ContentBox closable={closable} onClose={() => proceed(false)} header={title}>
                     {children}

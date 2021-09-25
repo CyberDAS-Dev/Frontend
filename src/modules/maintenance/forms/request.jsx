@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { Form, Row, Col, Button } from 'react-bootstrap'
-import './request.css'
+import s from './request.module.scss'
 
 const schema = yup.object().shape({
     surname: yup.string().required(),
@@ -29,7 +29,7 @@ export default function MaintenanceForm({ onSubmit }) {
         },
     })
     return (
-        <Form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={formik.handleSubmit} className={s.wrapper}>
             <Row className="mb-3">
                 <Form.Group as={Col} lg="4">
                     <Form.Label column="lg">Электронная почта:</Form.Label>

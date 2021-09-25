@@ -15,13 +15,15 @@ export default function ContentBox({
 }) {
     if (show) {
         return (
-            <Card className={`${s.wrapper} ${className}`} id={id}>
-                <Card.Header className="d-flex">
-                    <h5 className={`mb-1 ps-1 pt-1 ${hidden ? 'text-muted' : ''}`}>{header}</h5>
-                    {closable ? <CloseButton className="ms-auto" onClick={onClose} /> : ''}
-                </Card.Header>
-                {hidden ? '' : <Card.Body>{children}</Card.Body>}
-            </Card>
+            <div className={`${s.wrapper}`}>
+                <Card className={`${className}`} id={id}>
+                    <Card.Header className="d-flex">
+                        <h5 className={`mb-1 ps-1 pt-1 ${hidden ? 'text-muted' : ''}`}>{header}</h5>
+                        {closable ? <CloseButton className="ms-auto" onClick={onClose} /> : ''}
+                    </Card.Header>
+                    {hidden ? '' : <Card.Body>{children}</Card.Body>}
+                </Card>
+            </div>
         )
     }
 

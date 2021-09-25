@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactCalendar from 'react-calendar'
-import './Calendar.module.scss'
+import s from './Calendar.module.scss'
 
 export default function Calendar({ show = true, className = '', ...args }) {
     if (show) {
         return (
-            <ReactCalendar
-                className={`${className || ''}`}
-                locale="ru-RU"
-                calendarType="ISO 8601"
-                {...args}
-            />
+            <div className={s.wrapper}>
+                <ReactCalendar
+                    className={`${className || ''}`}
+                    locale="ru-RU"
+                    calendarType="ISO 8601"
+                    {...args}
+                />
+            </div>
         )
     }
 
