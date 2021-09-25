@@ -1,24 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
-function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window
-    return {
-        width,
-        height,
-    }
-}
+export default function useMediaQuery(width) {
+    const [targetReached, setTargetReached] = useState(false)
 
-export default function useWindowDimensions() {
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
-
-    useEffect(() => {
-        function handleResize() {
-            setWindowDimensions(getWindowDimensions())
+    const updateTarget = useCallback((e) => {
+        if (e.matches) {
+            setTargetReached(true)
+        } else {
+            setTargetReached(false)
         }
-
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    return windowDimensions
+    useEffect(() => {
+        const media = window.matchMedia(`(max-width: ${width}px)`)
+        media.addEventListener('change', (e) => updateTarget(e))
+
+        // Check on mount (callback is not called until a change occurs)
+        if (media.matches) {
+            setTargetReached(true)
+        }
+
+        return () => media.removeEventListener('change', (e) => updateTarget(e))
+    }, [updateTarget, width])
+
+    return targetReached
 }
