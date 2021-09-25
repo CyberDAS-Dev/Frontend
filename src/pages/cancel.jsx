@@ -1,3 +1,7 @@
+import React from 'react'
+import { useRouter } from 'next/router'
+import Landing from '@/modules/landing'
+
 import confirm from '@/common/utils/confirm'
 import alert from '@/common/utils/alert'
 import BackendProxyAPI from '@/common/api/proxy'
@@ -27,17 +31,16 @@ async function onCancel(token, backendUrl) {
     }
 }
 
-export default function ghostRouting({ pathname }, query, history) {
-    const token = query.get('token')
-    const backendUrl = query.get('backend')
+export default function Cancel() {
+    const router = useRouter()
 
-    switch (pathname) {
-        case '/cancel':
-            onCancel(token, backendUrl)
-            history.push('/')
-            break
+    React.useEffect(() => {
+        const { token, backend } = router.query
+        if (token && backend) {
+            onCancel(token, backend)
+        }
+        router.push('/')
+    }, [router])
 
-        default:
-            break
-    }
+    return <Landing />
 }
