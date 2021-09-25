@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Button, Form, Row, Col, Image, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import LinkContainer from '@/common/components/LinkContainer/LinkContainer'
 import Icon from '@/common/components/Icon'
 import s from './Login.module.scss'
 import logo from './images/logo-white.png'
@@ -39,10 +39,10 @@ export default function Login() {
                     </Row>
                     <Row className="justify-content-center mb-3">
                         <Col xs="auto">
-                            <Link to="/signup">
+                            <LinkContainer href="/signup">
                                 <Icon name="key" />
                                 Регистрация
-                            </Link>
+                            </LinkContainer>
                         </Col>
                     </Row>
                     <Row className="justify-content-center">
