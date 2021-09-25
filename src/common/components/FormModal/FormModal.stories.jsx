@@ -2,7 +2,7 @@
 import React from 'react'
 import FormModal from './FormModal'
 import Description from './FormModal.description.md'
-import FasttrackForm from '@/modules/queue/forms/QueueForm'
+import FasttrackForm from '@/modules/queue/forms/contacts'
 
 export default {
     title: 'FormModal',

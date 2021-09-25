@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import http from '@/common/api/http'
-import { errorAlert } from '../../../common/api/errors'
+import { errorAlert } from '@/common/api/errors'
 
 class SlotDataService {
     getAll(queue) {

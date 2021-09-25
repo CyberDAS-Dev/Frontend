@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import http from '@/API/http'
+import http from '@/common/api/http'
 
 class QueueDataService {
     getAll(day, offset) {

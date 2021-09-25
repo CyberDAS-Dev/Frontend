@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import React from 'react'
-import { toDate, toDatetime } from '@/utils/dateLib'
+import { toDate, toDatetime } from '@/common/utils/dateLib'
 import QueueInputGroup from './QueueInputGroup'
 import Description from './QueueInputGroup.description.md'
 
