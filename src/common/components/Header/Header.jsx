@@ -47,7 +47,7 @@ export default function Header() {
                         <Link href="/queue" passHref>
                             <Nav.Link eventKey="1">Заселение</Nav.Link>
                         </Link>
-                        <Link href="/technical" passHref>
+                        <Link href="/maintenance" passHref>
                             <Nav.Link eventKey="2">Технические услуги</Nav.Link>
                         </Link>
                         <Link href="/feedback" passHref>
