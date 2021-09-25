@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import Icon from '@/components/Icon/index'
-import Page from '@/components/Page/Page'
+import Icon from '@/common/components/Icon/index'
+import Page from '@/common/components/Page/Page'
 
 export default function Copyright() {
     return (

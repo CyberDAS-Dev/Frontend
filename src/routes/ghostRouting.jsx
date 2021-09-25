@@ -1,6 +1,6 @@
-import confirm from '@/utils/confirm'
-import alert from '@/utils/alert'
-import BackendProxyAPI from '@/API/proxy'
+import confirm from '@/common/utils/confirm'
+import alert from '@/common/utils/alert'
+import BackendProxyAPI from '@/common/api/proxy'
 
 async function onCancel(token, backendUrl) {
     if (

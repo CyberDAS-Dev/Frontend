@@ -2,8 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 
-import Header from '@/components/Header/Header'
-import Footer from '@/components/Footer/Footer'
+import Header from '@/common/components/Header/Header'
+import Footer from '@/common/components/Footer/Footer'
 
 import store from '@/store/store'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import Link from 'next/link'
 
-import useMediaQuery from '@/hooks/useMediaQuery'
+import useMediaQuery from '@/common/hooks/useMediaQuery'
 
 export default function NotFoundPage() {
     const isBreakpoint = useMediaQuery(576)
