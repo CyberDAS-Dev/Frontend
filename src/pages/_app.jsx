@@ -1,8 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
+import { Provider } from 'react-redux'
 
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
+
+import store from '@/store/store'
 
 import '@fontsource/roboto'
 import '@fontsource/roboto/300.css'
@@ -20,9 +23,11 @@ const MyApp = ({ Component, pageProps }) => (
             <meta name="description" content="Сайт общежития ДАС МГУ." />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         </Head>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <Provider store={store}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+        </Provider>
     </>
 )
 
