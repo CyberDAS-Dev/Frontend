@@ -16,7 +16,7 @@ import Carousel, { slidesToShowPlugin, arrowsPlugin } from '@brainhubeu/react-ca
 import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons'
 import { toDatetime } from '@/common/utils/dateLib'
 
-import './Slider.scss'
+import s from './Slider.module.scss'
 
 // собирает все дни текущего месяца в массив с датами
 function generateMonthDates(month) {
@@ -105,7 +105,7 @@ export default function SliderCalendar({
     if (show) {
         return (
             <Carousel
-                className={className}
+                className={`${className} ${s.sliderCalendar}`}
                 plugins={[
                     'centered',
                     {

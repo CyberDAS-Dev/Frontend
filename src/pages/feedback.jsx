@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Container } from 'react-bootstrap'
 import FeedbackForm from '@/modules/feedback/forms/submit'
-import FeedbackApi from '@/common/api/feedback'
-import Item from './components/Item'
+import FeedbackApi from '@/modules/feedback/api/feedback'
+import Item from '@/modules/feedback/components/Item'
 import ContentBox from '@/common/components/ContentBox/ContentBox'
 import alert from '@/common/utils/alert'
 

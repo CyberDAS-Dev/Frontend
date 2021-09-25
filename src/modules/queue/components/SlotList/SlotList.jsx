@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'react-bootstrap'
 import Slot from '@/modules/queue/components/Slot/Slot'
-import useWindowDimensions from '@/hooks/useWindowDimensions'
+import useMediaQuery from '@/common/hooks/useMediaQuery'
 
 export default function SlotList({
     slots,
@@ -15,7 +15,7 @@ export default function SlotList({
     xl = '',
     xxl = '',
 }) {
-    const { width } = useWindowDimensions()
+    const isBreakpoint = useMediaQuery(768) // bootstrap md
 
     // Убираем занятые слоты
     const slotItems = slots.filter((slot) => slot.free)
@@ -28,7 +28,7 @@ export default function SlotList({
             id={slot.id}
             time={slot.time}
             onClick={onClick}
-            size={width >= 768 ? 'lg' : ''} // bootstrap md
+            size={isBreakpoint ? 'lg' : ''}
         />
     ))
 

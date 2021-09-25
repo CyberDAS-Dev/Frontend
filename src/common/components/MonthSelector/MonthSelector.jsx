@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'react-bootstrap'
-import { propTypes } from 'react-bootstrap/esm/Image'
-import Month from '@/components/Month/Month'
+import Month from '@/common/components/Month/Month'
 
 export default function MonthSelector({
     onChange = null,
@@ -46,7 +45,7 @@ MonthSelector.propTypes = {
         .isRequired,
     onChange: PropTypes.func,
     className: PropTypes.string,
-    noYear: propTypes.bool,
+    noYear: PropTypes.bool,
     xs: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     sm: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     md: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

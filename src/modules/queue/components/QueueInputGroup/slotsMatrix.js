@@ -1,4 +1,4 @@
-import { toDatetime } from '@/utils/dateLib'
+import { toDatetime } from '@/common/utils/dateLib'
 
 // Формирует матрицу из дней и слотов, приходящихся на этот день
 // Попутно возвращает список уникальных дат

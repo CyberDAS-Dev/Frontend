@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render as rtlRender } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
-import authReducer from '@/store/auth/slice'
+import authReducer from '@/common/store/auth/slice'
 
 function render(
     ui,

@@ -1,0 +1,63 @@
+@import '@/common/styles/variables';
+
+.sliderCalendar {
+    :global {
+        .BrainhubCarouselItem {
+            cursor: pointer;
+
+            span {
+                user-select: none;
+            }
+
+            > button {
+                transition: all 0.3s;
+                background-color: $element-grey;
+            }
+
+            &--active > button {
+                background-color: $primary !important;
+            }
+
+            .available_tile {
+                background-color: $success;
+            }
+
+            .weekend {
+                background-color: #bcbcbc;
+            }
+
+            .busy_tile {
+                background-color: $element_red;
+            }
+
+            .hot_tile {
+                background-color: #ffa06a;
+            }
+
+            .disabled {
+                background-color: #8a8a8a;
+            }
+        }
+
+        .BrainhubCarousel__customArrows {
+            height: 100%;
+            cursor: pointer;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .BrainhubCarousel__custom-arrowLeft:first-of-type {
+            left: 0;
+        }
+
+        .BrainhubCarousel__custom-arrowLeft:last-of-type {
+            right: 0;
+        }
+
+        .BrainhubCarousel__container {
+            touch-action: pan-x;
+        }
+    }
+}

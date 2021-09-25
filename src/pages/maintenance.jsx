@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Alert, Col, Container, Row } from 'react-bootstrap'
 import { ArrowLeft } from 'react-bootstrap-icons'
-import ButtonCard from './components/ButtonCard'
+import ButtonCard from '../modules/maintenance/components/ButtonCard'
 import alert from '@/common/utils/alert'
-import MaintenanceForm from './forms/request'
-import MaintenanceApi from './api/maintenance'
+import MaintenanceForm from '../modules/maintenance/forms/request'
+import MaintenanceApi from '../modules/maintenance/api/maintenance'
 import OttApi from '@/common/api/ott'
-import ContentBox from '../../common/components/ContentBox/ContentBox'
+import ContentBox from '../common/components/ContentBox/ContentBox'
 
 export default function Maintenance() {
     const [service, selectService] = useState('electrician')

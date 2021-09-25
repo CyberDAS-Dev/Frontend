@@ -5,7 +5,7 @@ import Page from '@/common/components/Page/Page'
 import confirm from '@/common/utils/confirm'
 import alert from '@/common/utils/alert'
 import confirmForm from '@/common/utils/confirmForm'
-import SlotAPI from '@/modules/queue/slot'
+import SlotAPI from '@/modules/queue/api/slot'
 import OttApi from '@/common/api/ott'
 import QueueInputGroup from '@/modules/queue/components/QueueInputGroup/QueueInputGroup'
 import getDateStyles from '@/modules/queue/components/SlotCalendar/dateStyling'
@@ -13,7 +13,7 @@ import { earliestAvailableInMonth, tillMonthEnd, toDatetime } from '@/common/uti
 import getDailySlots from '@/modules/queue/components/QueueInputGroup/slotsMatrix'
 import FacultySelector from '@/common/components/FacultySelector/FacultySelector'
 import facultyToQueue from '@/common/utils/facultyToQueue'
-import FasttrackForm from '@/modules/queue/forms/QueueForm'
+import FasttrackForm from '@/modules/queue/forms/contacts'
 
 export default function Queue() {
     const [slots, setSlots] = useState([])

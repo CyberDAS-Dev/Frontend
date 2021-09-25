@@ -1,4 +1,4 @@
-import { toDatetime } from '@/utils/dateLib'
+import { toDatetime } from '@/common/utils/dateLib'
 import { getDayClass, isDayDisabled } from './SlotCalendar'
 
 export default function getDateStyles(dailySlots, uniqueDates) {

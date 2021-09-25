@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'react-bootstrap'
-import MonthSelector from '@/components/MonthSelector/MonthSelector'
-import SlotCalendar from '@/components/SlotCalendar/SlotCalendar'
-import SliderCalendar from '../SliderCalendar/SliderCalendar'
-import NamedSlotList from '@/components/SlotList/NamedSlotList'
-import { toObject, toDate, toDatetime } from '@/utils/dateLib'
-import useWindowDimensions from '@/hooks/useWindowDimensions'
+import MonthSelector from '@/common/components/MonthSelector/MonthSelector'
+import SlotCalendar from '@/modules/queue/components/SlotCalendar/SlotCalendar'
+import SliderCalendar from '@/modules/queue/components/SliderCalendar/SliderCalendar'
+import NamedSlotList from '@/modules/queue/components/SlotList/NamedSlotList'
+import { toObject, toDate, toDatetime } from '@/common/utils/dateLib'
+import useMediaQuery from '@/common/hooks/useMediaQuery'
 
 const today = new Date()
 const getInitialDay = (disabledDates) => {
@@ -24,7 +24,7 @@ export default function QueueInputGroup({
     onSlotClick = () => {},
     getNoItemsText = () => {},
 }) {
-    const { width } = useWindowDimensions()
+    const isBreakpoint = useMediaQuery(768)
     const [date, setDate] = useState(new Date())
     const months = Object.keys(dailyClasses).map((element) =>
         element.split('-').slice(0, 2).join('-')
@@ -54,7 +54,7 @@ export default function QueueInputGroup({
         onDateChange(earliestDay)
     }
 
-    const Calendar = width < 768 ? SliderCalendar : SlotCalendar
+    const Calendar = isBreakpoint ? SliderCalendar : SlotCalendar
 
     if (show) {
         return (
