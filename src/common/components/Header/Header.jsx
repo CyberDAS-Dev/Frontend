@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Nav, Container, Navbar } from 'react-bootstrap'
 import Link from 'next/link'
 import Img from 'next/image'
-import logo from '@/../public/images/header-logo.png'
+import logo from './images/header-logo.png'
 
 export default function Header() {
     const [activeKey, setActiveKey] = useState(0)
