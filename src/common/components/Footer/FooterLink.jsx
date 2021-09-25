@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import LinkContainer from '@/common/components/LinkContainer/LinkContainer'
 
 export default function FooterLink({ to, name, external }) {
     let link
@@ -11,9 +11,9 @@ export default function FooterLink({ to, name, external }) {
         )
     } else {
         link = (
-            <Link href={to} className="link-light d-block">
+            <LinkContainer href={to} className="link-light d-block">
                 {name}
-            </Link>
+            </LinkContainer>
         )
     }
 
