@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { differenceInCalendarDays } from 'date-fns'
-import Calendar from '@/common/components/Calendar/Calendar'
+import Calendar from '@/common/components/Calendar'
 import { toDatetime, fromDatetime } from '@/common/utils/dateLib'
 import s from './SlotCalendar.module.scss'
 

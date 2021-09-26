@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'react-bootstrap'
-import SlotList from '@/modules/queue/components/SlotList/SlotList'
+import SlotList from '@/modules/queue/components/SlotList'
 
 export default function NamedSlotList({
     slots,

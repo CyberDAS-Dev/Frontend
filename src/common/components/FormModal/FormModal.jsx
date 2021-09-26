@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Modal from '@/common/components/Modal/Modal'
+import Modal from '@/common/components/Modal'
 
 const maxId = 10 ** 6
 

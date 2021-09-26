@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Modal from '@/common/components/Modal/Modal'
+import Modal from '@/common/components/Modal'
 
 export default function Alert({ okLabel, title, text, show, proceed, enableEscape = true }) {
     return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'react-bootstrap'
-import Slot from '@/modules/queue/components/Slot/Slot'
+import Slot from '@/modules/queue/components/Slot'
 import useMediaQuery from '@/common/hooks/useMediaQuery'
 
 export default function SlotList({

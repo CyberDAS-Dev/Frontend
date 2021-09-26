@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '@/common/components/Page/Page'
+import Page from '@/common/components/Page'
 
 export default function Privacy() {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '@/common/components/Icon/index'
+import Icon from '@/common/components/Icon'
 
 export default function ButtonCard({
     service,

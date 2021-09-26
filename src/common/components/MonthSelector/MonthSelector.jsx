@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'react-bootstrap'
-import Month from '@/common/components/Month/Month'
+import Month from '@/common/components/Month'
 
 export default function MonthSelector({
     onChange = null,

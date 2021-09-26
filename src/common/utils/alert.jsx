@@ -1,5 +1,5 @@
 import { confirmable, createConfirmation } from 'react-confirm'
-import Alert from '@/common/components/Alert/Alert'
+import Alert from '@/common/components/Alert'
 
 const defaultAlert = createConfirmation(confirmable(Alert))
 

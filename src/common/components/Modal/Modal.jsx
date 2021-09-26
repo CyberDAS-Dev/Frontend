@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button, Row, Col } from 'react-bootstrap'
-import ContentBox from '@/common/components/ContentBox/ContentBox'
+import ContentBox from '@/common/components/ContentBox'
 import s from './Modal.module.scss'
 
 export default function CustomModal({

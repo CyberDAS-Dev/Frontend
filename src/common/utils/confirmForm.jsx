@@ -1,5 +1,5 @@
 import { confirmable, createConfirmation } from 'react-confirm'
-import FormModal from '@/common/components/FormModal/FormModal'
+import FormModal from '@/common/components/FormModal'
 
 const defaultConfirmation = createConfirmation(confirmable(FormModal))
 

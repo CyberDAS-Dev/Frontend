@@ -1,5 +1,5 @@
 import React from 'react'
-import LinkContainer from '@/common/components/LinkContainer/LinkContainer'
+import LinkContainer from '@/common/components/LinkContainer'
 
 export default function FooterLink({ to, name, external }) {
     let link

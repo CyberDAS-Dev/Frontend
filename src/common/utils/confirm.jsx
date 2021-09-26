@@ -1,5 +1,5 @@
 import { confirmable, createConfirmation } from 'react-confirm'
-import Confirm from '@/common/components/Confirm/Confirm'
+import Confirm from '@/common/components/Confirm'
 
 const defaultConfirmation = createConfirmation(confirmable(Confirm))
 

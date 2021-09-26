@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container } from 'react-bootstrap'
-import ContentBox from '@/common/components/ContentBox/ContentBox'
+import ContentBox from '@/common/components/ContentBox'
 
 export default function Page({ className = '', header = '', children }) {
     return (
