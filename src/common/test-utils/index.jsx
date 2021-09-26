@@ -3,7 +3,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import '@testing-library/jest-dom/extend-expect'
 import { render as rtlRender } from '@testing-library/react'
 import { Provider } from 'react-redux'
-import { MemoryRouter } from 'react-router-dom'
 import authReducer from '@/common/store/auth/slice'
 
 function render(
@@ -20,11 +19,7 @@ function render(
     } = {}
 ) {
     function Wrapper({ children }) {
-        return (
-            <MemoryRouter>
-                <Provider store={store}>{children}</Provider>
-            </MemoryRouter>
-        )
+        return <Provider store={store}>{children}</Provider>
     }
     return rtlRender(ui, { wrapper: Wrapper, ...renderOptions })
 }
