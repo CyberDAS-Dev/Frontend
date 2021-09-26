@@ -43,6 +43,6 @@ it('имеет отступы', () => {
     act(() => {
         render(<Page>Lol</Page>)
     })
-    const container = screen.getByText('Lol').closest('.container')
-    expect(container.children[0]).toHaveClass('mt-4 mb-5')
+    const container = screen.getByText('Lol').closest('.card')
+    expect(container).toHaveClass('mt-4 mb-5')
 })
