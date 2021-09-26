@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { Form, Row, Col } from 'react-bootstrap'
@@ -137,8 +138,9 @@ export default function FasttrackForm({ id, onSubmit }) {
             <Row>
                 <Col>
                     <p className="mb-0">
-                        Нажимая кнопку Отправить, вы принимаете <a href="/agreement">условия</a> и{' '}
-                        <a href="/privacy">политику обработки данных</a>
+                        Нажимая кнопку Отправить, вы принимаете{' '}
+                        <Link href="/agreement">условия</Link> и{' '}
+                        <Link href="/privacy">политику обработки данных</Link>
                     </p>
                 </Col>
             </Row>

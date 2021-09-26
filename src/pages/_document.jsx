@@ -1,3 +1,5 @@
+// https://github.com/vercel/next.js/issues/28596
+// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 

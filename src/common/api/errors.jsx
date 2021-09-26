@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import alert from '@/common/utils/alert'
 
 export const errorAlert = (text) => alert(text, { title: 'Ошибка :(' })
@@ -6,7 +7,7 @@ export const supportEmail = <a href="mailto:support@cyberdas.net">support@cyberd
 export const mayBeError = (
     <span>
         Если вы считаете, что это ошибка, то сообщите на {supportEmail} или воспользуйтесь{' '}
-        <a href="/feedback">формой обратной связи</a>
+        <Link href="/feedback">формой обратной связи</Link>
     </span>
 )
 
