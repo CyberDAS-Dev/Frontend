@@ -8,14 +8,14 @@ module.exports = {
         '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
 
         // Handle CSS imports (without CSS modules)
-        '^.+\\.(css|sass|scss)$': '<rootDir>/src/common/test-utils/styleMock.js',
+        '^.+\\.(css|sass|scss)$': '<rootDir>/common/test-utils/styleMock.js',
 
         /* Handle image imports
       https://jestjs.io/docs/webpack#handling-static-assets */
-        '^.+\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/src/common/test-utils/fileMock.js',
+        '^.+\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/common/test-utils/fileMock.js',
 
         // Alias
-        '^@/(.*)$': '<rootDir>/src/$1',
+        '^@/(.*)$': '<rootDir>/$1',
     },
     testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
     testEnvironment: 'jsdom',
@@ -25,5 +25,5 @@ module.exports = {
         '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
     },
     transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
-    setupFilesAfterEnv: ['<rootDir>/src/common/test-utils/setupTests.js'],
+    setupFilesAfterEnv: ['<rootDir>/common/test-utils/setupTests.js'],
 }
