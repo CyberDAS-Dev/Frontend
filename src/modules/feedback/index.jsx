@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { Row, Container } from 'react-bootstrap'
 import ContentBox from '@/common/components/ContentBox/ContentBox'
 import alert from '@/common/utils/alert'
@@ -36,34 +37,49 @@ export default function Feedback() {
     }
 
     return (
-        <Container className="mt-4 mb-5">
-            <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос">
-                <Row
-                    className="gy-3"
-                    xs={{ cols: '1' }}
-                    md={{ cols: (recipients.length <= 2 && recipients.length) || 1 }}
-                    lg={{ cols: (recipients.length <= 3 && recipients.length) || 2 }}
-                >
-                    {recipients.map((rec) => {
-                        return (
-                            <Item
-                                key={rec.name}
-                                title={rec.title}
-                                name={rec.name}
-                                description={rec.description}
-                                onClick={setRecipient}
-                                isActive={recipient === rec.name}
-                            />
-                        )
-                    })}
-                </Row>
-            </ContentBox>
-            <ContentBox header="Шаг 2. Опишите вопрос" className="mt-4">
-                <FeedbackForm
-                    onSubmit={sendRequest}
-                    categories={getRecipientObj(recipient, recipients)?.categories || []}
+        <>
+            <Head>
+                <title>Обратная связь</title>
+                <meta property="og:title" content="Обратная связь" key="title" />
+                <meta
+                    name="description"
+                    content="Связь с администрацией сайта или студенческим комитетом общежития ДАС."
                 />
-            </ContentBox>
-        </Container>
+                <meta
+                    property="og:description"
+                    content="Связь с администрацией сайта или студенческим комитетом общежития ДАС."
+                    key="description"
+                />
+            </Head>
+            <Container className="mt-4 mb-5">
+                <ContentBox header="Шаг 1. Выберите, кому будет направлен ваш вопрос">
+                    <Row
+                        className="gy-3"
+                        xs={{ cols: '1' }}
+                        md={{ cols: (recipients.length <= 2 && recipients.length) || 1 }}
+                        lg={{ cols: (recipients.length <= 3 && recipients.length) || 2 }}
+                    >
+                        {recipients.map((rec) => {
+                            return (
+                                <Item
+                                    key={rec.name}
+                                    title={rec.title}
+                                    name={rec.name}
+                                    description={rec.description}
+                                    onClick={setRecipient}
+                                    isActive={recipient === rec.name}
+                                />
+                            )
+                        })}
+                    </Row>
+                </ContentBox>
+                <ContentBox header="Шаг 2. Опишите вопрос" className="mt-4">
+                    <FeedbackForm
+                        onSubmit={sendRequest}
+                        categories={getRecipientObj(recipient, recipients)?.categories || []}
+                    />
+                </ContentBox>
+            </Container>
+        </>
     )
 }
