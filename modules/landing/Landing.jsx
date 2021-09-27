@@ -2,10 +2,7 @@ import React from 'react'
 import Img from 'next/image'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import LinkContainer from '@/common/components/LinkContainer'
-// import { useHistory, useLocation } from 'react-router-dom'
-// import ghostRouting from '@/routes/ghostRouting'
-// import useQuery from '@/hooks/useQuery'
-import Card from './components/Card/Card'
+import Card from './components/Card'
 import jumbologo from './images/jumbotron-logo.png'
 import whiteRem from './images/icons/white/rem.png'
 import blueQueen from './images/icons/blue/queue.png'
@@ -17,8 +14,6 @@ import blueComingSoon from './images/icons/blue/comingsoon.png'
 import s from './Landing.module.scss'
 
 export default function Homepage() {
-    // ghostRouting(useLocation(), useQuery(), useHistory())
-
     return (
         <Container fluid className="p-0">
             <Container fluid className={`p-0 mb-6 d-flex align-items-center ${s.jumboBg}`}>
