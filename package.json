@@ -55,7 +55,7 @@
         "format:code": "eslint --ext js,jsx common modules pages --fix",
         "format:style": "stylelint {common,modules,pages}/*/*/*.{css,scss} --fix",
         "pre-commit": "lint-staged",
-        "storybook": "start-storybook -p 6006 -s public",
+        "storybook": "start-storybook -p 3001 -s public",
         "build-storybook": "build-storybook -s public"
     },
     "eslintConfig": {
