@@ -1,0 +1,17 @@
+@import '@/common/styles/variables';
+
+.wrapper {
+    :global {
+        // global отключает name mangling у scss. если его убрать всё сломается
+
+        .react-calendar__tile.busy_tile {
+            background-color: $element_red;
+        }
+        .react-calendar__tile.hot_tile {
+            background-color: #ffa06a;
+        }
+        .react-calendar__tile.available_tile {
+            background-color: $success;
+        }
+    }
+}

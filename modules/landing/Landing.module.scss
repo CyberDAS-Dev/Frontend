@@ -1,0 +1,16 @@
+@import '@/common/styles/variables';
+
+.landingNumbers {
+    font-family: Quantico, sans-serif;
+    font-size: 8rem;
+    line-height: 8rem;
+    color: $primary;
+}
+
+.jumboBg {
+    min-height: 60vh;
+    background-image: url('./images/jumbotron.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #394051;
+}

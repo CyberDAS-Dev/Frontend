@@ -9,7 +9,8 @@
         "plugin:jest/recommended",
         "airbnb",
         "airbnb/hooks",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:@next/next/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -38,7 +39,7 @@
         },
         "import/resolver": {
             "jsconfig": {
-                "config": "jsconfig.paths.json"
+                "config": "jsconfig.json"
             }
         }
     },

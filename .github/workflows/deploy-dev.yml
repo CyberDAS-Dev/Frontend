@@ -5,42 +5,13 @@ on:
         branches: [ main ]
 
 jobs:
-    update:
-        runs-on: [self-hosted, linux, X64]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-              with:
-                  path: dev
-            - name: Install dependencies
-              working-directory: dev
-              run: |
-                  npm ci
-
     deploy:
-        needs: update
         runs-on: [self-hosted, linux, X64]
+        env:
+            MAIN_PORT: 4000
+            STORYBOOK_PORT: 4001
         steps:
-            - name: Build
+            - name: Docker compose
               working-directory: dev
               run: |
-                  npm run build
-            - name: Transfer new version to web-server
-              working-directory: dev
-              run: |
-                  rm -rf /var/www/dev/*  
-                  cp -r build/. /var/www/dev/
-
-    deploy-storybook:
-        needs: update
-        runs-on: [self-hosted, linux, X64]
-        steps:
-            - name: Build
-              working-directory: dev
-              run: |
-                  npm run build-storybook
-            - name: Transfer new version to web-server
-              working-directory: dev
-              run: |
-                  rm -rf /var/www/storybook/dev/*  
-                  cp -r storybook-static/. /var/www/storybook/dev/
+                  docker compose up --build

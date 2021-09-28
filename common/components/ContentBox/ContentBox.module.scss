@@ -1,0 +1,18 @@
+@import '@/common/styles/variables';
+
+.wrapper {
+    :global {
+        .card {
+            background-color: $page-background;
+            border-color: $page-border;
+            border-radius: 0.3125rem;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: $page-header;
+            color: $primary;
+            border: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+        }
+    }
+}

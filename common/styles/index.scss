@@ -1,0 +1,52 @@
+@import './variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~@brainhubeu/react-carousel/lib/style.css';
+
+/* Webkit должен рендерить кнопки так, как у нас */
+.btn {
+    -webkit-appearance: none;
+}
+
+/* Кастомные utility классы бэкграунда */
+.bg-nav {
+    background: hsl(234, 12%, 16%);
+}
+
+.bg-tinted-dark {
+    background: #4d4f60;
+}
+
+:root {
+    --bs-gutter-x: 1.5rem; // Отсутствие этого значения по умолчанию скорее всего является багом
+}
+
+/* Нужно для прибития футера вниз страницы */
+#__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Дефолтно в бутстрапе цвет ховеров у линков генерируется ввверх по яркости, 
+но у почти белого цвета изменения яркости вверх заметить трудновато.. */
+.link-light:hover,
+.link-light:focus {
+    color: $gray-400;
+}
+
+/* Приятный эффект обводки при наведении на элементы формы */
+.form-control {
+    &:focus,
+    &:active,
+    &:hover {
+        border-color: $element-grey;
+    }
+}
+
+.form-select {
+    &:focus,
+    &:active,
+    &:hover {
+        border-color: $element-grey;
+    }
+}
