@@ -5,10 +5,10 @@ services:
             context: .
             dockerfile: Dockerfile.main
         ports:
-            - '${MAIN_PORT}:3000'
+            - '127.0.0.1:${MAIN_PORT}:3000'
     storybook:
         build:
             context: .
             dockerfile: Dockerfile.storybook
         ports:
-            - '${STORYBOOK_PORT}:3001'
+            - '127.0.0.1:${STORYBOOK_PORT}:3001'
