@@ -40,16 +40,15 @@
 <br>
 
 <div align="center">
-  <a href="https://sass-lang.com/">
-    <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Sass&color=CC6699&logo=Sass&logoColor=FFFFFF&label=" alt="Sass">
-  </a>
   <a href="https://reactjs.org/">
     <img src="https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=" alt="React">
   </a>
-  <a href="https://redux-toolkit.js.org/">
-    <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Redux&color=764ABC&logo=Redux&logoColor=FFFFFF&label=" alt="Redux">
+  <a href="https://nextjs.org/">
+    <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Next.js&color=000000&logo=Next.js&logoColor=FFFFFF&label=" alt="Next">
   </a>
-  
+  <a href="https://sass-lang.com/">
+    <img src="https://img.shields.io/static/v1?style=for-the-badge&message=Sass&color=CC6699&logo=Sass&logoColor=FFFFFF&label=" alt="Sass">
+  </a>
 </div>
 
 <br>
@@ -85,8 +84,7 @@
 
 ### Необходимое ПО
 
--   Node.js (>=12)
--   Yarn (опционально)
+-   Node.js (>=12, оптимально 14)
 
 ### Установка
 
@@ -100,14 +98,59 @@
     ```
 3. Запустите локальный сервер для разработки, приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000)
     ```bash
-    npm start
+    npm run dev
     ```
+
+### Скрипты
+
+1.  Модульное тестирование компонентов запускается с помощью Jest и использует библиотеку react-testing-library. Для запуска тестов выполните:
+    ```bash
+    npm test
+    ```
+2.  Проверка JS кода работает на базе eslint, совмещенным с инструментом форматирования prettier, использование данных инструментов позволяет содержать код проекта в однородном виде, также исключая часть глупых ошибок.
+    1.  Для проверки с помощью терминала запустите:
+        ```bash
+        npm run lint:code
+        ```
+    2.  Для автоматического форматирования и исправления ошибок выполните:
+        ```bash
+        npm run format:code
+        ```
+3.  Проверка стилевых файлов работает с помощью stylelint, совмещен вместе с prettier для форматирования.
+
+    1.  Для проверки с помощью терминала запустите:
+        ```bash
+        npm run lint:style
+        ```
+    2.  Для автоматического форматирования и исправления ошибок выполните:
+        ```bash
+        npm run format:style
+        ```
 
 ### Развертывание
 
-1. Соберите приложение, готовое к установке на сервер, все нужные файлы находятся в директории build
+1. Запустите сборку оптимизированной версии приложения, после которой по умолчанию сервер будет запущен на 3000 порту [http://localhost:3000](http://localhost:3000)
     ```bash
     npm run build
+    npm start
+    ```
+
+### Настройка среды
+
+1. Для корректной работы линтинга и форматирования, в IDE (рекомендую использовать VS Code) требуется установить расширения eslint, stylelint, prettier. Для автоматического форматирования кода при сохранении файла добавьте данные строки в настройки (settings.json) VSCode:
+    ```json
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
     ```
 
 ## Дорожная карта
