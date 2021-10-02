@@ -32,13 +32,14 @@ export default function Maintenance() {
                 })
             )
         ) {
-            backToSelection()
             alert(
                 'Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера',
                 {
                     title: 'Успех!',
                 }
             )
+            backToSelection()
+            selectService('electrician')
         }
     }
 
