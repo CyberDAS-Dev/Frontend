@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import { Alert, Col, Container, Row } from 'react-bootstrap'
-import { ArrowLeft } from 'react-bootstrap-icons'
+import { ArrowLeft, CodeSlash } from 'react-bootstrap-icons'
 import ContentBox from '@/common/components/ContentBox'
 import alert from '@/common/utils/alert'
 import OttApi from '@/common/api/ott'
@@ -10,8 +11,10 @@ import MaintenanceApi from './api/maintenance'
 
 export default function Maintenance() {
     const [service, selectService] = useState('electrician')
+    const router = useRouter()
+
     function backToSelection() {
-        window.scrollTo(0, 0)
+        router.replace(router.pathname)
     }
 
     function cardClick(nextService) {
@@ -32,14 +35,17 @@ export default function Maintenance() {
                 })
             )
         ) {
-            alert(
-                'Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера',
-                {
-                    title: 'Успех!',
-                }
-            )
-            backToSelection()
-            selectService('electrician')
+            if (
+                await alert(
+                    'Вы успешно подали заявку на оказание технических услуг, ожидайте прихода мастера',
+                    {
+                        title: 'Успех!',
+                    }
+                )
+            ) {
+                backToSelection()
+                selectService('electrician')
+            }
         }
     }
 

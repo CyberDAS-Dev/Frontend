@@ -19,8 +19,8 @@ export default function MaintenanceForm({ onSubmit }) {
     const formik = useFormik({
         validationSchema: schema,
         onSubmit: (values) => {
-            formik.resetForm()
             onSubmit(values)
+            formik.resetForm()
         },
         initialValues: {
             surname: '',
