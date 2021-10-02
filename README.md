@@ -101,7 +101,7 @@
     npm run dev
     ```
 
-### Тестирование
+### Скрипты
 
 1.  Модульное тестирование компонентов запускается с помощью Jest и использует библиотеку react-testing-library. Для запуска тестов выполните:
     ```bash
@@ -116,19 +116,8 @@
         ```bash
         npm run format:code
         ```
-    3.  Для корректной работы линтинга и форматирования в IDE (рекомендую использовать VS Code) требуется установить расширение eslint в ваш редактор кода. Для автоматического форматирования кода при сохранении файла добавьте данные строки в настройки (settings.json) VSCode:
-        ```json
-        "files.autoSave": "onFocusChange",
-        "editor.formatOnSave": true,
-        "eslint.format.enable": true,
-        "[javascriptreact]": {
-            "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-        },
-        "[javascript]": {
-            "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-        },
-        ```
 3.  Проверка стилевых файлов работает с помощью stylelint, совмещен вместе с prettier для форматирования.
+
     1.  Для проверки с помощью терминала запустите:
         ```bash
         npm run lint:style
@@ -137,21 +126,31 @@
         ```bash
         npm run format:style
         ```
-    3.  Для корректной работы линтинга и форматирования в IDE (рекомендую использовать VS Code) требуется установить расширение stylelint и prettier в ваш редактор кода. Для автоматического форматирования cтилей при сохранении файла добавьте данные строки в настройки (settings.json) VSCode:
-        ```json
-        "files.autoSave": "onFocusChange",
-        "editor.formatOnSave": true,
-        "eslint.format.enable": true,
-        "[scss]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        ```
 
 ### Развертывание
 
 1. Запустите сборку оптимизированной версии приложения, после которой по умолчанию сервер будет запущен на 3000 порту [http://localhost:3000](http://localhost:3000)
     ```bash
+    npm run build
     npm start
+    ```
+
+### Настройка среды
+
+1. Для корректной работы линтинга и форматирования, в IDE (рекомендую использовать VS Code) требуется установить расширения eslint, stylelint, prettier. Для автоматического форматирования кода при сохранении файла добавьте данные строки в настройки (settings.json) VSCode:
+    ```json
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
     ```
 
 ## Дорожная карта
