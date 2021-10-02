@@ -24,7 +24,17 @@ const MyApp = ({ Component, pageProps }) => {
         <>
             <Head>
                 <title>CyberDAS</title>
-                <meta name="description" content="Сайт общежития ДАС МГУ." />
+                <meta property="og:title" content="CyberDAS" key="title" />
+                <meta
+                    name="description"
+                    content="CyberDAS - проект по цифровизации общежития ДАС МГУ. Призван избавить студентов от проблем с очередями и упростить лишние процессы бюрократии."
+                />
+                <meta
+                    property="og:description"
+                    content="CyberDAS - проект по цифровизации общежития ДАС МГУ. Призван избавить студентов от проблем с очередями и упростить лишние процессы бюрократии."
+                    key="description"
+                />
+                <meta property="og:site_name" content="CyberDAS" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1, maximum-scale=1"

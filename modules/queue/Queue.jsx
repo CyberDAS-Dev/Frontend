@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { Row, Col } from 'react-bootstrap'
 import Alert from 'react-bootstrap/Alert'
 import Page from '@/common/components/Page'
@@ -97,35 +98,47 @@ export default function Queue() {
     }
 
     return (
-        <Page header="Электронная регистрация на процедуру заселения">
-            <Alert variant="info">
-                Запись в электронную очередь - это не время, в которое вас будут пускать в
-                общежитие. В общежитие можно приехать в любое время и в любой день, вас поселят.
-                Электронная очередь нужна для оплаты проживания. Оплату можно будет произвести через
-                какое-то время после приезда и поселения в комнату.
-            </Alert>
-            <Row>
-                <Col xs={12} sm={6} lg={4} xl={3}>
-                    <FacultySelector
-                        className="mb-3"
-                        onSelect={(value) => {
-                            setFaculty(value)
-                        }}
-                        value={faculty}
-                    />
-                </Col>
-                <Col xs={6} />
-            </Row>
-            <QueueInputGroup
-                show={faculty !== 0}
-                slots={slots}
-                slotMatrix={slotMatrix}
-                uniqueDates={uniqueDates}
-                dailyClasses={dailyClasses}
-                disabledDates={disabledDates}
-                onSlotClick={onSlotClick}
-                getNoItemsText={noItemsText}
-            />
-        </Page>
+        <>
+            <Head>
+                <title>Заселение</title>
+                <meta property="og:title" content="Заселение" key="title" />
+                <meta name="description" content="Электронная запись в очередь на заселение." />
+                <meta
+                    property="og:description"
+                    content="Электронная запись в очередь на заселение."
+                    key="description"
+                />
+            </Head>
+            <Page header="Электронная регистрация на процедуру заселения">
+                <Alert variant="info">
+                    Запись в электронную очередь - это не время, в которое вас будут пускать в
+                    общежитие. В общежитие можно приехать в любое время и в любой день, вас поселят.
+                    Электронная очередь нужна для оплаты проживания. Оплату можно будет произвести
+                    через какое-то время после приезда и поселения в комнату.
+                </Alert>
+                <Row>
+                    <Col xs={12} sm={6} lg={4} xl={3}>
+                        <FacultySelector
+                            className="mb-3"
+                            onSelect={(value) => {
+                                setFaculty(value)
+                            }}
+                            value={faculty}
+                        />
+                    </Col>
+                    <Col xs={6} />
+                </Row>
+                <QueueInputGroup
+                    show={faculty !== 0}
+                    slots={slots}
+                    slotMatrix={slotMatrix}
+                    uniqueDates={uniqueDates}
+                    dailyClasses={dailyClasses}
+                    disabledDates={disabledDates}
+                    onSlotClick={onSlotClick}
+                    getNoItemsText={noItemsText}
+                />
+            </Page>
+        </>
     )
 }
