@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Alert, Col, Container, Row } from 'react-bootstrap'
-import { ArrowLeft, CodeSlash } from 'react-bootstrap-icons'
+import { ArrowLeft } from 'react-bootstrap-icons'
 import ContentBox from '@/common/components/ContentBox'
 import alert from '@/common/utils/alert'
 import OttApi from '@/common/api/ott'
