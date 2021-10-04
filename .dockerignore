@@ -1,7 +1,13 @@
 Dockerfile.main
 Dockerfile.storybook
+docker-compose.yml
 .dockerignore
+
+README.md
+LICENSE
+.gitignore
+.editorconfig
+
+.next
 node_modules
 npm-debug.log
-README.md
-.next
