@@ -12,7 +12,6 @@ jobs:
             COMPOSE_FILE: docker-compose.yml:docker-compose.production.yml
             DOTENV_NEXT_PUBLIC_API_VERSION: v1
             DOTENV_NEXT_PUBLIC_YM_ID: ${{ secrets.YM_ID }}
-            DOTENV_NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
             DOTENV_GENERATE_SOURCEMAP: false
         steps:
             - name: Get latest released version
