@@ -11,18 +11,8 @@ function getRecipientObj(recipient, recipients) {
     return obj
 }
 
-export default function Feedback() {
-    const [recipients, setRecipients] = useState([])
-    const [recipient, setRecipient] = useState('')
-
-    useEffect(() => {
-        async function FetchApi() {
-            const response = await FeedbackApi.getAll()
-            setRecipients(response?.data)
-            setRecipient(response?.data[0].name)
-        }
-        FetchApi()
-    }, [])
+export default function Feedback({ recipients }) {
+    const [recipient, setRecipient] = useState(recipients[0].name)
 
     async function sendRequest(values) {
         const data = { category: values.category, text: values.text }
