@@ -1,9 +1,9 @@
 version: '3.9'
 services:
-    main:
+  web:
         build:
             context: .
-            dockerfile: Dockerfile.main
+      dockerfile: Dockerfile.web
         ports:
             - '127.0.0.1:${MAIN_PORT}:3000'
     storybook:
