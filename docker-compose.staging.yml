@@ -7,7 +7,7 @@ services:
       - proxy
     labels:
       - traefik.enable=true
-      - traefik.http.routers.staging_web.rule=(Host(`dev.cyberdas.net`) && Path(`/`))
+      - traefik.http.routers.staging_web.rule=Host(`dev.cyberdas.net`)
 
 networks:
   proxy:
