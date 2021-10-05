@@ -12,6 +12,9 @@ COPY . .
 FROM base as test
 CMD ["sh", "scripts/test.sh"]
 
+FROM base as development
+CMD ["npm", "run", "dev"]
+
 FROM base AS builder
 ENV NODE_ENV production
 RUN npm run build

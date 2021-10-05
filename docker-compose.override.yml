@@ -1,5 +1,11 @@
 version: '3.9'
 services:
   web:
+    build:
+      target: development
     ports:
       - '127.0.0.1:3000:3000'
+    volumes:
+      - ./common:/app/common
+      - ./modules:/app/modules
+      - ./pages:/app/pages
