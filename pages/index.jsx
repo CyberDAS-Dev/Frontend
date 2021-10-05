@@ -6,8 +6,8 @@ export default function Homepage() {
     return (
         <>
             <Head>
-                <title>Главная - CyberDAS</title>
-                <meta property="og:title" content="Главная - CyberDAS" key="title" />
+                <title>CyberDAS</title>
+                <meta property="og:title" content="CyberDAS" key="title" />
             </Head>
             <Landing />
         </>
