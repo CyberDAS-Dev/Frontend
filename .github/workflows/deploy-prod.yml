@@ -6,8 +6,13 @@ on:
         types: [ released, deleted ]
 
 jobs:
-    checkout:
+    deploy:
         runs-on: [self-hosted, linux, X64]
+        env:
+            COMPOSE_FILE: docker-compose.yml:docker-compose.production.yml
+            DOTENV_NEXT_PUBLIC_YM_ID: ${{ secrets.YM_ID }}
+            DOTENV_NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
+            DOTENV_GENERATE_SOURCEMAP: false
         steps:
             - name: Get latest released version
               id: lastver
@@ -20,15 +25,6 @@ jobs:
               with:
                   ref: ${{ steps.lastver.outputs.release }}
                   path: prod
-
-    deploy:
-        needs: checkout
-        runs-on: [self-hosted, linux, X64]
-        env:
-            NEXT_PUBLIC_YM_ID: ${{ secrets.YM_ID }}
-            NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
-            GENERATE_SOURCEMAP: false
-        steps:
             - name: Set production API
               working-directory: prod/src/API
               run: |
@@ -42,29 +38,19 @@ jobs:
             - name: Create dotenv file
               uses: iamsauravsharma/create-dotenv@v1.2.0
               with:
+                  env-prefix: 'DOTENV_'
                   directory: 'prod/'
             - name: Build container
               working-directory: prod
               run: |
-                  docker-compose -f docker-compose.yml -f docker-compose.production.yml build web
+                  docker-compose build web
             - name: Deploy container
               working-directory: prod
               run: |
-                  docker-compose -f docker-compose.yml -f docker-compose.production.yml up --no-deps -d web
-
-    healthcheck:
-        needs: deploy
-        runs-on: [self-hosted, linux, X64]
-        steps:
-            - name: Get container id
+                  docker-compose up --no-deps -d web
+            - name: Check that container is running
               working-directory: prod
-              id: contid 
               run: |
-                  docker-compose -f docker-compose.yml -f docker-compose.production.yml ps -q
-            - name: Check container status
-              id: contstatus
-              run: |
-                  docker container inspect -f '{{.State.Status}}' ${{ steps.contid.outputs }}
-            - name: Exit on error
-              if: steps.contstatus.outputs != 'running'
-              run: exit 1
+                  if [ "$(docker container inspect -f '{{.State.Status}}' $(docker-compose ps -q))" != "running" ]; then
+                    exit 1 
+                  fi

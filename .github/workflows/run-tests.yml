@@ -5,31 +5,34 @@ on:
         branches: [ main ]
 
 jobs:
-    build:
+    test:
         needs: checkout
         runs-on: [self-hosted, linux, X64]
+        env:
+            COMPOSE_FILE: docker-compose.yml
         steps:
             - name: Checkout
               uses: actions/checkout@v2
               with:
-                  path: test
+                  path: test-${{ github.sha }}
             - name: Build and start container
-              working-directory: test
+              working-directory: test-${{ github.sha }}
               run: |
-                  docker-compose -f docker-compose.yml up -d --build web
-
-    test:
-        needs: build
-        runs-on: [self-hosted, linux, X64]
-        steps:
+                  docker-compose up -d --build web
+            - name: Check that container is running
+              working-directory: test-${{ github.sha }}
+              run: |
+                  if [ "$(docker container inspect -f '{{.State.Status}}' $(docker-compose ps -q))" != "running" ]; then
+                    exit 1 
+                  fi
             - name: Run tests
-              working-directory: test
+              working-directory: test-${{ github.sha }}
               run: |
-                  docker-compose -f docker-compose.yml exec -T web sh /app/scripts/test.sh
+                  docker-compose exec -T web sh /app/scripts/test.sh
             - name: Shutdown container
-              working-directory: test
+              working-directory: test-${{ github.sha }}
               run: |
-                  docker-compose -f docker-compose.yml down --remove-orphans
+                  docker-compose down --remove-orphans
             - name: Wipe files
               run: |
-                  rm -rf test
+                  rm -rf test-${{ github.sha }}
