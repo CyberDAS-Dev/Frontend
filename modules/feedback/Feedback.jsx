@@ -39,8 +39,8 @@ export default function Feedback() {
     return (
         <>
             <Head>
-                <title>Обратная связь</title>
-                <meta property="og:title" content="Обратная связь" key="title" />
+                <title>Обратная связь - CyberDAS</title>
+                <meta property="og:title" content="Обратная связь - CyberDAS" key="title" />
                 <meta
                     name="description"
                     content="Связь с администрацией сайта или студенческим комитетом общежития ДАС."

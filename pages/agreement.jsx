@@ -6,8 +6,8 @@ export default function UserAgreement() {
     return (
         <>
             <Head>
-                <title>Соглашение</title>
-                <meta property="og:title" content="Соглашение" key="title" />
+                <title>Соглашение - CyberDAS</title>
+                <meta property="og:title" content="Соглашение - CyberDAS" key="title" />
                 <meta name="description" content="Пользовательское соглашение CyberDAS." />
                 <meta
                     property="og:description"

@@ -8,8 +8,8 @@ export default function Copyright() {
     return (
         <>
             <Head>
-                <title>Авторство</title>
-                <meta property="og:title" content="Авторство" key="title" />
+                <title>Авторство - CyberDAS</title>
+                <meta property="og:title" content="Авторство - CyberDAS" key="title" />
                 <meta
                     name="description"
                     content="Страница для указания авторов, чьи работы используются на сайте."

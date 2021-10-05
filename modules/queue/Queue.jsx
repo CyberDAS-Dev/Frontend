@@ -100,8 +100,8 @@ export default function Queue() {
     return (
         <>
             <Head>
-                <title>Заселение</title>
-                <meta property="og:title" content="Заселение" key="title" />
+                <title>Заселение - CyberDAS</title>
+                <meta property="og:title" content="Заселение - CyberDAS" key="title" />
                 <meta name="description" content="Электронная запись в очередь на заселение." />
                 <meta
                     property="og:description"

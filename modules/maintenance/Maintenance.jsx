@@ -46,8 +46,8 @@ export default function Maintenance() {
     return (
         <>
             <Head>
-                <title>Техуслуги</title>
-                <meta property="og:title" content="Техуслуги" key="title" />
+                <title>Техуслуги - CyberDAS</title>
+                <meta property="og:title" content="Техуслуги - CyberDAS" key="title" />
                 <meta name="description" content="Отправка заявки на оказание технических услуг." />
                 <meta
                     property="og:description"

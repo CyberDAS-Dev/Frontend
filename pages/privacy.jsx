@@ -6,8 +6,8 @@ export default function Privacy() {
     return (
         <>
             <Head>
-                <title>Защита данных</title>
-                <meta property="og:title" content="Защита данных" key="title" />
+                <title>Защита данных - CyberDAS</title>
+                <meta property="og:title" content="Защита данных - CyberDAS" key="title" />
                 <meta name="description" content="Политика Конфиденциальности сайта CyberDAS." />
                 <meta
                     property="og:description"
