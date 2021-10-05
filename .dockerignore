@@ -1,12 +1,16 @@
-Dockerfile.main
+Dockerfile
 Dockerfile.storybook
 docker-compose.yml
+docker-compose.override.yml
+docker-compose.production.yml
+docker-compose.staging.yml
 .dockerignore
 
 README.md
 LICENSE
+.git
+.github
 .gitignore
-.editorconfig
 
 .next
 node_modules

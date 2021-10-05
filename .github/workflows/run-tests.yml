@@ -1,38 +1,29 @@
-name: run-tests
+name: Execute tests
 
 on:
     pull_request:
         branches: [ main ]
 
 jobs:
-    build:
+    test:
         runs-on: [self-hosted, linux, X64]
         steps:
             - name: Checkout
               uses: actions/checkout@v2
               with:
-                  path: test
-            - name: Install dependencies
-              working-directory: test
+                  path: test-${{ github.sha }}
+            - name: Build and start container
+              working-directory: test-${{ github.sha }}
               run: |
-                  npm ci
-
-    test:
-        needs: build
-        runs-on: [self-hosted, linux, X64]
-        steps:
-            - name: Run code linter
-              working-directory: test
-              run: |
-                  npm run lint:code
-            - name: Run style linter
-              working-directory: test
-              run: |
-                  npm run lint:style
+                  docker build -t web-test:${{ github.sha }} --target test .
             - name: Run tests
-              working-directory: test
+              working-directory: test-${{ github.sha }}
               run: |
-                  npm test
+                  docker run -it --rm --name web-test web-test:${{ github.sha }}
+            - name: Shutdown container
+              working-directory: test-${{ github.sha }}
+              run: |
+                  docker image rm web-test:${{ github.sha }}
             - name: Wipe files
               run: |
-                  rm -rf test
+                  rm -rf test-${{ github.sha }}

@@ -1,4 +1,4 @@
-name: deploy-prod
+name: Build and Deploy (production)
 
 on:
     release:
@@ -6,8 +6,14 @@ on:
         types: [ released, deleted ]
 
 jobs:
-    update:
+    deploy:
         runs-on: [self-hosted, linux, X64]
+        env:
+            COMPOSE_FILE: docker-compose.yml:docker-compose.production.yml
+            DOTENV_NEXT_PUBLIC_API_VERSION: v1
+            DOTENV_NEXT_PUBLIC_YM_ID: ${{ secrets.YM_ID }}
+            DOTENV_NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
+            DOTENV_GENERATE_SOURCEMAP: false
         steps:
             - name: Get latest released version
               id: lastver
@@ -20,49 +26,33 @@ jobs:
               with:
                   ref: ${{ steps.lastver.outputs.release }}
                   path: prod
-            - name: Install dependencies
+            - name: Save old image ID
+              id: old_image
+              run: |
+                  echo "::set-output name=id::$(docker-compose images -q web)"
+            - name: Create dotenv file
+              uses: iamsauravsharma/create-dotenv@v1.2.0
+              with:
+                  env-prefix: 'DOTENV_'
+                  directory: 'prod/'
+            - name: Build and run container
+              id: new_container
               working-directory: prod
               run: |
-                  npm ci
-
-    deploy:
-        needs: update
-        runs-on: [self-hosted, linux, X64]
-        env:
-            REACT_APP_YM_ID: ${{ secrets.YM_ID }}
-            REACT_APP_GA_ID: ${{ secrets.GA_ID }}
-            GENERATE_SOURCEMAP: false
-        steps:
-            - name: Set production API
-              working-directory: prod/src/API
+                  docker build -t cyberdas_web:${{ steps.lastver.outputs.release }} .
+                  echo "::set-output name=id::$(docker run cyberdas_web:${{ steps.lastver.outputs.release }})" 
+            - name: Validate that container is able to run
               run: |
-                  python3 -c "with open('http.js', 'r+') as f:
-                      d = f.read()
-                      d = d.replace('https://api.cyberdas.net/next', 'https://api.cyberdas.net/v1')
-                      f.seek(0)
-                      f.write(d)
-                      f.truncate()
-                      f.close()"
-            - name: Build
+                  if [ "$(docker container inspect -f '{{.State.Status}}' ${{ steps.new_container.outputs.id }})" != "running" ]; then
+                    docker stop ${{ steps.new_container.outputs.id }}
+                    docker rm ${{ steps.new_container.outputs.id }}
+                    docker image rm cyberdas_web:${{ steps.lastver.outputs.release }}
+                    exit 1 
+                  fi
+            - name: Deploy container
               working-directory: prod
               run: |
-                  npm run build
-            - name: Transfer new version to web-server
-              working-directory: prod
+                  TAG=${{ steps.lastver.outputs.release }} docker-compose up -d web
+            - name: Remove old image
               run: |
-                  rm -rf /var/www/html/*  
-                  cp -r build/. /var/www/html/
-
-    deploy-storybook:
-        needs: update
-        runs-on: [self-hosted, linux, X64]
-        steps:
-            - name: Build
-              working-directory: prod
-              run: |
-                  npm run build-storybook
-            - name: Transfer new version to web-server
-              working-directory: prod
-              run: |
-                  rm -rf /var/www/storybook/main/*  
-                  cp -r storybook-static/. /var/www/storybook/main/
+                  docker image rm ${{ steps.old_image.outputs.id }}
