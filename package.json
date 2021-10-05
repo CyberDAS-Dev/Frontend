@@ -5,7 +5,6 @@
     "dependencies": {
         "@babel/register": "^7.14.5",
         "@brainhubeu/react-carousel": "^2.0.4",
-        "@fontsource/open-sans": "^4.5.0",
         "@fontsource/quantico": "^4.5.0",
         "@fontsource/roboto": "^4.5.0",
         "@reduxjs/toolkit": "^1.5.1",
