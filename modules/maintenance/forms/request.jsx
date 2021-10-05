@@ -18,7 +18,10 @@ const schema = yup.object().shape({
 export default function MaintenanceForm({ onSubmit }) {
     const formik = useFormik({
         validationSchema: schema,
-        onSubmit: (values) => onSubmit(values),
+        onSubmit: (values) => {
+            onSubmit(values)
+            formik.resetForm()
+        },
         initialValues: {
             surname: '',
             name: '',

@@ -1,4 +1,4 @@
-name: deploy-dev
+name: Build and Deploy (staging)
 
 on:
     push:
@@ -8,14 +8,40 @@ jobs:
     deploy:
         runs-on: [self-hosted, linux, X64]
         env:
-            MAIN_PORT: 4000
-            STORYBOOK_PORT: 4001
+            COMPOSE_FILE: docker-compose.yml:docker-compose.staging.yml
         steps:
+            - name: Save old image and container ID
+              id: old
+              working-directory: dev
+              run: |
+                  echo "::set-output name=image_id::$(docker-compose images -q web)"
+                  echo "::set-output name=container_id::$(docker-compose ps -q web)"
             - name: Checkout
               uses: actions/checkout@v2
               with:
-                  path: dev  
-            - name: Docker compose
+                  path: dev
+            - name: Build container
               working-directory: dev
               run: |
-                  docker-compose up -d --build
+                  docker build -t cyberdas_web:${{ github.sha }} .
+            - name: Start container
+              id: new
+              run: |
+                  echo "::set-output name=container_id::$(docker run -d cyberdas_web:${{ github.sha }})" 
+            - name: Validate that container is able to run
+              run: |
+                  if [ "$(docker container inspect -f '{{.State.Status}}' ${{ steps.new.outputs.container_id }})" != "running" ]; then
+                    docker stop ${{ steps.new.outputs.container_id }} && docker rm ${{ steps.new.outputs.container_id }}
+                    docker image rm cyberdas_web:${{ github.sha }}
+                    exit 1 
+                  fi
+            - name: Deploy container
+              working-directory: dev
+              run: |
+                  docker stop ${{ steps.new.outputs.container_id }} && docker rm ${{ steps.new.outputs.container_id }}
+                  TAG=${{ github.sha }} docker-compose up -d web
+            - name: Remove old container and image
+              run: |
+                  docker image rm ${{ steps.old.outputs.image_id }}
+              continue-on-error: true
+            

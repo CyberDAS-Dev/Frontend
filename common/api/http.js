@@ -2,7 +2,7 @@ import axios from 'axios'
 import errorComposer, { errorAlert } from './errors'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://api.cyberdas.net/next',
+    baseURL: `https://api.cyberdas.net/${process.env.NEXT_PUBLIC_API_VERSION || 'next'}`,
     headers: { 'Content-type': 'application/json' },
 })
 
