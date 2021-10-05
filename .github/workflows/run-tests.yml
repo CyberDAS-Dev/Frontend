@@ -19,7 +19,7 @@ jobs:
             - name: Run tests
               working-directory: test-${{ github.sha }}
               run: |
-                  docker run -it --rm --name web-test web-test:${{ github.sha }}
+                  docker run --rm --name web-test web-test:${{ github.sha }}
             - name: Shutdown container
               working-directory: test-${{ github.sha }}
               run: |
