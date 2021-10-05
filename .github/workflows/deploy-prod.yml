@@ -1,4 +1,4 @@
-name: deploy-prod
+name: Build and Deploy (production)
 
 on:
     release:
@@ -6,7 +6,7 @@ on:
         types: [ released, deleted ]
 
 jobs:
-    update:
+    checkout:
         runs-on: [self-hosted, linux, X64]
         steps:
             - name: Get latest released version
@@ -20,17 +20,13 @@ jobs:
               with:
                   ref: ${{ steps.lastver.outputs.release }}
                   path: prod
-            - name: Install dependencies
-              working-directory: prod
-              run: |
-                  npm ci
 
     deploy:
-        needs: update
+        needs: checkout
         runs-on: [self-hosted, linux, X64]
         env:
-            REACT_APP_YM_ID: ${{ secrets.YM_ID }}
-            REACT_APP_GA_ID: ${{ secrets.GA_ID }}
+            NEXT_PUBLIC_YM_ID: ${{ secrets.YM_ID }}
+            NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
             GENERATE_SOURCEMAP: false
         steps:
             - name: Set production API
@@ -43,26 +39,32 @@ jobs:
                       f.write(d)
                       f.truncate()
                       f.close()"
-            - name: Build
+            - name: Create dotenv file
+              uses: iamsauravsharma/create-dotenv@v1.2.0
+              with:
+                  directory: 'prod/'
+            - name: Build container
               working-directory: prod
               run: |
-                  npm run build
-            - name: Transfer new version to web-server
+                  docker-compose -f docker-compose.yml -f docker-compose.production.yml build web
+            - name: Deploy container
               working-directory: prod
               run: |
-                  rm -rf /var/www/html/*  
-                  cp -r build/. /var/www/html/
+                  docker-compose -f docker-compose.yml -f docker-compose.production.yml up --no-deps -d web
 
-    deploy-storybook:
-        needs: update
+    healthcheck:
+        needs: deploy
         runs-on: [self-hosted, linux, X64]
         steps:
-            - name: Build
+            - name: Get container id
               working-directory: prod
+              id: contid 
               run: |
-                  npm run build-storybook
-            - name: Transfer new version to web-server
-              working-directory: prod
+                  docker-compose -f docker-compose.yml -f docker-compose.production.yml ps -q
+            - name: Check container status
+              id: contstatus
               run: |
-                  rm -rf /var/www/storybook/main/*  
-                  cp -r storybook-static/. /var/www/storybook/main/
+                  docker container inspect -f '{{.State.Status}}' ${{ steps.contid.outputs }}
+            - name: Exit on error
+              if: steps.contstatus.outputs != 'running'
+              run: exit 1

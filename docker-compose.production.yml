@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  web:
+    container_name: main_web
+    env_file:
+      - .env
+    expose:
+      - 3000
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.main_web.rule=PathPrefix(`/`)
+
+networks:
+  proxy:
+    external: true

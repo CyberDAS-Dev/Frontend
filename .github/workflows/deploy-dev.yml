@@ -1,21 +1,49 @@
-name: deploy-dev
+name: Build and Deploy (staging)
 
 on:
     push:
         branches: [ main ]
 
 jobs:
-    deploy:
+    checkout:
         runs-on: [self-hosted, linux, X64]
-        env:
-            MAIN_PORT: 4000
-            STORYBOOK_PORT: 4001
         steps:
             - name: Checkout
               uses: actions/checkout@v2
               with:
                   path: dev  
-            - name: Docker compose
+
+    deploy:
+        needs: checkout
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Create dotenv file
               working-directory: dev
               run: |
-                  docker-compose up -d --build
+                  touch .env
+            - name: Build container
+              working-directory: dev
+              run: |
+                  docker-compose -f docker-compose.yml -f docker-compose.production.yml build web
+            - name: Deploy container
+              working-directory: dev
+              run: |
+                  docker-compose -f docker-compose.yml -f docker-compose.production.yml up --no-deps -d web
+            
+    healthcheck:
+        needs: deploy
+        runs-on: [self-hosted, linux, X64]
+        steps:
+            - name: Get container id
+              working-directory: dev
+              id: contid 
+              run: |
+                  docker-compose -f docker-compose.yml -f docker-compose.production.yml ps -q
+            - name: Check container status
+              id: contstatus
+              run: |
+                  docker container inspect -f '{{.State.Status}}' ${{ steps.contid.outputs }}
+            - name: Exit on error
+              if: steps.contstatus.outputs != 'running'
+              run: exit 1
+            

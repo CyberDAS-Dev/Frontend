@@ -1,4 +1,4 @@
-name: run-tests
+name: Execute tests
 
 on:
     pull_request:
@@ -6,33 +6,30 @@ on:
 
 jobs:
     build:
+        needs: checkout
         runs-on: [self-hosted, linux, X64]
         steps:
             - name: Checkout
               uses: actions/checkout@v2
               with:
                   path: test
-            - name: Install dependencies
+            - name: Build and start container
               working-directory: test
               run: |
-                  npm ci
+                  docker-compose -f docker-compose.yml up -d --build web
 
     test:
         needs: build
         runs-on: [self-hosted, linux, X64]
         steps:
-            - name: Run code linter
-              working-directory: test
-              run: |
-                  npm run lint:code
-            - name: Run style linter
-              working-directory: test
-              run: |
-                  npm run lint:style
             - name: Run tests
               working-directory: test
               run: |
-                  npm test
+                  docker-compose -f docker-compose.yml exec -T web sh /app/scripts/test.sh
+            - name: Shutdown container
+              working-directory: test
+              run: |
+                  docker-compose -f docker-compose.yml down --remove-orphans
             - name: Wipe files
               run: |
                   rm -rf test

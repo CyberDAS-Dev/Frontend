@@ -1,14 +1,6 @@
 version: '3.9'
 services:
   web:
-        build:
-            context: .
+    build:
+      context: .
       dockerfile: Dockerfile.web
-        ports:
-            - '127.0.0.1:${MAIN_PORT}:3000'
-    storybook:
-        build:
-            context: .
-            dockerfile: Dockerfile.storybook
-        ports:
-            - '127.0.0.1:${STORYBOOK_PORT}:3001'
