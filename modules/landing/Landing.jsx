@@ -13,7 +13,7 @@ import blueInfo from './images/icons/blue/info.png'
 import blueComingSoon from './images/icons/blue/comingsoon.png'
 import s from './Landing.module.scss'
 
-export default function Homepage() {
+export default function Landing() {
     return (
         <Container fluid className="p-0">
             <Container fluid className={`p-0 mb-6 d-flex align-items-center ${s.jumboBg}`}>
