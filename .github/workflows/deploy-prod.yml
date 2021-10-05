@@ -21,11 +21,12 @@ jobs:
               with:
                   repository: ${{ github.repository }}
                   excludes: prerelease, draft
-            - name: Save old image ID
-              id: old_image
+            - name: Save old image and container ID
+              id: old
               working-directory: prod
               run: |
-                  echo "::set-output name=id::$(docker-compose images -q web)"
+                  echo "::set-output name=image_id::$(docker-compose images -q web)"
+                  echo "::set-output name=container_id::$(docker-compose ps -q web)"
             - name: Checkout latest tag
               uses: actions/checkout@v2
               with:
@@ -41,22 +42,22 @@ jobs:
               run: |
                   docker build -t cyberdas_web:${{ steps.lastver.outputs.release }} .
             - name: Start container
-              id: new_container
+              id: new
               run: |
-                  echo "::set-output name=id::$(docker run -d cyberdas_web:${{ steps.lastver.outputs.release }})" 
+                  echo "::set-output name=container_id::$(docker run -d cyberdas_web:${{ steps.lastver.outputs.release }})" 
             - name: Validate that container is able to run
               run: |
-                  if [ "$(docker container inspect -f '{{.State.Status}}' ${{ steps.new_container.outputs.id }})" != "running" ]; then
-                    docker stop ${{ steps.new_container.outputs.id }}
-                    docker rm ${{ steps.new_container.outputs.id }}
+                  if [ "$(docker container inspect -f '{{.State.Status}}' ${{ steps.new.outputs.container_id }})" != "running" ]; then
+                    docker stop ${{ steps.new.outputs.container_id }} && docker rm ${{ steps.new.outputs.container_id }}
                     docker image rm cyberdas_web:${{ steps.lastver.outputs.release }}
                     exit 1 
                   fi
             - name: Deploy container
               working-directory: prod
               run: |
+                  docker stop ${{ steps.new.outputs.container_id }} && docker rm ${{ steps.new.outputs.container_id }}
                   TAG=${{ steps.lastver.outputs.release }} docker-compose up -d web
             - name: Remove old image
               run: |
-                  docker image rm ${{ steps.old_image.outputs.id }}
+                  docker image rm ${{ steps.old.outputs.image_id }}
               continue-on-error: true
