@@ -17,9 +17,6 @@ export default function Header() {
 
      По этой же причине внутри <Navbar.Brand> такая мешанина - если не завернуть внутрь <Navbar.Brand> <Nav.Link>, 
      то не будет возможности ловить момент нажатия на главную и сбрасывать выбор другой страницы с навов.
-
-     NOTE:
-     -7 пикселей налево у картинки потому что она отцентрована, а должна быть прибита к левому краю (на телефонах)
     */
     return (
         <Navbar
@@ -32,12 +29,8 @@ export default function Header() {
             <Container>
                 <Navbar.Brand>
                     <Link href="/" passHref>
-                        <Nav.Link
-                            className="p-0 align-items-center d-flex"
-                            eventKey="0"
-                            style={{ marginLeft: '-7px' }}
-                        >
-                            <Img layout="fixed" quality={100} src={logo} alt="CyberDAS" />
+                        <Nav.Link className="p-0 align-items-center d-flex" eventKey="0">
+                            <Img layout="fixed" height={39} width={125} src={logo} alt="CyberDAS" />
                         </Nav.Link>
                     </Link>
                 </Navbar.Brand>
