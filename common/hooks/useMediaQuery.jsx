@@ -13,14 +13,26 @@ export default function useMediaQuery(width) {
 
     useEffect(() => {
         const media = window.matchMedia(`(max-width: ${width}px)`)
-        media.addEventListener('change', (e) => updateTarget(e))
+        // Спасибо apple за этот полифилл, на движках JS айфонов addEventListener не работает
+        // и приходится использовать deprecated метод
+        try {
+            media.addEventListener('change', (e) => updateTarget(e))
+        } catch (er) {
+            media.addListener((e) => updateTarget(e))
+        }
 
         // Check on mount (callback is not called until a change occurs)
         if (media.matches) {
             setTargetReached(true)
         }
 
-        return () => media.removeEventListener('change', (e) => updateTarget(e))
+        return () => {
+            try {
+                media.removeEventListener('change', (e) => updateTarget(e))
+            } catch (er) {
+                media.removeListener((e) => updateTarget(e))
+            }
+        }
     }, [updateTarget, width])
 
     return targetReached
