@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { Alert, Col, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import Img from 'next/image'
 import Page from '@/common/components/Page'
 import closed from './images/closed.svg'
