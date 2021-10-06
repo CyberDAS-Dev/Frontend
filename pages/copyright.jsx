@@ -1,8 +1,10 @@
 import React from 'react'
+import Img from 'next/image'
 import Head from 'next/head'
 import { Col, Row } from 'react-bootstrap'
 import Icon from '@/common/components/Icon'
 import Page from '@/common/components/Page'
+import closed from '@/modules/queue/images/closed.svg'
 
 export default function Copyright() {
     return (
@@ -21,7 +23,7 @@ export default function Copyright() {
                 />
             </Head>
             <Page header="Авторство">
-                <Row xs={{ cols: '1' }} md={{ cols: '3' }} className="gy-3">
+                <Row xs={{ cols: '1' }} md={{ cols: '3' }} className="gy-5">
                     <Col className="d-flex flex-column align-items-center">
                         <Icon name="electrician" />
                         <a href="https://thenounproject.com/">© Made, Noun Project</a>
@@ -37,7 +39,7 @@ export default function Copyright() {
                         </a>
                     </Col>
                     <Col className="d-flex flex-column align-items-center">
-                        <Icon name="closed" />
+                        <Img src={closed} />
                         <a href="https://thenounproject.com/">© scarlett mckay, Noun Project</a>
                     </Col>
                 </Row>
