@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { Form, Row, Col, Button } from 'react-bootstrap'
+import ym from 'react-yandex-metrika'
 import s from './request.module.scss'
 
 const schema = yup.object().shape({
@@ -21,6 +22,7 @@ export default function MaintenanceForm({ onSubmit }) {
         onSubmit: (values) => {
             onSubmit(values)
             formik.resetForm()
+            ym('reachGoal', 'maintenance')
         },
         initialValues: {
             surname: '',
