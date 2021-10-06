@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import ym from 'react-yandex-metrika'
 
 const schema = yup.object().shape({
     category: yup.string().required(),
@@ -13,8 +14,9 @@ export default function FeedbackForm({ onSubmit, categories = [] }) {
     const formik = useFormik({
         validationSchema: schema,
         onSubmit: (values) => {
-            formik.resetForm()
             onSubmit(values)
+            formik.resetForm()
+            ym('reachGoal', 'feedback')
         },
         initialValues: {
             category: '',
