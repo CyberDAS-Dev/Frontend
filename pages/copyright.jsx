@@ -21,7 +21,7 @@ export default function Copyright() {
                 />
             </Head>
             <Page header="Авторство">
-                <Row xs={{ cols: '1' }} md={{ cols: '3' }}>
+                <Row xs={{ cols: '1' }} md={{ cols: '3' }} className="gy-3">
                     <Col className="d-flex flex-column align-items-center">
                         <Icon name="electrician" />
                         <a href="https://thenounproject.com/">© Made, Noun Project</a>
@@ -35,6 +35,10 @@ export default function Copyright() {
                         <a href="https://thenounproject.com/">
                             © Muhammad Khoirul Amal, Noun Project
                         </a>
+                    </Col>
+                    <Col className="d-flex flex-column align-items-center">
+                        <Icon name="closed" />
+                        <a href="https://thenounproject.com/">© scarlett mckay, Noun Project</a>
                     </Col>
                 </Row>
             </Page>
