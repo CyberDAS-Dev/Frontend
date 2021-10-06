@@ -24,14 +24,14 @@ export default function Landing() {
                         </Col>
                     </Row>
                     <Row className="pt-5 pb-5">
-                        <LinkContainer href="/queue">
+                        <LinkContainer href="/maintenance">
                             <Button
                                 as={Col}
                                 xs={{ span: 6, offset: 3 }}
                                 md={{ span: 3, offset: 8 }}
                                 size="lg"
                             >
-                                Заселение
+                                Техуслуги
                             </Button>
                         </LinkContainer>
                     </Row>
