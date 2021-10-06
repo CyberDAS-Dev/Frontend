@@ -1,1 +1,1 @@
-export { default } from '@/modules/queue'
+export { default } from '@/modules/queue/QueueClosed'
