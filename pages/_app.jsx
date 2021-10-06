@@ -41,7 +41,7 @@ const MyApp = ({ Component, pageProps }) => {
             <Provider store={store}>
                 <Header />
                 <div id="__content">
-                <Component {...pageProps} />
+                    <Component {...pageProps} />
                 </div>
                 <Footer />
             </Provider>
