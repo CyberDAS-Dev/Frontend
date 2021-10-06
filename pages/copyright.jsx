@@ -1,10 +1,8 @@
 import React from 'react'
-import Img from 'next/image'
 import Head from 'next/head'
 import { Col, Row } from 'react-bootstrap'
 import Icon from '@/common/components/Icon'
 import Page from '@/common/components/Page'
-import closed from '@/modules/queue/images/closed.svg'
 
 export default function Copyright() {
     return (
@@ -39,7 +37,7 @@ export default function Copyright() {
                         </a>
                     </Col>
                     <Col className="d-flex flex-column align-items-center">
-                        <Img src={closed} />
+                        <Icon name="closed" />
                         <a href="https://thenounproject.com/">© scarlett mckay, Noun Project</a>
                     </Col>
                 </Row>
