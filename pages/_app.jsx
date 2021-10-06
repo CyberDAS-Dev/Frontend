@@ -40,9 +40,7 @@ const MyApp = ({ Component, pageProps }) => {
             {isProduction ? <Metric /> : null}
             <Provider store={store}>
                 <Header />
-                <div id="__content">
-                    <Component {...pageProps} />
-                </div>
+                <Component {...pageProps} />
                 <Footer />
             </Provider>
         </>
