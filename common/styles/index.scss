@@ -2,6 +2,15 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@brainhubeu/react-carousel/lib/style.css';
 
+/* Убирает скроллбар */
+html {
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+    display: none; /*  Chrome, Safari и Opera */
+}
 
 /* 
 Устанавливаем out-of-bound цвет в такой же, как и в навигации (футер\хэдер) 
