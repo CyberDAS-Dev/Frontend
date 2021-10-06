@@ -2,6 +2,22 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@brainhubeu/react-carousel/lib/style.css';
 
+
+/* 
+Устанавливаем out-of-bound цвет в такой же, как и в навигации (футер\хэдер) 
+
+Для этого нужно весь body перекрасить в цвет навигации, затем создать кастомный элемент,
+оборачивающий непосредственно контент страницы, и поставить ему цвет, который
+мы ожидаем от body
+*/
+body {
+    background: hsl(234, 12%, 16%);
+}
+
+#__content {
+    background-color: var(--bs-body-bg);
+}
+
 /* Webkit должен рендерить кнопки так, как у нас */
 .btn {
     -webkit-appearance: none;
