@@ -9,7 +9,7 @@ services:
       - proxy
     labels:
       - traefik.enable=true
-      - traefik.http.routers.main_web.rule=PathPrefix(`/`)
+      - traefik.http.routers.main_web.rule=Host(`cyberdas.net`)
 
 networks:
   proxy:

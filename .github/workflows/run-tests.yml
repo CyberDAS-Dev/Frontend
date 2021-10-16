@@ -21,9 +21,11 @@ jobs:
               run: |
                   docker run --rm --name web-test web-test:${{ github.sha }}
             - name: Shutdown container
+              if: ${{ always() }}
               working-directory: test-${{ github.sha }}
               run: |
                   docker image rm web-test:${{ github.sha }}
             - name: Wipe files
+              if: ${{ always() }}
               run: |
                   rm -rf test-${{ github.sha }}
