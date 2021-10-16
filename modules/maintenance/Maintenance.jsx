@@ -5,6 +5,7 @@ import { Alert, Col, Container, Row } from 'react-bootstrap'
 import { ArrowLeft } from 'react-bootstrap-icons'
 import ContentBox from '@/common/components/ContentBox'
 import alert from '@/common/utils/alert'
+import confirm from '@/common/utils/confirm'
 import OttApi from '@/common/api/ott'
 import ButtonCard from './components/ButtonCard'
 import MaintenanceForm from './forms/request'
@@ -47,6 +48,32 @@ export default function Maintenance() {
                 backToSelection()
                 selectService('electrician')
             }
+        }
+    }
+
+    async function onSubmit(values) {
+        const today = new Date()
+        // Нужно предупреждать пользователей о том, что заявки будут отправлены только в понедельник в:
+        // 1. Пятницу после 7 утра
+        // 2. Субботу
+        // 3. Воскресенье до 7 утра
+        if (
+            (today.getUTCDay() === 5 && today.getUTCHours() >= 4) || // пятница
+            today.getUTCDay() === 6 || // суббота
+            (today.getUTCDay() === 0 && today.getUTCHours() <= 4) // воскресенье
+        ) {
+            if (
+                await confirm(
+                    'Ваша заявка будет отправлена только в понедельник. Вы хотите продолжить?',
+                    {
+                        title: 'Вы уверены?',
+                    }
+                )
+            ) {
+                sendRequest(values)
+            }
+        } else {
+            sendRequest(values)
         }
     }
 
@@ -124,7 +151,7 @@ export default function Maintenance() {
                         <ArrowLeft className="me-2" />
                         Назад
                     </button>
-                    <MaintenanceForm onSubmit={sendRequest} />
+                    <MaintenanceForm onSubmit={onSubmit} />
                 </ContentBox>
             </Container>
         </>
