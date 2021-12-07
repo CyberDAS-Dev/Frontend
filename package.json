@@ -38,7 +38,8 @@
         "dev": "next dev",
         "start": "next start",
         "build": "next build",
-        "test": "jest",
+        "test:unit": "jest",
+        "test:e2e": "cypress run",
         "eject": "next eject",
         "prepare": "is-ci || husky install",
         "lint:code": "eslint --max-warnings 0 --ext js,jsx common modules pages",
@@ -50,19 +51,6 @@
         "storybook": "start-storybook -p 3001 -s public",
         "build-storybook": "build-storybook -s public",
         "deploy-storybook": "storybook-to-ghpages --branch storybook"
-    },
-    "eslintConfig": {
-        "extends": "react-app",
-        "overrides": [
-            {
-                "files": [
-                    "**/*.stories.*"
-                ],
-                "rules": {
-                    "import/no-anonymous-default-export": "off"
-                }
-            }
-        ]
     },
     "browserslist": {
         "production": [
