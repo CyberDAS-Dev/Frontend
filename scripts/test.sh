@@ -5,4 +5,4 @@ set -e
 
 npm run lint:code
 npm run lint:style
-npm test
+npm run test:unit
