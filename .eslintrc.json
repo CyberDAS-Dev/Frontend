@@ -89,7 +89,7 @@
         },
         {
             "files": [
-                "cypress/?(*.)+(spec).[jt]s?(x)"
+                "cypress/**/?(*.)+(spec).[jt]s?(x)"
             ],
             "plugins": [
                 "cypress"
